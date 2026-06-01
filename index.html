@@ -312,6 +312,12 @@
        WHO WE ARE — RADIANT IRIS
     ══════════════════════════════════════ */
     #about {
+        --about-purple: #5b2aa3;
+        --about-purple-glow: rgba(91, 42, 163, 0.18);
+        --about-wood: #dcc29a;
+        --about-wood-strong: #f1dfbf;
+        --about-wood-muted: rgba(220, 194, 154, 0.72);
+        --about-wood-soft: rgba(241, 223, 191, 0.84);
         padding: 0;
         min-height: 100vh;
         display: flex;
@@ -320,7 +326,7 @@
     }
 
     .about-sbg {
-        background: radial-gradient( ellipse 120% 80% at 30% 50%, #18102E 0%, #0D0818 50%, #090512 100%
+        background: radial-gradient( ellipse 120% 80% at 30% 50%, #1b1230 0%, #120a20 50%, #090511 100%
         );
     }
 
@@ -367,7 +373,7 @@
         font-size: 0.52rem;
         letter-spacing: 0.42em;
         text-transform: uppercase;
-        color: var(--viol-m);
+        color: var(--about-wood);
         opacity: 0.8;
         margin-bottom: 0.15rem;
     }
@@ -377,14 +383,14 @@
         font-weight: 600;
         font-size: 2rem;
         letter-spacing: 0.06em;
-        color: var(--viol-m);
+        color: var(--about-purple);
         line-height: 1;
     }
 
     .about-rule {
         width: 40px;
         height: 1px;
-        background: linear-gradient(to right, var(--viol-m), transparent);
+        background: linear-gradient(to right, var(--about-wood), transparent);
         margin: 0.5rem 0 1.2rem;
     }
 
@@ -393,7 +399,7 @@
         font-style: italic;
         font-weight: 200;
         font-size: 1rem;
-        color: rgba(247, 242, 232, 0.55);
+        color: var(--about-wood-muted);
         line-height: 1.6;
         max-width: 220px;
     }/* RIGHT — three text blocks */
@@ -412,7 +418,7 @@
     .about-block-marker {
         width: 2px;
         min-height: 1.8rem;
-        background: linear-gradient(to bottom, var(--viol-m), rgba(155, 112, 216, 0.15));
+        background: linear-gradient(to bottom, var(--about-purple), var(--about-purple-glow));
         flex-shrink: 0;
         margin-top: 0.35rem;
         border-radius: 2px;
@@ -422,12 +428,12 @@
         font-family: 'Alegreya', Georgia, serif;
         font-size: clamp(1rem, 1.5vw, 1.18rem);
         line-height: 1.78;
-        color: rgba(247, 237, 215, 0.78);
+        color: var(--about-wood-soft);
         font-weight: 400;
     }
 
     .about-block-text strong {
-        color: rgba(247, 237, 215, 0.96);
+        color: var(--about-wood-strong);
         font-weight: 700;
     }/* Transition to next section */
     .about-transition {
@@ -445,7 +451,7 @@
         font-size: 0.65rem;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: rgba(247, 242, 232, 0.28);
+        color: rgba(220, 194, 154, 0.38);
     }
 
     .about-transition-arrow {
@@ -2553,35 +2559,39 @@
                 <div class="about-block">
                     <div class="about-block-marker"></div>
                     <p class="about-block-text">
+                        <strong>Rdiant IRIS crafts immersive storytelling rituals that explore our
+                                  inner worlds through myth, play, art, and technology.</strong>
+                    </p>
+                </div>
+                <div class="about-block">
+                    <div class="about-block-marker"></div>
+                    <p class="about-block-text">
+                              By re-enchanting the stories that shape our world, we experiment with how
+                              escapism can become presence, consumption can become communion, and
+                              fracture can move toward flow, patterning a radiant organism in harmony
+                              with Mother Earth.
+                            </p>
+                </div>
+                <div class="about-block">
+                    <div class="about-block-marker"></div>
+                    <p class="about-block-text">
 
-                                  We are 
-                        <strong>Radiant IRIS</strong>
-                        , a creative studio and global ecosystem
-                                  designing immersive storytelling rituals that awaken collective imagination
-                                  and spiritual connection.
+                                  We blend mythic storytelling, embodied ritual, responsive technology,
+                                  and participatory art to create cultural commons where communities can
+                                  remember and recompose who they are.
+                                  
+                        <br>
+                        <br>
+
+                                  Through high-tech make-believe, we open portals where possible futures
+                                  can be played, practiced, and walked into together.
+                                  
+                        <br>
+                        <br>
+
+                                  Our next Playscape Portal collaboration opens at Fuji Sanctuary, Japan.
                                 
                     </p>
-                </div>
-                <div class="about-block">
-                    <div class="about-block-marker"></div>
-                    <p class="about-block-text">
-
-                                  We believe that by 
-                        <strong>re-enchanting the stories that shape our world</strong>
-                        ,
-                                  we can turn escapism into presence, consumption into communion and fracture into flow —
-                                  awakening a civilization that remembers itself as
-                                  
-                        <strong>a radiant organism in harmony with the living earth.</strong>
-                    </p>
-                </div>
-                <div class="about-block">
-                    <div class="about-block-marker"></div>
-                    <p class="about-block-text">
-                              We blend mythic storytelling, embodied ritual, responsive technology,
-                              participatory art and creative commons emergence to help communities
-                              remember who they are and create the future together.
-                            </p>
                 </div>
             </div>
 
