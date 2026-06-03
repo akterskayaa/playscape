@@ -5,10 +5,17 @@
     <meta name="description" content="Playscape Portals is a participatory storytelling and ritual platform helping groups practice becoming more connected, self-aware, and collaborative together. First portal launches at Fuji Sanctuary, 2026.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playscape Portals — Radiant IRIS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&family=Alegreya:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&family=Alegreya:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
     :root {
         --ivory: #F7F2E8;
+        --warm: #EDE4D4;
+        --deep: #E2D5C0;
+        --text-ri: #1A1208;
+        --mid-ri: #5A4A32;
+        --muted-ri: rgba(90,74,50,0.46);
+        --border-ri: rgba(90,74,50,0.12);
+        --border-mid-ri: rgba(90,74,50,0.20);
         --cream: #EFE7D0;
         --sand: #D9C5A0;
         --amber: #E4A34A;
@@ -69,6 +76,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: fixed;
     }
 
     nav::before {
@@ -89,20 +97,20 @@
     }
 
     .nav-brand-s {
-        font-family: 'Alegreya Sans', sans-serif;
-        font-size: 0.44rem;
+        font-family: 'EB Garamond', serif;
+        font-size: 0.5rem;
         letter-spacing: 0.4em;
         text-transform: uppercase;
         color: var(--viol-m);
-        opacity: 0.85;
+        opacity: 0.7;
         margin-bottom: 0.1rem;
     }
 
     .nav-brand-n {
         font-family: 'Fraunces', serif;
-        font-weight: 600;
+        font-weight: 200;
         font-size: 1rem;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.12em;
         color: var(--viol-m);
     }/* Nav links — more visible */
 
@@ -114,13 +122,12 @@
     }
 
     .nav-links a {
-        font-family: 'Alegreya Sans', sans-serif;
+        font-family: 'EB Garamond', serif;
         font-style: italic;
-        font-size: 0.92rem;
-        color: rgba(247, 242, 232, 0.72);
+        font-size: 0.95rem;
+        color: rgba(247, 242, 232, 0.65);
         text-decoration: none;
-        transition: color 0.3s;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.08em;
         padding: 0.3rem 0;
         border-bottom: 1px solid transparent;
         transition: color 0.3s, border-color 0.3s;
@@ -212,9 +219,9 @@
         border: 0.5px solid rgba(61, 36, 16, 0.12);
     }/* labels */
     .lbl {
-        font-family: 'Alegreya Sans', sans-serif;
+        font-family: 'EB Garamond', serif;
         font-style: italic;
-        font-size: 0.63rem;
+        font-size: 0.7rem;
         letter-spacing: 0.25em;
         text-transform: uppercase;
         display: inline-flex;
@@ -590,11 +597,11 @@
         margin: 2rem auto;
     }/* hero — by Radiant IRIS */
     .hero-by {
-        font-family: 'Alegreya Sans', sans-serif;
-        font-size: 0.68rem;
+        font-family: 'EB Garamond', serif;
+        font-size: 0.75rem;
         letter-spacing: 0.28em;
         text-transform: uppercase;
-        color: rgba(247, 242, 232, 0.38);
+        color: rgba(247, 242, 232, 0.42);
         margin-top: 1.2rem;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
     }
@@ -628,11 +635,11 @@
     }
 
     .hero-scroll span {
-        font-size: 0.55rem;
+        font-size: 0.6rem;
         letter-spacing: 0.28em;
         text-transform: uppercase;
         color: var(--ambl);
-        font-family: 'Alegreya Sans', sans-serif;
+        font-family: 'EB Garamond', serif;
     }
 
     .scroll-line {
@@ -1838,12 +1845,12 @@
     }
 
     .iw {
-        font-family: 'Alegreya', Georgia, serif;
+        font-family: 'EB Garamond', serif;
         font-style: italic;
-        font-size: 0.74rem;
+        font-size: 0.82rem;
         letter-spacing: 0.28em;
         text-transform: uppercase;
-        color: rgba(247, 242, 232, 0.85);
+        color: rgba(247, 242, 232, 0.82);
     }
 
     .idot {
@@ -1853,11 +1860,13 @@
 
     footer {
         background: rgba(6, 3, 0, 1);
-        padding: 2.2rem 3.5rem;
+        padding: 2.8rem 3.5rem 3rem;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
-        border-top: 0.5px solid rgba(228, 163, 74, 0.07);
+        border-top: 0.5px solid rgba(228, 163, 74, 0.12);
+        gap: 24px;
+        flex-wrap: wrap;
     }
 
     .fbrand {
@@ -1877,18 +1886,19 @@
 
     .fbn {
         font-family: 'Fraunces', serif;
-        font-weight: 600;
-        font-size: 1.3rem;
-        letter-spacing: 0.07em;
+        font-weight: 300;
+        font-size: 1.4rem;
+        letter-spacing: 0.12em;
         color: var(--viol-m);
     }
 
     .ftag {
-        font-family: 'Fraunces', serif;
+        font-family: 'Alegreya', Georgia, serif;
         font-style: italic;
-        font-size: 0.78rem;
+        font-size: 0.9rem;
         color: var(--sand);
-        opacity: 0.35;
+        opacity: 0.5;
+        letter-spacing: 0.01em;
     }/* ── MOBILE ── */
     @media (max-width: 768px) {
         nav {
@@ -1964,6 +1974,51 @@
             padding-right: 1.5rem;
         }
     }
+
+
+    /* ── JOURNEY LABEL NO-WRAP ── */
+    #journey .lbl, .journey-lbl { white-space: nowrap; }
+
+    /* ── CUSTOM CURSOR (Radiant Iris system) ── */
+    body { cursor: none; }
+    .cur { position:fixed; width:9px; height:9px; background:var(--amber);
+           border-radius:50%; pointer-events:none; z-index:10000;
+           transform:translate(-50%,-50%); mix-blend-mode:multiply;
+           transition:width .3s, height .3s; }
+    .cur-r { position:fixed; width:34px; height:34px;
+             border:1px solid rgba(228,163,74,.55); border-radius:50%;
+             pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
+             transition:width .4s cubic-bezier(.16,1,.3,1),
+                        height .4s cubic-bezier(.16,1,.3,1), border-color .3s; }
+    @media(max-width:760px){ body{ cursor:auto } .cur,.cur-r{ display:none } }
+
+    /* ── NAV CENTER BREADCRUMB ── */
+    .nav-center {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        font-family: 'EB Garamond', serif; font-size: 11px;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: rgba(247,242,232,0.38); text-decoration: none;
+        transition: color 0.3s;
+    }
+    .nav-center:hover { color: rgba(247,242,232,0.65); }
+
+    /* ── SECTION EYEBROW — EB Garamond system ── */
+    .lbl-eb {
+        font-family: 'EB Garamond', serif;
+        font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+        color: rgba(228,163,74,0.65);
+        display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .lbl-eb::before { content: ''; width: 18px; height: 1px;
+                      background: var(--amber); display: block; flex-shrink: 0; }
+    .lbl-eb.dark { color: rgba(90,74,50,0.55); }
+    .lbl-eb.dark::before { background: var(--ambd); }
+
+    /* ── SCROLL REVEAL upgrade ── */
+    .fi { opacity: 0; transform: translateY(28px);
+          transition: opacity 0.85s cubic-bezier(.16,1,.3,1),
+                      transform 0.85s cubic-bezier(.16,1,.3,1); }
+    .fi.in { opacity: 1; transform: none; }
 
     @media (max-width: 480px) {
         .breaks-grid {
@@ -2489,6 +2544,8 @@
 <body>
 
     <!-- NAV -->
+    <div class="cur" id="cur"></div>
+    <div class="cur-r" id="cur-r"></div>
     <div class="scroll-bar" id="scrollBar"></div>
     <nav>
         <a href="#hero" class="nav-brand">
@@ -2924,7 +2981,7 @@
         <div class="exp-inner z2">
             <div class="exp-header fi">
                 <div>
-                    <span class="lbl ld">What Participants Actually Experience</span>
+                    <span class="lbl ld" style="white-space:nowrap">What Participants Actually Experience</span>
                     <h2 class="t-xl exp-title">
                         A Shared
                         <br>
@@ -3234,6 +3291,35 @@
         });
         aboutObs.observe(aboutSection);
     }
+
+    // ── Custom cursor (Radiant Iris system) ──
+    const curEl = document.getElementById('cur');
+    const curREl = document.getElementById('cur-r');
+    if (curEl && curREl) {
+        let mx=0,my=0,rx=0,ry=0;
+        document.addEventListener('mousemove', e => {
+            mx=e.clientX; my=e.clientY;
+            curEl.style.left=mx+'px'; curEl.style.top=my+'px';
+        });
+        (function animCur(){
+            rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+            curREl.style.left=rx+'px'; curREl.style.top=ry+'px';
+            requestAnimationFrame(animCur);
+        })();
+        document.querySelectorAll('a, button, .wcard, .wc, .team-card, .journey-step, .break-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                curEl.style.width='16px'; curEl.style.height='16px';
+                curREl.style.width='52px'; curREl.style.height='52px';
+                curREl.style.borderColor='rgba(123,78,200,.6)';
+            });
+            el.addEventListener('mouseleave', () => {
+                curEl.style.width='9px'; curEl.style.height='9px';
+                curREl.style.width='34px'; curREl.style.height='34px';
+                curREl.style.borderColor='rgba(228,163,74,.55)';
+            });
+        });
+    }
+
     </script>
 </body>
 </html>
