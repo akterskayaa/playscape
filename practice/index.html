@@ -645,7 +645,6 @@
         grid-template-columns: 3fr 5fr;
         gap: 0 8vw;
         align-items: start;
-        margin-bottom:80px
     }
 
     .s5-body {
@@ -784,8 +783,220 @@
         color: var(--muted)
     }
 
+    /* ── Image cards with photos ── */
+    .img-card-photo {
+        width: 100%;
+        height: 160px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border-radius: 2px;
+    }
+    .img-card-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.8;
+        transition: opacity .4s ease, transform .6s ease;
+    }
+    .img-card:hover .img-card-photo img {
+        opacity: 0.95;
+        transform: scale(1.04);
+    }
+
+    /* ── S3 image — small inset alongside text ── */
+    .s3-img-wrap {
+        margin-top: 28px;
+        width: 55%;
+        float: right;
+        margin-left: 24px;
+        margin-bottom: 8px;
+        shape-outside: margin-box;
+    }
+    .s3-img-wrap img {
+        width: 100%;
+        display: block;
+        opacity: 0.88;
+    }
+    .s3-body::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    /* ── Tech medium statement ── */
+    .tech-medium-statement {
+        margin-top: 52px;
+        padding-top: 48px;
+        border-top: 1px solid var(--border-mid);
+        max-width: 620px;
+    }
+    .tech-medium-text {
+        font-family: 'Fraunces', serif;
+        font-weight: 200;
+        font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+        line-height: 1.3;
+        letter-spacing: -.02em;
+        color: var(--text);
+    }
+    .tech-medium-text em {
+        font-style: italic;
+        font-weight: 100;
+        color: var(--violet);
+    }
+
+    /* ── S5 image — sits below heading in left column ── */
+    .s5-img-wrap {
+        margin-top: 32px;
+        width: 100%;
+        max-width: 260px;
+    }
+    .s5-img-wrap img {
+        width: 100%;
+        display: block;
+        opacity: 0.85;
+    }
+
+    /* ── S5 with image ── */
+    .s5-with-image {
+        display: grid;
+        grid-template-columns: 3fr 5fr;
+        gap: 0 8vw;
+        align-items: start;
+        margin-top: 64px;
+    }
+    .s5-image img {
+        width: 100%;
+        display: block;
+    }
+
+    /* ── BURGER MENU ── */
+    .burger-btn {
+        position: fixed;
+        top: 18px;
+        right: 6vw;
+        z-index: 500;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: none;
+        background: none;
+        border: none;
+        padding: 8px;
+    }
+    .burger-btn span {
+        display: block;
+        width: 22px;
+        height: 1px;
+        background: var(--muted);
+        transition: transform .35s cubic-bezier(.16,1,.3,1), opacity .25s ease, width .35s ease;
+        transform-origin: center;
+    }
+    .burger-btn.open span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+        background: rgba(237,229,216,.7);
+    }
+    .burger-btn.open span:nth-child(2) {
+        opacity: 0; width: 0;
+    }
+    .burger-btn.open span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+        background: rgba(237,229,216,.7);
+    }
+
+    /* Panel slides in from top-right */
+    .nav-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(360px, 88vw);
+        background: var(--text);
+        z-index: 400;
+        padding: 80px 48px 56px;
+        transform: translateY(-100%) translateX(0);
+        transition: transform .55s cubic-bezier(.16,1,.3,1);
+        overflow: hidden;
+    }
+    .nav-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse 80% 60% at 80% 0%, rgba(75,27,143,.35) 0%, transparent 60%);
+    }
+    .nav-panel.open {
+        transform: translateY(0) translateX(0);
+    }
+    .nav-panel-links {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .nav-panel-label {
+        font-family: 'EB Garamond', serif;
+        font-size: 10px;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+        color: rgba(228,163,74,.55);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .nav-panel-label::before {
+        content: '';
+        width: 18px;
+        height: 1px;
+        background: var(--amber);
+        display: block;
+        flex-shrink: 0;
+    }
+    .nav-panel a {
+        font-family: 'Fraunces', serif;
+        font-weight: 100;
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        line-height: 1.1;
+        letter-spacing: -.025em;
+        color: rgba(237,229,216,.45);
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,.05);
+        transition: color .3s ease;
+    }
+    .nav-panel a:last-child { border-bottom: none; }
+    .nav-panel a em {
+        font-style: italic;
+        font-weight: 100;
+    }
+    .nav-panel a.active,
+    .nav-panel a:hover {
+        color: rgba(237,229,216,.9);
+    }
+    .nav-panel a.active em { color: var(--amber); }
+
+    /* Overlay behind panel */
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 390;
+        background: rgba(26,18,8,.0);
+        pointer-events: none;
+        transition: background .4s ease;
+    }
+    .nav-overlay.open {
+        pointer-events: all;
+        background: rgba(26,18,8,.35);
+    }
+
     @media (max-width: 760px) {
-        .s1-grid, .nail, .s3-intro, .tech-nail, .s5-grid {
+        .s1-grid, .nail, .s3-intro, .tech-nail, .s5-grid, .s5-with-image {
             grid-template-columns: 1fr
         }
 
@@ -804,6 +1015,8 @@
         .cur, .cur-r {
             display: none
         }
+
+        .burger-btn { cursor: pointer; }
     }
     </style>
 </head>
@@ -813,8 +1026,28 @@
 
     <nav>
         <a href="/" class="nav-logo">Radiant Iris</a>
-        <a href="/cases" class="nav-link">Story as medicine</a>
     </nav>
+
+    <!-- Burger button (top-right, fixed) -->
+    <button class="burger-btn" id="burgerBtn" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Nav overlay (click to close) -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Nav panel -->
+    <div class="nav-panel" id="navPanel">
+        <p class="nav-panel-label">Navigate</p>
+        <div class="nav-panel-links">
+            <a href="/">Playscape <em>Portal</em></a>
+            <a href="/practice" class="active">Story as <em>Medicine</em></a>
+            <a href="/cases">Selected <em>Works</em></a>
+            <a href="/collaboratorium">Collabora<em>torium</em></a>
+        </div>
+    </div>
 
     <!-- ─── HERO ─── -->
     <section class="hero">
@@ -842,7 +1075,7 @@
                 </h1>
             </div>
             <div class="hero-right">
-                <p class="h-sub">We craft immersive storytelling rituals that give our inner worlds outer form — through myth, play, art, and technology.</p>
+                <p class="h-sub">We craft immersive storytelling rituals that give our inner worlds outer form — through <em style="color:var(--violet);font-style:italic">myth, play, art, and technology.</em></p>
             </div>
         </div>
     </section>
@@ -866,9 +1099,9 @@
             <div class="s1-body">
                 <p>They shape how we perceive ourselves, each other, and the world around us. They influence what we pay attention to, what we value, and what futures we believe are possible.</p>
                 <p>
-                    Every culture emerges through stories.
-                    <br>
-                    Every transformation begins when a story changes.
+                    Every culture emerges through stories.<br>
+                    Every transformation begins when we see differently.<br>
+                    New stories become possible.
                 </p>
             </div>
         </div>
@@ -876,12 +1109,10 @@
         <!-- THE NAIL of this section — the real punch, isolated and large -->
         <div class="nail">
             <p class="nail-context">
-                <em style="font-style:normal;color:var(--violet);font-family:'Fraunces',serif;font-weight:300">Story as Medicine</em>
-                 is our practice of making these invisible narratives visible, tangible, and participatory.
+                We call story medicine because stories shape how we experience ourselves, one another, and the world. When those stories become visible, they can be questioned, transformed, and renewed.
             </p>
             <div class="nail-statement">
-
-                      Stories are not explained.
+                Stories are not explained.
                 <br>
                 <strong>They are experienced.</strong>
             </div>
@@ -893,9 +1124,9 @@
     <section class="section s2" id="s2">
         <p class="eyebrow">Enchantment, not escape</p>
         <p class="s2-tension">
-            Fantasy as escape from reality? We use imagination to 
-            <strong>enter reality more fully.</strong>
-             To deepen relationship with ourselves, each other, and Mother Earth.
+            Fantasy as escape from reality?
+            We use imagination not to escape reality, but to <strong>engage it more consciously.</strong>
+            The stories we inhabit shape what we notice, what we create, and what futures become possible.
         </p>
 
         <!-- THREE IMAGES — the real content, displayed large -->
@@ -907,7 +1138,7 @@
                     <br>
                     a mirror.
                 </p>
-                <p class="img-card-meaning">Deepening relationship with ourselves and Mother Earth</p>
+                <p class="img-card-meaning">Deepening relationship with ourselves and the living world.</p>
             </div>
             <div class="img-card">
                 <p class="img-card-num">02</p>
@@ -916,12 +1147,12 @@
                     <br>
                     a conversation.
                 </p>
-                <p class="img-card-meaning">Deepening relationship with each other</p>
+                <p class="img-card-meaning">Deepening relationship with one another.</p>
             </div>
             <div class="img-card">
                 <p class="img-card-num">03</p>
                 <p class="img-card-image">A game becomes a rehearsal for a possible future.</p>
-                <p class="img-card-meaning">Inhabiting, influencing, discovering ourselves within the story</p>
+                <p class="img-card-meaning">Exploring, influencing, and discovering ourselves within the story.</p>
             </div>
         </div>
 
@@ -965,8 +1196,13 @@
                     for 
                     <em>meaning-making</em>
                 </p>
-                <p class="tech-nail-note" style="margin-top:20px">A substitute for human experience? No. An invitation into deeper relationship.</p>
             </div>
+        </div>
+
+        <!-- TECH AS MEDIUM statement -->
+        <div class="tech-medium-statement">
+            <p class="eyebrow" style="margin-bottom:20px">Technology as medium</p>
+            <p class="tech-medium-text">Technology is not a substitute for human experience.<br>It is a medium for <em>participation, imagination, and relationship.</em></p>
         </div>
     </section>
 
@@ -1008,8 +1244,8 @@
                 <h2>A federation of possible futures</h2>
             </div>
             <div class="s5-body">
-                <p>Radiant IRIS is cultivating a growing ecosystem of cultural commons around the world. Each portal, gathering, installation, and experience becomes part of a larger field where communities can remember, reimagine, and recompose who they are.</p>
-                <p>Together, these experiences form a federation of cultural commons: places where possible futures are not predicted.</p>
+                <p>Radiant IRIS is cultivating a growing ecosystem of cultural commons around the world. Each portal, gathering, installation, and experience becomes part of a larger field where communities can remember and reimagine who they are.</p>
+                <p>Together, these experiences form a growing network of cultural commons: places where possible futures are played, practiced, and walked into together.</p>
             </div>
         </div>
     </section>
@@ -1018,9 +1254,6 @@
     <div class="finale section" id="finale">
         <p class="finale-label">Where we are going</p>
         <h2>
-            <span class="finale-line finale-line--small">
-                <span>Possible futures are not predicted here.</span>
-            </span>
             <span class="finale-line finale-line--big">
                 <span>
                     Possible futures are played, practiced,
@@ -1057,22 +1290,7 @@
         curR.style.top = ry + 'px';
         requestAnimationFrame(anim)
     })();
-    document.querySelectorAll('a,button,.shift,.img-card,.tech-nail').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cur.style.width = '16px';
-            cur.style.height = '16px';
-            curR.style.width = '52px';
-            curR.style.height = '52px';
-            curR.style.borderColor = 'rgba(75,27,143,.6)'
-        });
-        el.addEventListener('mouseleave', () => {
-            cur.style.width = '9px';
-            cur.style.height = '9px';
-            curR.style.width = '34px';
-            curR.style.height = '34px';
-            curR.style.borderColor = 'rgba(228,163,74,.55)'
-        });
-    });
+    // cursor hovers handled below with burger
 
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
@@ -1094,6 +1312,46 @@
             shape.style.transform = `translateY(${y * .16}px) rotate(${y * .008}deg)`
     }, {
         passive: true
+    });
+
+    // ── Burger menu ──
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navPanel  = document.getElementById('navPanel');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMenu() {
+        burgerBtn.classList.add('open');
+        navPanel.classList.add('open');
+        navOverlay.classList.add('open');
+    }
+    function closeMenu() {
+        burgerBtn.classList.remove('open');
+        navPanel.classList.remove('open');
+        navOverlay.classList.remove('open');
+    }
+
+    burgerBtn.addEventListener('click', () => {
+        navPanel.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    navOverlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // Add burger to cursor hover list
+    document.querySelectorAll('a,button,.shift,.img-card,.tech-nail,.burger-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cur.style.width = '16px';
+            cur.style.height = '16px';
+            curR.style.width = '52px';
+            curR.style.height = '52px';
+            curR.style.borderColor = 'rgba(75,27,143,.6)'
+        });
+        el.addEventListener('mouseleave', () => {
+            cur.style.width = '9px';
+            cur.style.height = '9px';
+            curR.style.width = '34px';
+            curR.style.height = '34px';
+            curR.style.borderColor = 'rgba(228,163,74,.55)'
+        });
     });
     </script>
 </body>
