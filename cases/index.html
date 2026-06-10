@@ -8,15 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400&family=Alegreya:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-    *, * ::before, * ::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0
-    }
-
-    html {
-        scroll-behavior: smooth
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
 
     :root {
         --ivory: #F4EFE6;
@@ -37,674 +30,671 @@
         font-family: 'Alegreya', Georgia, serif;
         overflow-x: hidden;
         cursor: none
-    }/* CURSOR */
+    }
+
+    /* ── CURSOR ── */
     .cur {
-        position: fixed;
-        width: 9px;
-        height: 9px;
-        background: var(--amber);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: multiply;
+        position: fixed; width: 9px; height: 9px; background: var(--amber);
+        border-radius: 50%; pointer-events: none; z-index: 10000;
+        transform: translate(-50%,-50%); mix-blend-mode: multiply;
         transition: width .3s, height .3s
     }
-
     .cur-r {
-        position: fixed;
-        width: 34px;
-        height: 34px;
-        border: 1px solid rgba(228, 163, 74, .55);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: width .4s cubic-bezier(.16, 1, .3, 1), height .4s cubic-bezier(.16, 1, .3, 1), border-color .3s
-    }/* NAV */
+        position: fixed; width: 34px; height: 34px;
+        border: 1px solid rgba(228,163,74,.55); border-radius: 50%;
+        pointer-events: none; z-index: 9999; transform: translate(-50%,-50%);
+        transition: width .4s cubic-bezier(.16,1,.3,1), height .4s cubic-bezier(.16,1,.3,1), border-color .3s
+    }
+
+    /* ── NAV ── */
     nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
+        position: fixed; top: 0; left: 0; right: 0; z-index: 200;
         padding: 22px 6vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        mix-blend-mode: multiply
+        display: flex; justify-content: space-between; align-items: center;
     }
-
     .nav-logo {
-        font-family: 'Fraunces', serif;
-        font-weight: 200;
-        font-size: .9rem;
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        color: var(--text);
-        text-decoration: none;
-        opacity: .65
+        font-family: 'Fraunces', serif; font-weight: 200; font-size: .9rem;
+        letter-spacing: .14em; text-transform: uppercase;
+        color: var(--text); text-decoration: none; opacity: .65;
+        mix-blend-mode: multiply;
     }
-
     .nav-breadcrumb {
-        font-family: 'EB Garamond', serif;
-        font-size: 11px;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-        color: var(--muted);
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%)
+        font-family: 'EB Garamond', serif; font-size: 11px;
+        letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+        position: absolute; left: 50%; transform: translateX(-50%)
     }
 
-    .nav-link {
-        font-family: 'EB Garamond', serif;
-        font-size: 11px;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-        color: var(--muted);
-        text-decoration: none
-    }/* GRAIN */
-    body::after {
-        content: '';
+    /* ── BURGER MENU (from practice.html) ── */
+    .burger-btn {
         position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: .018;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
-    }/* HEADER */
-    .page-header {
-        min-height: 100svh;
+        top: 18px;
+        right: 6vw;
+        z-index: 500;
+        width: 40px;
+        height: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 100px 6vw 80px;
-        position: relative;
-        overflow: hidden;
-        background: var(--ivory);
+        align-items: center;
+        gap: 5px;
+        cursor: none;
+        background: none;
+        border: none;
+        padding: 8px;
+    }
+    .burger-btn span {
+        display: block;
+        width: 22px;
+        height: 1px;
+        background: var(--muted);
+        transition: transform .35s cubic-bezier(.16,1,.3,1), opacity .25s ease, width .35s ease;
+        transform-origin: center;
+    }
+    .burger-btn.open span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+        background: rgba(237,229,216,.7);
+    }
+    .burger-btn.open span:nth-child(2) {
+        opacity: 0; width: 0;
+    }
+    .burger-btn.open span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+        background: rgba(237,229,216,.7);
     }
 
-    .page-header::after {
+    /* Panel slides in from top-right */
+    .nav-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(360px, 88vw);
+        background: var(--text);
+        z-index: 400;
+        padding: 80px 48px 56px;
+        transform: translateY(-100%) translateX(0);
+        transition: transform .55s cubic-bezier(.16,1,.3,1);
+        overflow: hidden;
+    }
+    .nav-panel::before {
         content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background:
-        radial-gradient(ellipse 65% 55% at 85% 15%, rgba(75, 27, 143, .07) 0%, transparent 60%), radial-gradient(ellipse 45% 40% at 8% 85%, rgba(228, 163, 74, .09) 0%, transparent 55%);
-    }/* SVG shape */
-    .header-shape {
-        position: absolute;
-        right: -8vw;
-        top: 8vh;
-        width: 52vw;
-        max-width: 640px;
-        opacity: .06;
-        pointer-events: none
+        background: radial-gradient(ellipse 80% 60% at 80% 0%, rgba(75,27,143,.35) 0%, transparent 60%);
     }
-
-    .header-inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 6vw;
-        align-items: end;
+    .nav-panel.open {
+        transform: translateY(0) translateX(0);
+    }
+    .nav-panel-links {
         position: relative;
         z-index: 1;
-    }
-
-    .header-left {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end
+        gap: 6px;
     }
-
-    .header-right {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end
-    }
-
-    .h-breadcrumb {
+    .nav-panel-label {
         font-family: 'EB Garamond', serif;
-        font-size: 11px;
-        letter-spacing: .26em;
+        font-size: 10px;
+        letter-spacing: .28em;
         text-transform: uppercase;
-        color: var(--muted);
-        display: flex;
-        align-items: center;
-        gap: 12px;
+        color: rgba(228,163,74,.55);
         margin-bottom: 24px;
-        opacity: 0;
-        animation: fu .9s ease .3s forwards;
-    }
-
-    .h-breadcrumb::before {
-        content: '';
-        width: 24px;
-        height: 1px;
-        background: var(--amber);
-        display: block
-    }
-
-    .h-title {
-        font-family: 'Fraunces', serif;
-        font-weight: 100;
-        font-size: clamp(2.8rem, 6.5vw, 6.5rem);
-        line-height: .95;
-        letter-spacing: -.035em;
-    }
-
-    .h-title .ln {
-        display: block;
-        overflow: hidden
-    }
-
-    .h-title .ln span {
-        display: block;
-        opacity: 0;
-        transform: translateY(105%);
-        animation: su 1s cubic-bezier(.16, 1, .3, 1) forwards
-    }
-
-    .h-title .ln:nth-child(1) span {
-        animation-delay: .45s
-    }
-
-    .h-title .ln:nth-child(2) span {
-        animation-delay: .6s
-    }
-
-    .h-title em {
-        font-style: italic;
-        font-weight: 100;
-        color: var(--violet)
-    }
-
-    .h-sub {
-        font-family: 'Alegreya', serif;
-        font-size: clamp(.95rem, 1.4vw, 1.15rem);
-        color: var(--mid);
-        line-height: 1.82;
-        opacity: 0;
-        animation: fu .9s ease 1s forwards;
-    }
-
-    @keyframes fu {
-        to {
-            opacity: 1;
-            transform: translateY(0)
-        }
-    }
-
-    @keyframes su {
-        to {
-            opacity: 1;
-            transform: translateY(0)
-        }
-    }/* TIMELINE */
-    .timeline {
-        position: relative;
-        padding: 0 0 120px
-    }
-
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: calc(6vw + 52px);
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(to bottom, transparent, var(--border-mid) 60px, var(--border-mid) calc(100% - 80px), transparent);
-    }/* CASE */
-    .case {
-        display: grid;
-        grid-template-columns: calc(6vw + 104px) 1fr;
-        padding: 80px 6vw 80px 0;
-        border-bottom: 1px solid var(--border);
-        opacity: 0;
-        transform: translateY(32px);
-        transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .case.visible {
-        opacity: 1;
-        transform: translateY(0)
-    }
-
-    .case:last-child {
-        border-bottom: none
-    }/* YEAR */
-    .case-year-col {
-        position: relative;
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        padding-right: 52px;
-        padding-top: 6px;
-    }
-
-    .case-year-col::after {
-        content: '';
-        position: absolute;
-        right: -5px;
-        top: 14px;
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--ivory);
-        border: 2px solid var(--amber);
-        box-shadow: 0 0 0 3px rgba(228, 163, 74, .18);
-    }
-
-    .year-number {
-        font-family: 'Fraunces', serif;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: .18em;
-        color: var(--muted);
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-    }/* CASE CONTENT */
-    .case-content {
-        min-width: 0;
-        padding-right: 6vw
-    }
-
-    .case-name {
-        font-family: 'Fraunces', serif;
-        font-size: clamp(2.4rem, 4.5vw, 4rem);
-        font-weight: 300;
-        letter-spacing: -.025em;
-        line-height: 1;
-        margin-bottom: 20px;
-    }
-
-    .case-desc {
-        font-family: 'Alegreya', serif;
-        font-size: 1.05rem;
-        font-weight: 400;
-        color: var(--mid);
-        max-width: 580px;
-        line-height: 1.85;
-        margin-bottom: 36px;
-    }/* MEDIA */
-    .case-media {
-        margin: 32px 0;
-        border-radius: 2px;
-        overflow: hidden;
-        background: var(--warm);
-        border: 1px solid var(--border);
-    }
-
-    .case-media video {
-        width: 100%;
-        display: block;
-        max-height: 540px;
-        object-fit: cover
-    }
-
-    .case-media-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3px;
-        margin: 32px 0
-    }
-
-    .case-media-grid .media-item {
-        overflow: hidden;
-        background: var(--warm);
-        border: 1px solid var(--border)
-    }
-
-    .case-media-grid .media-item:first-child {
-        border-radius: 2px 0 0 2px
-    }
-
-    .case-media-grid .media-item:last-child {
-        border-radius: 0 2px 2px 0
-    }
-
-    .case-media-grid img {
-        width: 100%;
-        display: block;
-        object-fit: cover;
-        height: 300px;
-        transition: transform .9s ease
-    }
-
-    .case-media-grid .media-item:hover img {
-        transform: scale(1.02)
-    }/* LINK */
-    .case-link {
-        display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-family: 'EB Garamond', serif;
-        font-size: 12px;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        color: var(--violet);
+    }
+    .nav-panel-label::before {
+        content: '';
+        width: 18px;
+        height: 1px;
+        background: var(--amber);
+        display: block;
+        flex-shrink: 0;
+    }
+    .nav-panel a {
+        font-family: 'Fraunces', serif;
+        font-weight: 100;
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        line-height: 1.1;
+        letter-spacing: -.025em;
+        color: rgba(237,229,216,.45);
         text-decoration: none;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(75, 27, 143, .25);
-        transition: gap .3s ease, border-color .3s ease;
-        margin-top: 4px;
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,.05);
+        transition: color .3s ease;
     }
-
-    .case-link:hover {
-        gap: 18px;
-        border-color: var(--violet)
-    }
-
-    .case-link svg {
-        width: 12px;
-        height: 12px;
-        transition: transform .3s ease
-    }
-
-    .case-link:hover svg {
-        transform: translate(3px, -2px)
-    }/* FOOTER */
-    footer {
-        background: var(--ivory);
-        border-top: 1px solid var(--border-mid);
-        padding: 48px 6vw 64px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        gap: 24px;
-    }
-
-    .f-path {
-        font-family: 'EB Garamond', serif;
-        font-size: 11px;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        color: var(--muted)
-    }
-
-    .f-tag {
-        font-family: 'Alegreya', serif;
+    .nav-panel a:last-child { border-bottom: none; }
+    .nav-panel a em {
         font-style: italic;
-        font-size: .88rem;
-        color: var(--muted)
+        font-weight: 100;
+    }
+    .nav-panel a.active,
+    .nav-panel a:hover {
+        color: rgba(237,229,216,.9);
+    }
+    .nav-panel a.active em { color: var(--amber); }
+
+    /* Overlay behind panel */
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 390;
+        background: rgba(26,18,8,.0);
+        pointer-events: none;
+        transition: background .4s ease;
+    }
+    .nav-overlay.open {
+        pointer-events: all;
+        background: rgba(26,18,8,.35);
     }
 
+    /* ── GRAIN ── */
+    body::after {
+        content: ''; position: fixed; inset: 0; pointer-events: none;
+        z-index: 9999; opacity: .018;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+        min-height: 100svh; display: flex; flex-direction: column;
+        justify-content: center; padding: 100px 6vw 80px;
+        position: relative; overflow: hidden; background: var(--ivory);
+    }
+    .page-header::after {
+        content: ''; position: absolute; inset: 0; pointer-events: none;
+        background:
+            radial-gradient(ellipse 65% 55% at 85% 15%, rgba(75,27,143,.07) 0%, transparent 60%),
+            radial-gradient(ellipse 45% 40% at 8% 85%, rgba(228,163,74,.09) 0%, transparent 55%);
+    }
+    .header-shape {
+        position: absolute; right: -8vw; top: 8vh;
+        width: 52vw; max-width: 640px; opacity: .06; pointer-events: none
+    }
+    .header-inner {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 0 6vw;
+        align-items: end; position: relative; z-index: 1;
+    }
+    .header-left { display: flex; flex-direction: column; justify-content: flex-end }
+    .header-right { display: flex; flex-direction: column; justify-content: flex-end }
+
+    .h-breadcrumb {
+        font-family: 'EB Garamond', serif; font-size: 11px;
+        letter-spacing: .26em; text-transform: uppercase; color: var(--muted);
+        display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+        opacity: 0; animation: fu .9s ease .3s forwards;
+    }
+    .h-breadcrumb::before { content: ''; width: 24px; height: 1px; background: var(--amber); display: block }
+
+    .h-title {
+        font-family: 'Fraunces', serif; font-weight: 100;
+        font-size: clamp(2.8rem, 6.5vw, 6.5rem);
+        line-height: .95; letter-spacing: -.035em;
+    }
+    .h-title .ln { display: block; overflow: hidden }
+    .h-title .ln span {
+        display: block; opacity: 0; transform: translateY(105%);
+        animation: su 1s cubic-bezier(.16,1,.3,1) forwards
+    }
+    .h-title .ln:nth-child(1) span { animation-delay: .45s }
+    .h-title .ln:nth-child(2) span { animation-delay: .6s }
+    .h-title .ln:nth-child(3) span { animation-delay: .75s }
+    .h-title em { font-style: italic; font-weight: 100; color: var(--violet) }
+
+    .h-sub {
+        font-family: 'Alegreya', serif; font-size: clamp(.95rem, 1.4vw, 1.15rem);
+        color: var(--mid); line-height: 1.82;
+        opacity: 0; animation: fu .9s ease 1s forwards;
+    }
+
+    @keyframes fu { to { opacity: 1; transform: translateY(0) } }
+    @keyframes su  { to { opacity: 1; transform: translateY(0) } }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding: 0 0 120px }
+    .timeline::before {
+        content: ''; position: absolute;
+        left: calc(6vw + 52px); top: 0; bottom: 0; width: 1px;
+        background: linear-gradient(to bottom, transparent, var(--border-mid) 60px, var(--border-mid) calc(100% - 80px), transparent);
+    }
+
+    /* ── CASE ── */
+    .case {
+        display: grid; grid-template-columns: calc(6vw + 104px) 1fr;
+        padding: 80px 6vw 80px 0;
+        border-bottom: 1px solid var(--border);
+        opacity: 0; transform: translateY(32px);
+        transition: opacity .8s ease, transform .8s ease;
+    }
+    .case.visible { opacity: 1; transform: translateY(0) }
+    .case:last-child { border-bottom: none }
+
+    /* ── YEAR ── */
+    .case-year-col {
+        position: relative; display: flex; flex-direction: column;
+        align-items: flex-end; padding-right: 52px; padding-top: 6px;
+    }
+    .case-year-col::after {
+        content: ''; position: absolute; right: -5px; top: 14px;
+        width: 9px; height: 9px; border-radius: 50%;
+        background: var(--ivory); border: 2px solid var(--amber);
+        box-shadow: 0 0 0 3px rgba(228,163,74,.18);
+    }
+    .year-number {
+        font-family: 'Fraunces', serif; font-size: 11px; font-weight: 400;
+        letter-spacing: .18em; color: var(--muted);
+        writing-mode: vertical-rl; transform: rotate(180deg);
+    }
+
+    /* ── CASE CONTENT ── */
+    .case-content { min-width: 0; padding-right: 6vw }
+
+    .case-eyebrow {
+        font-family: 'EB Garamond', serif; font-size: 11px;
+        letter-spacing: .25em; text-transform: uppercase; color: var(--muted);
+        display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .case-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--amber); display: block; flex-shrink: 0; }
+
+    .case-name {
+        font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 4.5vw, 4rem);
+        font-weight: 300; letter-spacing: -.025em; line-height: 1; margin-bottom: 20px;
+    }
+    .case-desc {
+        font-family: 'Alegreya', serif; font-size: 1.05rem; font-weight: 400;
+        color: var(--mid); max-width: 580px; line-height: 1.85; margin-bottom: 36px;
+    }
+
+    /* ── MEDIA ── */
+    .case-media {
+        margin: 32px 0; border-radius: 2px; overflow: hidden;
+        background: var(--warm); border: 1px solid var(--border);
+    }
+    .case-media video { width: 100%; display: block; max-height: 540px; object-fit: cover }
+
+    /* YouTube / Vimeo embed */
+    .case-video-embed {
+        margin: 32px 0; border-radius: 2px; overflow: hidden;
+        background: var(--text); border: 1px solid var(--border);
+        aspect-ratio: 16/9; position: relative;
+    }
+    .case-video-embed iframe { width: 100%; height: 100%; display: block; border: none; }
+
+    /* 2-col grid */
+    .case-media-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin: 32px 0
+    }
+    .case-media-grid .media-item {
+        overflow: hidden; background: var(--warm); border: 1px solid var(--border)
+    }
+    .case-media-grid .media-item:first-child { border-radius: 2px 0 0 2px }
+    .case-media-grid .media-item:last-child  { border-radius: 0 2px 2px 0 }
+    .case-media-grid img {
+        width: 100%; display: block; object-fit: cover; height: 300px;
+        transition: transform .9s ease
+    }
+    .case-media-grid .media-item:hover img { transform: scale(1.02) }
+
+    /* Khazana compact grid: 3 images, uniform smaller height */
+    .case-media-grid-khazana {
+        display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin: 32px 0
+    }
+    .case-media-grid-khazana .media-item {
+        overflow: hidden; background: var(--warm); border: 1px solid var(--border)
+    }
+    .case-media-grid-khazana .media-item:first-child { border-radius: 2px 0 0 2px }
+    .case-media-grid-khazana .media-item:last-child  { border-radius: 0 2px 2px 0 }
+    .case-media-grid-khazana img {
+        width: 100%; display: block; object-fit: cover; height: 220px;
+        transition: transform .9s ease
+    }
+    .case-media-grid-khazana .media-item:hover img { transform: scale(1.02) }
+
+    /* Video thumbnail link (when embed is disabled) */
+    .case-video-link {
+        display: block; margin: 32px 0; text-decoration: none;
+        border-radius: 2px; overflow: hidden; border: 1px solid var(--border);
+    }
+    .case-video-thumb {
+        position: relative; aspect-ratio: 16/9; background: var(--text); overflow: hidden;
+    }
+    .case-video-thumb img {
+        width: 100%; height: 100%; display: block; object-fit: cover;
+        transition: transform .9s ease; opacity: .85;
+    }
+    .case-video-link:hover .case-video-thumb img { transform: scale(1.02); opacity: 1 }
+    .case-video-play {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        pointer-events: none;
+    }
+    .case-video-play svg { width: 64px; height: 64px; opacity: .9; transition: transform .3s ease }
+    .case-video-link:hover .case-video-play svg { transform: scale(1.08) }
+    .case-video-label {
+        position: absolute; bottom: 20px; right: 20px;
+        font-family: 'EB Garamond', serif; font-size: 11px;
+        letter-spacing: .2em; text-transform: uppercase;
+        color: rgba(255,255,255,.55);
+    }
+
+    /* ── LINK ── */
+    .case-link {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-family: 'EB Garamond', serif; font-size: 12px;
+        letter-spacing: .2em; text-transform: uppercase;
+        color: var(--violet); text-decoration: none;
+        padding: 12px 0; border-bottom: 1px solid rgba(75,27,143,.25);
+        transition: gap .3s ease, border-color .3s ease; margin-top: 4px;
+    }
+    .case-link:hover { gap: 18px; border-color: var(--violet) }
+    .case-link svg { width: 12px; height: 12px; transition: transform .3s ease }
+    .case-link:hover svg { transform: translate(3px,-2px) }
+
+    /* ── FOOTER ── */
+    footer {
+        background: var(--ivory); border-top: 1px solid var(--border-mid);
+        padding: 48px 6vw 64px;
+        display: flex; justify-content: space-between; align-items: flex-end;
+        flex-wrap: wrap; gap: 24px;
+    }
+    .f-path { font-family: 'EB Garamond', serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted) }
+    .f-tag  { font-family: 'Alegreya', serif; font-style: italic; font-size: .88rem; color: var(--muted) }
+
+    /* ── MOBILE ── */
     @media (max-width: 700px) {
-        .timeline::before {
-            display: none
-        }
-
-        .case {
-            grid-template-columns: 1fr;
-            padding: 56px 6vw
-        }
-
-        .case-year-col {
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            writing-mode: horizontal-tb
-        }
-
-        .case-year-col::after {
-            display: none
-        }
-
-        .year-number {
-            writing-mode: horizontal-tb;
-            transform: none
-        }
-
-        .case-media-grid {
-            grid-template-columns: 1fr
-        }
-
-        .case-media-grid img {
-            height: 220px
-        }
-
-        .case-content {
-            padding-right: 0
-        }
-
-        .header-inner {
-            grid-template-columns: 1fr
-        }
-
-        body {
-            cursor:auto
-        }
-
-        .cur, .cur-r {
-            display: none
-        }
+        .timeline::before { display: none }
+        .case { grid-template-columns: 1fr; padding: 56px 6vw }
+        .case-year-col { flex-direction: row; align-items: center; gap: 10px; margin-bottom: 20px; writing-mode: horizontal-tb }
+        .case-year-col::after { display: none }
+        .year-number { writing-mode: horizontal-tb; transform: none }
+        .case-media-grid,
+        .case-media-grid-khazana { grid-template-columns: 1fr }
+        .case-media-grid img,
+        .case-media-grid-khazana img { height: 200px }
+        .case-content { padding-right: 0 }
+        .header-inner { grid-template-columns: 1fr }
+        body { cursor: auto }
+        .cur, .cur-r { display: none }
+        .nav-breadcrumb { display: none }
     }
     </style>
 </head>
 <body>
 
-    <div class="cur" id="cur"></div>
-    <div class="cur-r" id="cur-r"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="cur-r"></div>
 
-    <nav>
-        <a href="/" class="nav-logo">Radiant Iris</a>
-        <a href="/practice" class="nav-link">Selected Works</a>
-    </nav>
+<!-- Burger button (top-right, fixed) -->
+<button class="burger-btn" id="burgerBtn" aria-label="Open navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-    <!-- HEADER -->
-    <header class="page-header">
-        <svg class="header-shape" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M300 40 C420 40,560 120,560 300 C560 480,420 560,300 560 C180 560,40 480,40 300 C40 120,180 40,300 40Z" stroke="#4B1B8F" stroke-width="0.8" fill="none"/>
-            <path d="M300 110 C400 110,490 190,490 300 C490 410,400 490,300 490 C200 490,110 410,110 300 C110 190,200 110,300 110Z" stroke="#E4A34A" stroke-width="0.5" fill="none"/>
-            <path d="M300 180 C370 180,420 230,420 300 C420 370,370 420,300 420 C230 420,180 370,180 300 C180 230,230 180,300 180Z" stroke="#4B1B8F" stroke-width="0.4" fill="none"/>
-            <circle cx="300" cy="300" r="3" fill="#E4A34A" opacity="0.4"/>
-            <line x1="300" y1="40" x2="300" y2="560" stroke="#E4A34A" stroke-width="0.25" opacity="0.35"/>
-            <line x1="40" y1="300" x2="560" y2="300" stroke="#4B1B8F" stroke-width="0.25" opacity="0.35"/>
-        </svg>
+<!-- Nav overlay (click to close) -->
+<div class="nav-overlay" id="navOverlay"></div>
 
-        <div class="header-inner">
-            <div class="header-left">
-                <p class="h-breadcrumb">Radiant Iris / Cases</p>
-                <h1 class="h-title">
-                    <span class="ln">
-                        <span>From</span>
-                    </span>
-                    <span class="ln">
-                        <span>Experiments to</span>
-                    </span>
-                    <span class="ln">
-                        <span>
-                            <em>Living Experience</em>
-                        </span>
-                    </span>
-                </h1>
-            </div>
-            <div class="header-right">
-                <p class="h-sub">A lineage of participatory storyworlds — each one a proof of concept for what comes next.</p>
+<!-- Nav panel -->
+<div class="nav-panel" id="navPanel">
+    <p class="nav-panel-label">Navigate</p>
+    <div class="nav-panel-links">
+        <a href="/cases" class="active">Selected <em>Works</em></a>
+        <a href="/practice">Story as <em>Medicine</em></a>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo">Radiant Iris</a>
+    <span class="nav-breadcrumb">Selected Works</span>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header">
+    <svg class="header-shape" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M300 40 C420 40,560 120,560 300 C560 480,420 560,300 560 C180 560,40 480,40 300 C40 120,180 40,300 40Z" stroke="#4B1B8F" stroke-width="0.8" fill="none"/>
+        <path d="M300 110 C400 110,490 190,490 300 C490 410,400 490,300 490 C200 490,110 410,110 300 C110 190,200 110,300 110Z" stroke="#E4A34A" stroke-width="0.5" fill="none"/>
+        <path d="M300 180 C370 180,420 230,420 300 C420 370,370 420,300 420 C230 420,180 370,180 300 C180 230,230 180,300 180Z" stroke="#4B1B8F" stroke-width="0.4" fill="none"/>
+        <circle cx="300" cy="300" r="3" fill="#E4A34A" opacity="0.4"/>
+        <line x1="300" y1="40" x2="300" y2="560" stroke="#E4A34A" stroke-width="0.25" opacity="0.35"/>
+        <line x1="40" y1="300" x2="560" y2="300" stroke="#4B1B8F" stroke-width="0.25" opacity="0.35"/>
+    </svg>
+
+    <div class="header-inner">
+        <div class="header-left">
+            <p class="h-breadcrumb">Radiant Iris / Selected Works</p>
+            <h1 class="h-title">
+                <span class="ln"><span>From</span></span>
+                <span class="ln"><span>Experiments to</span></span>
+                <span class="ln"><span><em>Living Experience</em></span></span>
+            </h1>
+        </div>
+        <div class="header-right">
+            <p class="h-sub">A lineage of participatory storyworlds — each one a proof of concept for what comes next. Spanning two decades and four continents, these projects explore how creativity, technology, and human presence can work together in real time.</p>
+        </div>
+    </div>
+</header>
+
+<!-- TIMELINE -->
+<section class="timeline">
+
+    <!-- 1 — Playscape 2017 -->
+    <article class="case" id="playscape">
+        <div class="case-year-col"><span class="year-number">2017</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Embodied storytelling</p>
+            <h2 class="case-name">Playscape</h2>
+            <p class="case-desc">In 2017, Radiant IRIS created Playscape as an early experiment in embodied, interactive storytelling. Artists, musicians, dancers, designers, and technologists came together from different countries. Participants began with reflective questions and biofeedback — their responses became the seed for sound, movement, visuals, and a responsive personal journey. The purpose was simple: to let people feel how creativity, technology, and human presence can work together in real time. Some participants later shared that the experience changed how they saw themselves and their lives.</p>
+            <div class="case-media">
+                <video autoplay muted loop playsinline preload="none" poster="https://akterskayaa.github.io/playscape/assets/Playscape-in-visuals-from-2017.jpg">
+                    <source src="https://akterskayaa.github.io/playscape/assets/playscape_sizzle_final_v1__1080p_.mp4#t=2" type="video/mp4">
+                </video>
             </div>
         </div>
-    </header>
+    </article>
 
-    <!-- TIMELINE -->
-    <section class="timeline">
-
-        <!-- 2017 Playscape -->
-        <article class="case" id="playscape">
-            <div class="case-year-col">
-                <span class="year-number">2017</span>
+    <!-- 2 — WXO StoryField Mirror 2026 -->
+    <article class="case" id="wxo-storyfield">
+        <div class="case-year-col"><span class="year-number">2026</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">AI as mirror</p>
+            <h2 class="case-name">WXO StoryField Mirror</h2>
+            <p class="case-desc">At the World Experience Organization gathering in London, Radiant IRIS tested an AI-powered StoryField Mirror. Participants answered questions about their hopes and fears for the future of AI. The system translated their reflections into an animal avatar, a place in a collective mural, and a personal fable. The experience asked: can AI become a mirror for responsibility, care, and shared awareness? This test showed how AI can support symbolic storytelling without replacing human meaning — and helped people see themselves as part of a larger collective field.</p>
+            <div class="case-media">
+                <video controls preload="none" poster="https://akterskayaa.github.io/playscape/assets/install-stage.jpg">
+                    <source src="https://akterskayaa.github.io/playscape/assets/hero.mp4#t=2" type="video/mp4">
+                </video>
             </div>
-            <div class="case-content">
-                <h2 class="case-name">Playscape</h2>
-                <p class="case-desc">The founding experiment — a fully immersive storyworld where participants became agents inside a living narrative. The first proof that participatory story environments could create genuine collective transformation.</p>
-                <div class="case-media">
-                    <video autoplay muted loop playsinline preload="none" poster="https://akterskayaa.github.io/playscape/assets/Playscape-in-visuals-from-2017.jpg">
-                        <source src="https://akterskayaa.github.io/playscape/assets/playscape_sizzle_final_v1__1080p_.mp4#t=2" type="video/mp4">
-                    </video>
+            <a href="https://akterskayaa.github.io/storyfield_vai_wxo/" target="_blank" rel="noopener" class="case-link">
+                View the project
+                <svg viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </article>
+
+    <!-- 3 — Operation Khazana 2003 -->
+    <article class="case" id="operation-khazana">
+        <div class="case-year-col"><span class="year-number">2003</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Theatre and inclusion</p>
+            <h2 class="case-name">Operation Khazana</h2>
+            <p class="case-desc">A musical involving underprivileged children in Mumbai. The project spanned seven months, from auditions to performances, and provided a professional theatre experience for children from marginalized backgrounds. It empowered participants through performing arts — building confidence and self-esteem — while creating meaningful interactions between different socioeconomic groups. Drama became a tool to reshape socialization and foster inclusion.</p>
+            <div class="case-media-grid-khazana">
+                <div class="media-item">
+                    <img src="assets/operation_khazana_stage.jpg" alt="Operation Khazana — children in animal costumes perform on a lit stage">
+                </div>
+                <div class="media-item">
+                    <img src="assets/operation_khazana_kids.jpg" alt="Operation Khazana — children in yellow Akanksha t-shirts celebrating joyfully">
+                </div>
+                <div class="media-item">
+                    <img src="assets/operation_khazana_cast.jpg" alt="Operation Khazana — cast in costumes backstage after performance">
                 </div>
             </div>
-        </article>
+        </div>
+    </article>
 
-        <!-- 2023 South of Light -->
-        <article class="case" id="south-of-light">
-            <div class="case-year-col">
-                <span class="year-number">2023</span>
-            </div>
-            <div class="case-content">
-                <h2 class="case-name">South of Light</h2>
-                <p class="case-desc">An intimate journey into shadow, memory, and collective dreaming. South of Light deepened the methodology around liminal states and explored how space itself becomes a story container that holds and shapes the experience of those within it.</p>
-                <div class="case-media-grid">
-                    <div class="media-item">
-                        <img src="https://akterskayaa.github.io/playscape/assets/south_of_light_1.jpeg" alt="South of Light — iridescent light streams across a dome ceiling above a silhouetted crowd">
-                    </div>
-                    <div class="media-item">
-                        <img src="https://akterskayaa.github.io/playscape/assets/south_of_light_2.jpeg" alt="South of Light — emerald particle field sweeping overhead">
-                    </div>
+    <!-- 4 — Sound of Light 2023 -->
+    <article class="case" id="sound-of-light">
+        <div class="case-year-col"><span class="year-number">2023</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Immersive concert</p>
+            <h2 class="case-name">Sound of Light</h2>
+            <p class="case-desc">An immersive concert inside a 360° planetarium dome. Music, ancestral song, projection, and architecture became one environment. The audience was not only watching a performance — they were placed inside a field of sound and image. This project shows how space itself can become a living story container.</p>
+            <div class="case-media-grid">
+                <div class="media-item">
+                    <img src="https://akterskayaa.github.io/playscape/assets/south_of_light_1.jpeg" alt="Sound of Light — iridescent light streams across a dome ceiling above a silhouetted crowd">
+                </div>
+                <div class="media-item">
+                    <img src="https://akterskayaa.github.io/playscape/assets/south_of_light_2.jpeg" alt="Sound of Light — emerald particle field sweeping overhead">
                 </div>
             </div>
-        </article>
+        </div>
+    </article>
 
-        <!-- 2024 Inloco Metaverse -->
-        <article class="case" id="inloco-metaverse">
-            <div class="case-year-col">
-                <span class="year-number">2024</span>
-            </div>
-            <div class="case-content">
-                <h2 class="case-name">Inloco Metaverse</h2>
-                <p class="case-desc">The first integration of physical and digital storyworlds — exploring how virtual space can hold sacred experience, and how AI can serve as a narrative companion. A bridge between ancestral and emergent technologies.</p>
-                <div class="case-media-grid">
-                    <div class="media-item">
-                        <img src="https://akterskayaa.github.io/playscape/assets/Inloco_Metaverse_1.jpeg" alt="Inloco Metaverse — virtual auditorium with avatars seated before a projected screen">
+    <!-- 5 — Almet Media Lab -->
+    <article class="case" id="almet-media-lab">
+        <div class="case-year-col"><span class="year-number">2024</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Community imagination</p>
+            <h2 class="case-name">Almet Media Lab</h2>
+            <p class="case-desc">In collaboration with Nuvo Buro, Almet Media Lab invited local residents and young people to use augmented reality to animate public murals. Participants learned new tools — but more importantly, they learned that familiar places could become alive with story. This project shows how emerging technology can serve community imagination and help people see the places they already know with new wonder.</p>
+            <a href="https://www.youtube.com/watch?v=lbhEFTorLYs" target="_blank" rel="noopener" class="case-video-link">
+                <div class="case-video-thumb">
+                    <img src="https://img.youtube.com/vi/lbhEFTorLYs/maxresdefault.jpg" alt="Almet Media Lab — watch on YouTube" onerror="this.src='https://img.youtube.com/vi/lbhEFTorLYs/hqdefault.jpg'">
+                    <div class="case-video-play">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="23" stroke="white" stroke-width="1.5" fill="rgba(26,18,8,0.45)"/>
+                            <path d="M20 16L34 24L20 32V16Z" fill="white"/>
+                        </svg>
                     </div>
-                    <div class="media-item">
-                        <img src="https://akterskayaa.github.io/playscape/assets/Inloco_Metaverse_2.jpeg" alt="Inloco Metaverse — avatar in a richly textured red building environment">
-                    </div>
+                    <div class="case-video-label">Watch on YouTube</div>
                 </div>
-                <a href="https://inlocogallery.com/metaverse" target="_blank" rel="noopener" class="case-link">
+            </a>
+        </div>
+    </article>
 
-                            View the project
-                            
-                    <svg viewBox="0 0 14 14" fill="none">
-                        <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-        </article>
-
-        <!-- 2026 WXO StoryField Mirror -->
-        <article class="case" id="wxo-storyfield">
-            <div class="case-year-col">
-                <span class="year-number">2026</span>
-            </div>
-            <div class="case-content">
-                <h2 class="case-name">WXO StoryField Mirror</h2>
-                <p class="case-desc">Commissioned by the World Experience Organization — a real-time AI narrative installation that reads collective emotional patterns and reflects them back as evolving story.</p>
-                <div class="case-media">
-                    <video controls preload="none" poster="https://akterskayaa.github.io/playscape/assets/install-stage.jpg">
-                        <source src="https://akterskayaa.github.io/playscape/assets/hero.mp4#t=2" type="video/mp4">
-                    </video>
+    <!-- 6 — Inloco Metaverse 2024 -->
+    <article class="case" id="inloco-metaverse">
+        <div class="case-year-col"><span class="year-number">2024</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Digital worlds</p>
+            <h2 class="case-name">Inloco Metaverse</h2>
+            <p class="case-desc">At Inloco Gallery Dubai the question was: how can art continue beyond one physical place? The answer became a digital world where exhibitions and urban artworks could be entered again online. Murals and installations became immersive spatial experiences — extending a sacred place beyond geography.</p>
+            <div class="case-media-grid">
+                <div class="media-item">
+                    <img src="https://akterskayaa.github.io/playscape/assets/Inloco_Metaverse_1.jpeg" alt="Inloco Metaverse — virtual auditorium with avatars seated before a projected screen">
                 </div>
-                <a href="https://akterskayaa.github.io/storyfield_vai_wxo/" target="_blank" rel="noopener" class="case-link">
-
-                            View the project
-                            
-                    <svg viewBox="0 0 14 14" fill="none">
-                        <path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                <div class="media-item">
+                    <img src="https://akterskayaa.github.io/playscape/assets/Inloco_Metaverse_2.jpeg" alt="Inloco Metaverse — avatar in a richly textured red building environment">
+                </div>
             </div>
-        </article>
+            <a href="https://inlocogallery.com/metaverse" target="_blank" rel="noopener" class="case-link">
+                View the project
+                <svg viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5M13 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </article>
 
-    </section>
+    <!-- 7 — Bridges Not Borders -->
+    <article class="case" id="bridges-not-borders">
+        <div class="case-year-col"><span class="year-number">2019</span></div>
+        <div class="case-content">
+            <p class="case-eyebrow">Participatory art</p>
+            <h2 class="case-name">Bridges Not Borders</h2>
+            <p class="case-desc">With Visit Berlin and the Handshape Project, we helped create a participatory artwork about human connection. People shaped clay together while answering questions and listening to one another. Their hand-shapes became part of a public installation near the Berlin Wall. We build bridges, not borders — each person brings their own place, prayer, culture, and story into one shared field. Human connection as the artwork.</p>
+            <div class="case-video-embed">
+                <iframe
+                    src="https://player.vimeo.com/video/350060731"
+                    title="Bridges Not Borders"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </article>
 
-    <footer>
-        <span class="f-path">radiantiris.org / cases</span>
-        <span class="f-tag">Re-enchanting the stories that shape our world.</span>
-    </footer>
+</section>
 
-    <script>
-    const cur = document.getElementById('cur');
-    const curR = document.getElementById('cur-r');
-    let mx = 0,
-        my = 0,
-        rx = 0,
-        ry = 0;
-    document.addEventListener('mousemove', e => {
-        mx = e.clientX;
-        my = e.clientY;
-        cur.style.left = mx + 'px';
-        cur.style.top = my + 'px'
+<footer>
+    <span class="f-path">radiantiris.org / cases</span>
+    <span class="f-tag">Re-enchanting the stories that shape our world.</span>
+</footer>
+
+<script>
+// ── Cursor
+const cur = document.getElementById('cur');
+const curR = document.getElementById('cur-r');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px'
+});
+(function anim() {
+    rx += (mx - rx) * .11; ry += (my - ry) * .11;
+    curR.style.left = rx + 'px'; curR.style.top = ry + 'px';
+    requestAnimationFrame(anim)
+})();
+document.querySelectorAll('a, button, .case-media-grid .media-item, .case-media-grid-khazana .media-item, .burger-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cur.style.width = '16px'; cur.style.height = '16px';
+        curR.style.width = '52px'; curR.style.height = '52px';
+        curR.style.borderColor = 'rgba(75,27,143,.6)'
     });
-    (function anim() {
-        rx += (mx - rx) * .11;
-        ry += (my - ry) * .11;
-        curR.style.left = rx + 'px';
-        curR.style.top = ry + 'px';
-        requestAnimationFrame(anim)
-    })();
-    document.querySelectorAll('a,.case-media-grid .media-item').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cur.style.width = '16px';
-            cur.style.height = '16px';
-            curR.style.width = '52px';
-            curR.style.height = '52px';
-            curR.style.borderColor = 'rgba(75,27,143,.6)'
-        });
-        el.addEventListener('mouseleave', () => {
-            cur.style.width = '9px';
-            cur.style.height = '9px';
-            curR.style.width = '34px';
-            curR.style.height = '34px';
-            curR.style.borderColor = 'rgba(228,163,74,.55)'
-        });
+    el.addEventListener('mouseleave', () => {
+        cur.style.width = '9px'; cur.style.height = '9px';
+        curR.style.width = '34px'; curR.style.height = '34px';
+        curR.style.borderColor = 'rgba(228,163,74,.55)'
     });
+});
 
-    // Scroll reveal
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                obs.unobserve(e.target)
-            }
-        })
-    }, {
-        threshold: .06,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    document.querySelectorAll('.case').forEach(s => obs.observe(s));
+// ── Burger menu (from practice.html)
+const burgerBtn = document.getElementById('burgerBtn');
+const navPanel  = document.getElementById('navPanel');
+const navOverlay = document.getElementById('navOverlay');
 
-    // Lazy load videos
-    const videos = document.querySelectorAll('video');
-    const vObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                const v = e.target;
-                if (v.preload === 'none') {
-                    v.preload = 'metadata';
-                    v.load()
-                }
-                if (v.hasAttribute('autoplay'))
-                    v.play().catch(() => {});
-                vObs.unobserve(v);
-            }
-        })
-    }, {
-        threshold: .15,
-        rootMargin: '200px'
-    });
-    videos.forEach(v => vObs.observe(v));
+function openMenu() {
+    burgerBtn.classList.add('open');
+    navPanel.classList.add('open');
+    navOverlay.classList.add('open');
+}
+function closeMenu() {
+    burgerBtn.classList.remove('open');
+    navPanel.classList.remove('open');
+    navOverlay.classList.remove('open');
+}
 
-    // Parallax on header shape
-    const shape = document.querySelector('.header-shape');
-    window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (shape)
-            shape.style.transform = `translateY(${y * .16}px) rotate(${y * .008}deg)`
-    }, {
-        passive: true
-    });
-    </script>
+burgerBtn.addEventListener('click', () => {
+    navPanel.classList.contains('open') ? closeMenu() : openMenu();
+});
+navOverlay.addEventListener('click', closeMenu);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+// ── Scroll reveal
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } })
+}, { threshold: .06, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.case').forEach(s => obs.observe(s));
+
+// ── Lazy load videos
+const vObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const v = e.target;
+            if (v.preload === 'none') { v.preload = 'metadata'; v.load() }
+            if (v.hasAttribute('autoplay')) v.play().catch(() => {});
+            vObs.unobserve(v);
+        }
+    })
+}, { threshold: .15, rootMargin: '200px' });
+document.querySelectorAll('video').forEach(v => vObs.observe(v));
+
+// ── Parallax
+const shape = document.querySelector('.header-shape');
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (shape) shape.style.transform = `translateY(${y * .16}px) rotate(${y * .008}deg)`
+}, { passive: true });
+</script>
 </body>
 </html>
