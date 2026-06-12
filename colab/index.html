@@ -298,73 +298,66 @@
         height: clamp(380px, 52vw, 700px);
         opacity: .055;
         pointer-events: none;
-    }/* Two-column layout: left = title, right = text+meta */
+    }/* hero-inner is now a vertical stack of two grid rows */
 
     .hero-inner {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 8vw;
-        align-items: end;
-        position: relative;
-        z-index: 1;
-    }/* Left: COLAB / on line 1, Collaboratorium on line 2, tight */
-    .hero-title-block {
         display: flex;
         flex-direction: column;
+        position: relative;
+        z-index: 1;
     }
 
-    .hero-line1 {
-        font-family: 'Fraunces', serif;
-        font-weight: 200;
-        font-size: clamp(4rem, 9vw, 9.5rem);
-        letter-spacing: -0.04em;
-        line-height: 1.0;
-        color: var(--text);
-        /* NO overflow:hidden — so slash is never clipped */
-        display: flex;
-        align-items: baseline;
-    }
+    .hero-row {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 0 8vw;
+    }/* Row 1: bottoms align — Collaboratorium's baseline meets the
+       bottom of the 3-line description on the right */
 
-    #heroLine1Span {
-        display: block;
-        overflow: hidden;
-    }
+    .hero-row-top {
+        align-items: end;
+    }/* Row 2: tops align — pronunciation under the title,
+       meta + apply under the description */
 
-    .hero-slash {
-        font-family: 'Fraunces', serif;
-        font-weight: 200;
-        color: var(--text);
-        flex-shrink: 0;
-        white-space: pre;
-    }
-
+    .hero-row-bottom {
+        align-items: start;
+        margin-top: 18px;
+    }/* Collaboratorium — clip only vertically (for the rise-in animation),
+       let it overflow horizontally so the last letter is never cut off */
     .hero-line2 {
         font-family: 'Fraunces', serif;
         font-weight: 100;
         font-style: italic;
-        font-size: clamp(4rem, 9vw, 9.5rem);
+        font-size: clamp(3.6rem, 8.2vw, 8.4rem);
         letter-spacing: -0.04em;
         line-height: .88;
         color: var(--violet);
-        overflow: hidden;
-        margin-top: -0.18em;
+        overflow-x: visible;
+        overflow-y: hidden;
+        white-space: nowrap;
     }
 
     .hero-line2 span {
         display: block;
         transform: translateY(110%);
-    }/* Right: description, meta, apply */
-    .hero-right {
-        opacity: 0;
-    }
-
+    }/* Description paragraph (sets the alignment baseline) */
     .hero-desc-title {
         font-family: 'Alegreya', serif;
         font-size: clamp(1rem, 1.4vw, 1.2rem);
         color: var(--mid);
         line-height: 1.82;
-        margin-bottom: 40px;
         max-width: 400px;
+        opacity: 0;
+    }/* Pronunciation, under Collaboratorium */
+    .hero-pronounce {
+        font-family: 'Alegreya', serif;
+        font-style: italic;
+        font-size: clamp(1rem, 1.6vw, 1.25rem);
+        color: var(--muted);
+        opacity: 0;
+    }/* Meta + Apply, under the description */
+    .hero-meta-apply {
+        opacity: 0;
     }
 
     .hero-meta {
@@ -437,17 +430,18 @@
     }
 
     @media (max-width: 760px) {
-        .hero-inner {
+        .hero-row {
             grid-template-columns: 1fr;
-            gap: 40px 0;
+            gap: 24px 0;
         }
 
-        .hero-right {
-            padding-top: 0;
+        .hero-row-top {
+            align-items: start;
         }
 
-        .hero-line1, .hero-line2 {
-            font-size: clamp(3.5rem, 15vw, 6rem);
+        .hero-line2 {
+            font-size: clamp(3rem, 15vw, 5.5rem);
+            white-space: normal;
         }
     }/* ══════════════════════════════════════════
        WHY — warm brown (not near-black)
@@ -520,7 +514,7 @@
         line-height: 1.72;
         opacity: .9 !important;
     }/* ══════════════════════════════════════════
-       WHAT IS COLAB
+       WHAT IS COLLABORATORIUM
     ══════════════════════════════════════════ */
     .what {
         background: var(--ivory);
@@ -531,7 +525,7 @@
         grid-template-columns: 5fr 4fr;
         gap: 0 8vw;
         align-items: start;
-    }/* COLAB / on line 1, Collaboratorium on line 2 */
+    }
 
     .what-colab-id {
         font-family: 'Fraunces', serif;
@@ -539,32 +533,13 @@
         font-size: clamp(2rem, 3.8vw, 3.4rem);
         letter-spacing: -0.03em;
         line-height: 1.0;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
         margin-bottom: 14px;
     }
 
-    .what-colab-line1 {
-        display: flex;
-        align-items: baseline;
-        gap: .2em;
-    }
-
-    .what-colab-line1 .c1 {
-        color: var(--text);
-    }
-
-    .what-colab-line1 .sl {
-        color: var(--amber);
-        font-weight: 100;
-    }
-
     .what-colab-line2 {
-        color: var(--mid);
+        color: var(--violet);
         font-weight: 100;
         font-style: italic;
-        opacity: .8;
     }
 
     .what-tagline {
@@ -617,11 +592,6 @@
         line-height: 1.82;
     }
 
-    .meaning-intro .m-line1 {
-        font-size: 1.05rem;
-        margin-bottom: 4px;
-    }
-
     .meaning-intro .m-line2 {
         font-family: 'Fraunces', serif;
         font-weight: 200;
@@ -630,12 +600,6 @@
         line-height: 1.2;
         color: var(--text);
         margin-bottom: 16px;
-    }
-
-    .meaning-intro .m-line2 em {
-        color: var(--violet);
-        font-weight: 100;
-        font-style: italic;
     }
 
     .meaning-intro .m-line3 {
@@ -1016,7 +980,7 @@
 
     .fuji-svg-wrap {
         width: 100%;
-        aspect-ratio: 3/4;
+        aspect-ratio: 1/1;
         background: linear-gradient(160deg, #ddd3c4 0%, #e8dfc8 40%, rgba(75, 27, 143, .08) 100%);
         display: flex;
         align-items: center;
@@ -1025,22 +989,31 @@
         overflow: hidden;
     }
 
-    .fuji-svg-wrap::before {
+    .fuji-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .fuji-svg-wrap::after {
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 70% at 50% 25%, rgba(75, 27, 143, .12) 0%, transparent 65%);
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(26, 18, 8, .35) 0%, transparent 35%);
     }
 
     .fuji-img-note {
         position: absolute;
         bottom: 18px;
         left: 20px;
+        z-index: 1;
         font-family: 'EB Garamond', serif;
         font-size: 10px;
         letter-spacing: .2em;
         text-transform: uppercase;
-        color: var(--muted);
+        color: rgba(244, 239, 230, .85);
     }
 
     .fuji-right {
@@ -1476,24 +1449,23 @@
         </svg>
 
         <div class="hero-inner">
-            <!-- LEFT: COLAB / on two lines -->
-            <div class="hero-title-block">
-                <div class="hero-line1" id="heroLine1">
-                    <span id="heroLine1Span">COLAB</span>
-                    <span class="hero-slash"> /</span>
-                </div>
+            <!-- ROW 1: Collaboratorium aligned to bottom with the 3-line description -->
+            <div class="hero-row hero-row-top">
                 <div class="hero-line2" id="heroLine2">
                     <span>Collaboratorium</span>
                 </div>
-            </div>
-            <!-- RIGHT: description + meta + apply -->
-            <div class="hero-right" id="heroRight">
                 <p class="hero-desc-title">A 3-week online laboratory and growing community of practice. Co-creating an immersive peace experience for Fuji Sanctuary, Japan.</p>
-                <div class="hero-meta">
-                    <div class="hero-meta-row">July 11 – August 1, 2026</div>
-                    <div class="hero-meta-row">Online · Global · Free</div>
+            </div>
+            <!-- ROW 2: pronunciation under title / meta + apply under description -->
+            <div class="hero-row hero-row-bottom" id="heroRowBottom">
+                <p class="hero-pronounce" id="heroPronounce">which can be pronounced “co-lab” for short</p>
+                <div class="hero-meta-apply">
+                    <div class="hero-meta">
+                        <div class="hero-meta-row">July 11 – August 1, 2026</div>
+                        <div class="hero-meta-row">Online · Global · Free</div>
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="hero-apply">Apply now</a>
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="hero-apply">Apply now</a>
             </div>
         </div>
 
@@ -1529,12 +1501,8 @@
     <section class="section what" id="what">
         <div class="what-grid">
             <div class="what-left">
-                <p class="eyebrow">What is COLAB?</p>
+                <p class="eyebrow">What is Collaboratorium?</p>
                 <div class="what-colab-id">
-                    <div class="what-colab-line1">
-                        <span class="c1">COLAB</span>
-                        <span class="sl">&thinsp;/</span>
-                    </div>
                     <div class="what-colab-line2">Collaboratorium</div>
                 </div>
                 <div class="what-tagline">A community-powered creative laboratory.</div>
@@ -1542,7 +1510,7 @@
             <div class="what-right">
                 <p>For three weeks, artists, technologists, storytellers, designers, facilitators, researchers, community builders, and curious humans come together around a shared challenge.</p>
                 <p class="what-q">How might we create meaningful experiences in a world that feels increasingly fragmented?</p>
-                <p>COLAB is a place to experiment with new forms of collaboration, contribute to a real-world project, and meet others who believe that art, technology, imagination, and community can help shape a more connected future.</p>
+                <p>Collaboratorium is a place to experiment with new forms of collaboration, contribute to a real-world project, and meet others who believe that art, technology, imagination, and community can help shape a more connected future.</p>
             </div>
         </div>
     </section>
@@ -1550,13 +1518,8 @@
     <!-- ══ MEANING ══ -->
     <section class="section meaning" id="meaning">
         <div class="meaning-intro">
-            <p class="eyebrow">What does COLAB mean?</p>
-            <p class="m-line1">COLAB is short for Collaboratorium.</p>
-            <p class="m-line2">
-                A word we 
-                <em>invented</em>
-                 because none of the existing ones felt quite right.
-            </p>
+            <p class="eyebrow">What does Collaboratorium mean?</p>
+            <p class="m-line2">Collaboratorium is an invented word that we use because none of the existing ones felt quite right.</p>
             <p class="m-line3">It holds six ideas at once — each one a small manifesto about how we want to work together.</p>
         </div>
         <div class="meaning-grid">
@@ -1634,6 +1597,9 @@
                     <span class="who-tag">Researcher</span>
                     <span class="who-tag">Community builder</span>
                     <span class="who-tag">Creative producer</span>
+                    <span class="who-tag">Game designer</span>
+                    <span class="who-tag">Animator</span>
+                    <span class="who-tag">Film-maker</span>
                     <span class="who-tag">Dreamer</span>
                 </div>
             </div>
@@ -1714,25 +1680,7 @@
         <div class="fuji-grid">
             <div>
                 <div class="fuji-svg-wrap">
-                    <svg viewBox="0 0 280 360" width="195" style="position:relative;z-index:1;opacity:.55" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#4B1B8F" stop-opacity=".7"/>
-                                <stop offset="60%" stop-color="#E4A34A" stop-opacity=".35"/>
-                                <stop offset="100%" stop-color="#5A4A32" stop-opacity=".2"/>
-                            </linearGradient>
-                        </defs>
-                        <polygon points="140,18 248,200 32,200" fill="url(#fg)"/>
-                        <polygon points="140,18 162,68 118,68" fill="#F4EFE6" opacity=".45"/>
-                        <rect x="20" y="200" width="240" height="1.5" fill="#E4A34A" opacity=".3"/>
-                        <ellipse cx="140" cy="220" rx="100" ry="6" fill="none" stroke="#4B1B8F" stroke-width=".5" opacity=".2"/>
-                        <ellipse cx="140" cy="232" rx="80" ry="5" fill="none" stroke="#4B1B8F" stroke-width=".4" opacity=".15"/>
-                        <ellipse cx="140" cy="242" rx="60" ry="4" fill="none" stroke="#4B1B8F" stroke-width=".3" opacity=".1"/>
-                        <line x1="55" y1="178" x2="55" y2="202" stroke="#E4A34A" stroke-width=".6" opacity=".4"/>
-                        <line x1="80" y1="188" x2="80" y2="202" stroke="#E4A34A" stroke-width=".6" opacity=".35"/>
-                        <line x1="200" y1="185" x2="200" y2="202" stroke="#E4A34A" stroke-width=".6" opacity=".4"/>
-                        <line x1="225" y1="178" x2="225" y2="202" stroke="#E4A34A" stroke-width=".6" opacity=".35"/>
-                    </svg>
+                    <img src="images/fuji-sanctuary-illustration.jpeg" alt="Animals gathered at Fuji Sanctuary under flags of many nations" class="fuji-img">
                     <span class="fuji-img-note">Fuji Sanctuary, Japan</span>
                 </div>
             </div>
@@ -1826,7 +1774,7 @@
                 </button>
                 <div class="faq-a">
                     <div class="faq-a-inner">
-                        <p>Every COLAB cycle produces new ideas and prototypes, experience concepts, rituals, participation models, and creative partnerships. But perhaps more importantly: a deeper capacity to create together, relationships that continue beyond a single project, and a shared language among collaborators.</p>
+                        <p>Every Collaboratorium cycle produces new ideas and prototypes, experience concepts, rituals, participation models, and creative partnerships. But perhaps more importantly: a deeper capacity to create together, relationships that continue beyond a single project, and a shared language among collaborators.</p>
                     </div>
                 </div>
             </div>
@@ -1859,11 +1807,6 @@
             <p class="cta-sub">Let's explore what becomes possible when artists, technologists, storytellers, facilitators, and dreamers create together.</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="cta-btn">Apply Now</a>
             <p class="cta-free">Free to join · Online · July 11 – August 1, 2026</p>
-            <nav class="cta-nav">
-                <a href="/" class="cta-nav-link">Playscape Portal</a>
-                <a href="/practice" class="cta-nav-link">Story as Medicine</a>
-                <a href="/cases" class="cta-nav-link">Selected Works</a>
-            </nav>
         </div>
     </section>
 
@@ -1896,28 +1839,35 @@
 
     // HERO ANIMATIONS
     window.addEventListener('DOMContentLoaded', () => {
-        const s1 = document.getElementById('heroLine1Span');
-        if (s1) {
-            s1.style.transition = 'transform 1s cubic-bezier(.16,1,.3,1) .35s';
-            setTimeout(() => {
-                s1.style.transform = 'translateY(0)';
-            }, 20);
-        }
         const l2 = document.getElementById('heroLine2');
         if (l2) {
             const sp = l2.querySelector('span');
             if (sp) {
-                sp.style.transition = 'transform 1s cubic-bezier(.16,1,.3,1) .55s';
+                sp.style.transition = 'transform 1s cubic-bezier(.16,1,.3,1) .35s';
                 setTimeout(() => {
                     sp.style.transform = 'translateY(0)';
                 }, 20);
             }
         }
-        const r = document.getElementById('heroRight');
-        if (r) {
-            r.style.transition = 'opacity .9s ease 1s';
+        const desc = document.querySelector('.hero-desc-title');
+        if (desc) {
+            desc.style.transition = 'opacity .9s ease .55s';
             setTimeout(() => {
-                r.style.opacity = '1';
+                desc.style.opacity = '1';
+            }, 20);
+        }
+        const pr = document.getElementById('heroPronounce');
+        if (pr) {
+            pr.style.transition = 'opacity .9s ease .75s';
+            setTimeout(() => {
+                pr.style.opacity = '1';
+            }, 20);
+        }
+        const ma = document.querySelector('.hero-meta-apply');
+        if (ma) {
+            ma.style.transition = 'opacity .9s ease 1s';
+            setTimeout(() => {
+                ma.style.opacity = '1';
             }, 20);
         }
         const s = document.getElementById('heroScroll');
