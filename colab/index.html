@@ -517,6 +517,97 @@
         line-height: 1.72;
         opacity: .9 !important;
     }/* ══════════════════════════════════════════
+       VIDEO INVITATION
+    ══════════════════════════════════════════ */
+    .invite {
+        background: var(--warm);
+    }
+
+    .invite-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 8vw;
+        align-items: center;
+    }/* 16:9 responsive iframe wrapper */
+    .invite-video-wrap {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 2px;
+        box-shadow: 0 24px 64px rgba(26, 18, 8, .15);
+    }
+
+    .invite-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }/* Bio column */
+    .invite-bio {
+        padding-top: 0;
+    }
+
+    .invite-name {
+        font-family: 'Fraunces', serif;
+        font-weight: 200;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: var(--text);
+        margin-bottom: 8px;
+    }
+
+    .invite-name em {
+        color: var(--violet);
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    .invite-role {
+        font-family: 'EB Garamond', serif;
+        font-size: 13px;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--amber);
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .invite-role::before {
+        content: '';
+        width: 18px;
+        height: 1px;
+        background: var(--amber);
+        display: block;
+    }
+
+    .invite-bio-text p {
+        font-family: 'Alegreya', serif;
+        font-size: 1.07rem;
+        color: var(--mid);
+        line-height: 1.85;
+        margin-bottom: 1.2rem;
+    }
+
+    .invite-bio-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 960px) {
+        .invite-inner {
+            grid-template-columns: 1fr;
+            gap: 48px 0;
+        }
+
+        .invite-bio {
+            padding-top: 0;
+        }
+    }/* ══════════════════════════════════════════
        WHAT IS COLLABORATORIUM
     ══════════════════════════════════════════ */
     .what {
@@ -1577,6 +1668,7 @@
         }
     }
     </style>
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
 
@@ -1679,6 +1771,32 @@
                 <p>This summer, people from around the world will gather online to playfully experiment with interactive storytelling experiences dedicated to peace and the strength of diversity.</p>
                 <p>In a time when so much energy is directed toward fear, separation, and conflict, we are asking a different question:</p>
                 <p class="why-q">What experiences allow people to listen, imagine, create, belong and empower each other?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ VIDEO INVITATION ══ -->
+    <section class="section invite" id="invite">
+        <div class="invite-inner">
+            <!-- LEFT: video -->
+            <div class="invite-video-col">
+                <div class="invite-video-wrap">
+                    <iframe src="https://player.vimeo.com/video/1201413448?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Invitation from Krishnan Unnikrishnan" class="invite-iframe"></iframe>
+                </div>
+            </div>
+            <!-- RIGHT: bio -->
+            <div class="invite-bio">
+                <p class="eyebrow">An invitation</p>
+                <h2 class="invite-name">
+                    Krishnan
+                    <br>
+                    <em>Unnikrishnan</em>
+                </h2>
+                <p class="invite-role">Founder, Radiant IRIS Collective</p>
+                <div class="invite-bio-text">
+                    <p>A multidisciplinary artist and cultural technologist who designs participatory rituals that remix indigenous oral traditions with modern technologies such as XR and generative AI. His work awakens collective imagination and devotional intelligence through embodied storytelling and collaborative ritual-making.</p>
+                    <p>For over a decade, he has been studying Vedic spiritual philosophy and yogic wisdom with Swami Vidyadhishananda — the inspiration and foundation for his work and public offerings.</p>
+                </div>
             </div>
         </div>
     </section>
