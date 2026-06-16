@@ -1021,9 +1021,20 @@
     .week-card.outcome:hover {
         background: #251a3e;
     }/* Date: day number prominent, month label beneath */
-    /* Date inline with month */
-    .week-date-block {
-        margin-bottom: 0;
+    /* Session labels replacing date blocks */
+    .week-session-label {
+        font-family: 'Fraunces', serif;
+        font-weight: 100;
+        font-style: italic;
+        font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+        letter-spacing: -0.02em;
+        color: var(--amber);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    .week-card.outcome .week-session-label {
+        color: var(--amber);
     }
 
     .week-date-inline {
@@ -1149,12 +1160,16 @@
     .fuji-intro-line {
         font-family: 'Fraunces', serif;
         font-weight: 200;
-        font-style: italic;
-        font-size: 1.1rem;
+        font-size: clamp(1.1rem, 1.8vw, 1.55rem);
         letter-spacing: -0.01em;
         color: var(--mid);
-        line-height: 1.5;
-        margin-bottom: 4px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .fuji-intro-line:last-child {
+        color: var(--text);
+        font-style: italic;
     }
 
     .fuji-body {
@@ -1811,7 +1826,7 @@
                 <p class="hero-pronounce" id="heroPronounce">which can be pronounced “co-lab” for short</p>
                 <div class="hero-meta-apply">
                     <div class="hero-meta">
-                        <div class="hero-meta-row">July 11 – August 1, 2026</div>
+                        <div class="hero-meta-row">July – August, 2026</div>
                         <div class="hero-meta-row">Online · Global · Heart-Led</div>
                         <div class="hero-meta-row hero-meta-free">
                             <em>Free community offering</em>
@@ -1938,7 +1953,6 @@
         <div class="who-grid">
             <div class="who-left">
                 <p class="eyebrow">Who should join?</p>
-                <p class="who-cred">Credentials are fine.</p>
                 <p class="who-resonance">
                     We value 
                     <em>resonance</em>
@@ -2026,35 +2040,17 @@
 
         <div class="weeks-grid">
             <div class="week-card">
-                <div class="week-date-block">
-                    <div class="week-date-inline">
-                        <span class="week-date">11–12</span>
-                        <span class="week-date-month" style="color:var(--violet);opacity:1">July 2026</span>
-                    </div>
-                </div>
-                <div class="week-label">Weekend 1</div>
+                <div class="week-session-label">Session 1</div>
                 <div class="week-title">Meet the emerging community</div>
                 <div class="week-desc">Meet the emerging community and understand the themes. Share perspectives, stories, questions, inspirations, and possibilities.</div>
             </div>
             <div class="week-card">
-                <div class="week-date-block">
-                    <div class="week-date-inline">
-                        <span class="week-date">18–19</span>
-                        <span class="week-date-month" style="color:var(--violet);opacity:1">July 2026</span>
-                    </div>
-                </div>
-                <div class="week-label">Weekend 2</div>
+                <div class="week-session-label">Session 2</div>
                 <div class="week-title">Share inspirations</div>
                 <div class="week-desc">Find your co-lab partners. Develop concepts, worlds, interactions, rituals, and experiences across disciplines.</div>
             </div>
             <div class="week-card">
-                <div class="week-date-block">
-                    <div class="week-date-inline">
-                        <span class="week-date">25–26</span>
-                        <span class="week-date-month" style="color:var(--violet);opacity:1">July 2026</span>
-                    </div>
-                </div>
-                <div class="week-label">Weekend 3</div>
+                <div class="week-session-label">Session 3</div>
                 <div class="week-title">Share prototypes</div>
                 <div class="week-desc">Launch a creative commons library. Shape ideas into tangible proposals and experiments. Reflect on what emerged and celebrate the process.</div>
             </div>
@@ -2073,13 +2069,10 @@
             </div>
             <div class="fuji-right">
                 <p class="eyebrow">What's next?</p>
-                <h2>
-                    A step into the 
-                    <em>ancient future.</em>
-                </h2>
                 <div class="fuji-intro-lines">
-                    <p class="fuji-intro-line">A peace sanctuary at the foot of Mount Fuji.</p>
+                    <p class="fuji-intro-line">A step into the ancient future.</p>
                     <p class="fuji-intro-line">An interactive story for cross-cultural exchange.</p>
+                    <p class="fuji-intro-line">A peace sanctuary at the foot of Mount Fuji.</p>
                 </div>
                 <div class="fuji-date-card">
                     <div class="fuji-date">October 2026</div>
@@ -2255,7 +2248,7 @@
             </h2>
             <p class="cta-sub">Let's play our way into the future today.</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="cta-btn">Apply Now</a>
-            <p class="cta-free">Free · Online Offering · July 11 – August 1, 2026</p>
+            <p class="cta-free">Free · Online Offering · July – August, 2026</p>
             <div class="cta-site-link">
                 <a href="https://radiantiris.org" target="_blank" class="cta-site-a">radiantiris.org</a>
             </div>
