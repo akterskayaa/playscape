@@ -403,6 +403,81 @@
     .hero-apply:hover {
         background: var(--violet);
         transform: translateY(-2px);
+    }/* Tooltip reveal on hover */
+    .hero-apply-group {
+        position: relative;
+        display: inline-block;
+    }
+
+    .hero-apply-tooltip {
+        position: absolute;
+        left: calc(100% + 20px);
+        top: 50%;
+        transform: translateY(-50%) translateX(8px);
+        width: 280px;
+        background: var(--ivory);
+        border: 1px solid var(--border-mid);
+        padding: 20px 22px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .35s ease, transform .35s cubic-bezier(.16, 1, .3, 1);
+        box-shadow: 0 12px 40px rgba(26, 18, 8, .10);
+        z-index: 10;
+    }
+
+    .hero-apply-tooltip::before {
+        content: '';
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 6px solid transparent;
+        border-right-color: var(--border-mid);
+    }
+
+    .hero-apply-tooltip::after {
+        content: '';
+        position: absolute;
+        right: calc(100% - 1px);
+        top: 50%;
+        transform: translateY(-50%);
+        border: 6px solid transparent;
+        border-right-color: var(--ivory);
+    }
+
+    .hero-apply-group:hover .hero-apply-tooltip {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    .hero-apply-tooltip p {
+        font-family: 'Alegreya', serif;
+        font-size: .95rem;
+        color: var(--mid);
+        line-height: 1.72;
+        margin-bottom: .7rem;
+    }
+
+    .hero-apply-tooltip p:last-child {
+        margin-bottom: 0;
+    }/* On narrow screens: tooltip appears above instead */
+    @media (max-width: 900px) {
+        .hero-apply-tooltip {
+            left: 0;
+            top: auto;
+            bottom: calc(100% + 12px);
+            transform: translateX(0) translateY(-6px);
+            width: min(280px, 80vw);
+        }
+
+        .hero-apply-tooltip::before, .hero-apply-tooltip::after {
+            display: none;
+        }
+
+        .hero-apply-group:hover .hero-apply-tooltip {
+            transform: translateX(0) translateY(0);
+        }
     }
 
     .hero-scroll {
@@ -1201,7 +1276,88 @@
     .fuji-hl {
         color: var(--violet);
         font-style: italic;
-    }/* FUJI STORY BLOCKS */
+    }/* WHAT HAPPENS — timezone note */
+    .weeks-timezone {
+        margin-top: 48px;
+        padding: 40px 44px;
+        background: var(--warm);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0 48px;
+        align-items: center;
+    }
+
+    .weeks-tz-text p {
+        font-family: 'Alegreya', serif;
+        font-size: 1.05rem;
+        color: var(--mid);
+        line-height: 1.82;
+        margin-bottom: .9rem;
+    }
+
+    .weeks-tz-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .weeks-apply-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        white-space: nowrap;
+        font-family: 'EB Garamond', serif;
+        font-size: 12px;
+        letter-spacing: .26em;
+        text-transform: uppercase;
+        color: var(--ivory);
+        background: var(--text);
+        padding: 18px 36px;
+        text-decoration: none;
+        transition: background .25s, transform .25s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .weeks-apply-btn:hover {
+        background: var(--violet);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 760px) {
+        .weeks-timezone {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+    }/* FAQ steps list */
+    .faq-steps {
+        list-style: none;
+        margin-bottom: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        counter-reset: faq-step;
+    }
+
+    .faq-steps li {
+        font-family: 'Alegreya', serif;
+        font-size: 1.07rem;
+        color: var(--mid);
+        line-height: 1.72;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        counter-increment: faq-step;
+    }
+
+    .faq-steps li::before {
+        content: counter(faq-step);
+        font-family: 'Fraunces', serif;
+        font-weight: 100;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--amber);
+        flex-shrink: 0;
+        min-width: 16px;
+        padding-top: 1px;
+    }
+
     .fuji-story {
         margin-top: 64px;
         border-top: 1px solid var(--border);
@@ -1819,7 +1975,7 @@
                         <span>Collaboratorium</span>
                     </div>
                 </div>
-                <p class="hero-desc-title">A 3-week online laboratory and growing community of practice for cross-cultural exchange and interdisciplinary integration during turbulent times.</p>
+                <p class="hero-desc-title">An online laboratory and growing community of practice for cross-cultural exchange and interdisciplinary integration during turbulent times.</p>
             </div>
             <!-- ROW 2: pronunciation under title / meta + apply under description -->
             <div class="hero-row hero-row-bottom" id="heroRowBottom">
@@ -1832,7 +1988,13 @@
                             <em>Free community offering</em>
                         </div>
                     </div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="hero-apply">Apply now</a>
+                    <div class="hero-apply-group">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="hero-apply">Apply now</a>
+                        <div class="hero-apply-tooltip">
+                            <p>We are currently gathering the first circle of participants.</p>
+                            <p>By registering your interest, you'll receive information about the upcoming Orientation gatherings and help us shape the timing and structure of the Collaboratorium experience.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2056,6 +2218,18 @@
             </div>
         </div>
         </div>
+
+        <!-- Timezone note -->
+        <div class="weeks-timezone">
+            <div class="weeks-tz-text">
+                <p>Because participants will be joining from multiple countries and time zones, the exact session times have not yet been finalized.</p>
+                <p>We will offer gathering windows for each Collaboratorium session to accommodate participants across the Americas, Europe, and Asia.</p>
+                <p>By registering your interest now, you can help us determine the most accessible schedule.</p>
+            </div>
+            <div class="weeks-tz-cta">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5JGSLLA1vWKRLOo3khHk4AJ-jn4L58amaGAHgjVpM0U3lwA/viewform" target="_blank" class="weeks-apply-btn">Apply Now</a>
+            </div>
+        </div>
     </section>
 
     <!-- ══ WHAT'S NEXT ══ -->
@@ -2152,6 +2326,23 @@
             </h2>
         </div>
         <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">
+                    <span class="faq-q-text">What happens after I apply?</span>
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-a">
+                    <div class="faq-a-inner">
+                        <ol class="faq-steps">
+                            <li>Complete the interest form.</li>
+                            <li>Receive an invitation to our Orientation gatherings.</li>
+                            <li>Meet the community, ask questions, and explore whether Collaboratorium feels right for you.</li>
+                            <li>After Orientation, decide whether you would like to participate in the ongoing gatherings.</li>
+                        </ol>
+                        <p>Submitting the form does not commit you to participate. It simply helps us understand who is interested and how to design the experience together.</p>
+                    </div>
+                </div>
+            </div>
             <div class="faq-item">
                 <button class="faq-q">
                     <span class="faq-q-text">Is there a cost to participate?</span>
