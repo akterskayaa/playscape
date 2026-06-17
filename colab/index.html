@@ -1909,6 +1909,116 @@
         .burger-btn {
             cursor: pointer;
         }
+    }/* MAGICAL CREATURES */
+    .magic-creature {
+        position: absolute;
+        pointer-events: none;
+        user-select: none;
+        z-index: 1;
+        opacity: .9;
+    }
+
+    .magic-creature.behind {
+        opacity: .55;
+        z-index: 0;
+    }
+
+    .mc-b1 {
+        width: 150px;
+        top: 120px;
+        left: 3%;
+        transform: rotate(-12deg);
+    }
+
+    .mc-s1 {
+        width: 70px;
+        top: 80px;
+        right: 5%;
+        transform: rotate(14deg);
+    }
+
+    .mc-s2 {
+        width: 55px;
+        top: 50%;
+        left: 8%;
+        transform: rotate(-18deg);
+    }
+
+    .mc-b2 {
+        width: 120px;
+        bottom: 10%;
+        right: 8%;
+        transform: rotate(16deg);
+    }
+
+    .mc-b3 {
+        width: 130px;
+        top: 30px;
+        right: 4%;
+        transform: rotate(20deg);
+    }
+
+    .mc-s3 {
+        width: 70px;
+        bottom: 30px;
+        left: 10%;
+        transform: rotate(-12deg);
+    }
+
+    .mc-s4 {
+        width: 60px;
+        top: 40px;
+        right: 12%;
+        transform: rotate(10deg);
+    }
+
+    .mc-b4 {
+        width: 150px;
+        bottom: 40px;
+        left: -20px;
+        transform: rotate(-25deg);
+    }
+
+    .mc-b5 {
+        width: 90px;
+        top: 20px;
+        right: 15%;
+        transform: rotate(18deg);
+    }
+
+    .mc-s5 {
+        width: 75px;
+        bottom: 30px;
+        right: 6%;
+        transform: rotate(12deg);
+    }
+
+    .mc-b6 {
+        width: 170px;
+        top: -30px;
+        right: -20px;
+        transform: rotate(14deg);
+    }
+
+    .mc-b7 {
+        width: 80px;
+        bottom: 20px;
+        left: 8%;
+        transform: rotate(-18deg);
+    }
+
+    .mc-s6 {
+        width: 55px;
+        top: 25px;
+        left: 12%;
+        transform: rotate(-10deg);
+    }
+
+    .mc-b8 {
+        width: 60px;
+        bottom: 40px;
+        right: 40px;
+        transform: rotate(10deg);
     }
     </style>
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -1954,6 +2064,8 @@
 
     <!-- ══ HERO ══ -->
     <section class="hero">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b1 behind">
+        <img src="/assets/spider.png" class="magic-creature mc-s1">
         <svg class="hero-mandala" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
             <circle cx="300" cy="300" r="290" fill="none" stroke="#4B1B8F" stroke-width="0.8"/>
             <circle cx="300" cy="300" r="220" fill="none" stroke="#E4A34A" stroke-width="0.5"/>
@@ -2007,6 +2119,8 @@
 
     <!-- ══ WHY ══ -->
     <section class="section why" id="why">
+        <img src="/assets/spider.png" class="magic-creature mc-s2">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b2 behind">
         <div class="why-inner">
             <div class="why-left">
                 <p class="eyebrow">Why are we gathering?</p>
@@ -2052,6 +2166,8 @@
 
     <!-- ══ WHAT IS COLAB ══ -->
     <section class="section what" id="what">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b3 behind">
+        <img src="/assets/spider.png" class="magic-creature mc-s3">
         <div class="what-grid">
             <div class="what-left">
                 <p class="eyebrow">What is Collaboratorium?</p>
@@ -2070,6 +2186,8 @@
 
     <!-- ══ MEANING ══ -->
     <section class="section meaning" id="meaning">
+        <img src="/assets/spider.png" class="magic-creature mc-s4">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b4 behind">
         <div class="meaning-intro">
             <p class="eyebrow">What does Collaboratorium mean?</p>
             <p class="m-line2">
@@ -2112,6 +2230,8 @@
 
     <!-- ══ WHO ══ -->
     <section class="section who" id="who">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b5 behind">
+        <img src="/assets/spider.png" class="magic-creature mc-s5">
         <div class="who-grid">
             <div class="who-left">
                 <p class="eyebrow">Who should join?</p>
@@ -2234,6 +2354,8 @@
 
     <!-- ══ WHAT'S NEXT ══ -->
     <section class="section fuji" id="fuji">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b6 behind">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b7">
         <div class="fuji-grid">
             <div>
                 <div class="fuji-svg-wrap">
@@ -2317,6 +2439,8 @@
 
     <!-- ══ FAQ ══ -->
     <section class="section faq" id="faq">
+        <img src="/assets/spider.png" class="magic-creature mc-s6">
+        <img src="/assets/butterfly.png" class="magic-creature mc-b8 behind">
         <div class="faq-hd">
             <p class="eyebrow">Questions &amp; answers</p>
             <h2>
