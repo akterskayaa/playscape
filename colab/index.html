@@ -914,12 +914,15 @@ nav {
 
 .faq-layout {
   display: grid; grid-template-columns: 1fr auto; gap: 0 48px; align-items: start;
+  /* Pull the right column up by the faq-hd height so image aligns with "Frequently" */
 }
 .faq-list { max-width: 760px; width: 100%; }
 
 /* Japanese invitation column */
 .faq-jp-col {
   flex-shrink: 0; width: clamp(320px, 32vw, 460px);
+  /* pull up: faq-hd margin-bottom (64px) + h2 approx height (160px) + eyebrow (40px) */
+  margin-top: -264px;
 }
 .faq-jp-label {
   font-family: 'EB Garamond', serif; font-size: 10px;
