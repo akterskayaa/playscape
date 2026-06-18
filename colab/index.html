@@ -1008,14 +1008,20 @@ footer {
 /* ══ MOON CHILDREN INVITATION ══ */
 .invite-moon { background: var(--warm); }
 .invm-inner { }
-.invm-header { margin-bottom: 40px; }
+.invm-header { margin-bottom: 40px; text-align: center; }
 .invm-sub {
   font-family: 'Fraunces', serif; font-weight: 200;
   font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-  letter-spacing: -0.02em; line-height: 1.35; color: var(--mid);
+  letter-spacing: -0.02em; line-height: 1.4; color: var(--mid);
 }
-.invm-body { display: flex; flex-direction: column; gap: 48px; }
-.invm-audio-col { max-width: 680px; }
+.invm-look {
+  font-family: 'Fraunces', serif; font-weight: 100; font-style: italic;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.03em; color: var(--violet);
+  display: block; margin-bottom: 8px;
+}
+.invm-body { display: flex; flex-direction: column; gap: 48px; align-items: center; }
+.invm-audio-col { max-width: 680px; width: 100%; }
 
 /* Player card */
 .invm-player {
@@ -1138,7 +1144,7 @@ footer {
 .invm-bar:hover .invm-bar-thumb { opacity: 1; }
 .invm-hint {
   font-family: 'Alegreya', serif; font-style: italic; font-size: 1rem;
-  color: rgba(90,74,50,.4); text-align: center; margin-top: 8px;
+  color: rgba(90,74,50,.4); text-align: center; margin-top: 14px;
 }
 
 /* Image */
@@ -1498,7 +1504,7 @@ footer {
 
     <!-- Header -->
     <div class="invm-header">
-      <p class="invm-sub">Look! There is an invitation from the Moon Children — a poem, and a reading, carried here by starlight.</p>
+      <p class="invm-sub"><span class="invm-look">Look!</span><br>There is an invitation from the Moon Children — a poem carried here by starlight.</p>
     </div>
 
     <!-- Two columns: audio + image -->
@@ -1545,13 +1551,6 @@ footer {
         <audio id="invAudio" preload="metadata">
           <source src="/assets/call-to-gather.mp3" type="audio/mpeg">
         </audio>
-      </div>
-
-      <!-- RIGHT: image -->
-      <div class="invm-img-col">
-        <img src="/assets/invitation-moon-children.png"
-             alt="A Call to Gather — Moon Children invitation"
-             class="invm-img">
       </div>
 
     </div><!-- /invm-body -->
