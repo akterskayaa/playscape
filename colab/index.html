@@ -911,7 +911,62 @@ nav {
   letter-spacing:-0.03em; line-height:1.1; max-width:520px;
 }
 .faq-hd h2 em { color:var(--violet); font-weight:100; font-style:italic; }
-.faq-list { max-width:760px; }
+
+.faq-layout {
+  display: grid; grid-template-columns: 1fr auto; gap: 0 64px; align-items: start;
+}
+.faq-list { max-width: 760px; width: 100%; }
+
+/* Japanese invitation column */
+.faq-jp-col {
+  flex-shrink: 0; width: clamp(180px, 20vw, 260px);
+}
+.faq-jp-label {
+  font-family: 'EB Garamond', serif; font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px; display: block;
+}
+.faq-jp-link {
+  display: block; position: relative; overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(26,18,8,.12);
+  transition: box-shadow .3s;
+}
+.faq-jp-link:hover { box-shadow: 0 16px 48px rgba(26,18,8,.22); }
+.faq-jp-img {
+  width: 100%; display: block;
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.faq-jp-link:hover .faq-jp-img { transform: scale(1.02); }
+.faq-jp-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,18,8,.0);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  transition: background .3s;
+}
+.faq-jp-link:hover .faq-jp-overlay { background: rgba(26,18,8,.45); }
+.faq-jp-zoom {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--amber); color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(.8);
+  transition: opacity .3s, transform .3s cubic-bezier(.16,1,.3,1);
+}
+.faq-jp-hint {
+  font-family: 'EB Garamond', serif; font-size: 11px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(237,229,216,.85);
+  opacity: 0; transform: translateY(4px);
+  transition: opacity .3s .05s, transform .3s .05s;
+}
+.faq-jp-link:hover .faq-jp-zoom { opacity: 1; transform: scale(1); }
+.faq-jp-link:hover .faq-jp-hint { opacity: 1; transform: translateY(0); }
+
+@media(max-width:960px){
+  .faq-layout { grid-template-columns: 1fr; gap: 48px 0; }
+  .faq-jp-col { width: 100%; max-width: 320px; }
+}
 .faq-item { border-top:1px solid var(--border-mid); }
 .faq-item:last-child { border-bottom:1px solid var(--border-mid); }
 .faq-q {
@@ -1599,7 +1654,8 @@ footer {
     <p class="eyebrow">Questions &amp; answers</p>
     <h2>Frequently<br><em>asked</em></h2>
   </div>
-  <div class="faq-list">
+  <div class="faq-layout">
+    <div class="faq-list">
     <div class="faq-item">
       <button class="faq-q"><span class="faq-q-text">What happens after I apply?</span><span class="faq-icon"></span></button>
       <div class="faq-a"><div class="faq-a-inner">
@@ -1636,7 +1692,28 @@ footer {
       <button class="faq-q"><span class="faq-q-text">What tangible outcomes does the laboratory produce?</span><span class="faq-icon"></span></button>
       <div class="faq-a"><div class="faq-a-inner"><p>Every Collaboratorium seasonal cycle produces new ideas and prototypes, experience concepts, rituals, participation models, and creative partnerships. But perhaps more importantly: a deeper capacity to create together, relationships that continue beyond a single project, and a shared language among collaborators.</p></div></div>
     </div>
-  </div>
+  </div><!-- /faq-list -->
+
+    <!-- Japanese invitation image -->
+    <div class="faq-jp-col">
+      <p class="faq-jp-label">招待状 — Japanese Invitation</p>
+      <a href="/assets/invitation-japanese.png" target="_blank" class="faq-jp-link" title="Open to read full size">
+        <img src="/assets/invitation-japanese.png"
+             alt="集いへの呼びかけ — A Call to Gather (Japanese)"
+             class="faq-jp-img">
+        <div class="faq-jp-overlay">
+          <div class="faq-jp-zoom">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+          <span class="faq-jp-hint">Open full size</span>
+        </div>
+      </a>
+    </div>
+
+  </div><!-- /faq-layout -->
 </section>
 
 <!-- ══ CTA ══ -->
