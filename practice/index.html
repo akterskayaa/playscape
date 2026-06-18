@@ -906,6 +906,7 @@
         border: none;
         padding: 6px;
         align-items: center;
+    }
     .burger-btn span {
         display: block;
         height: 2px;
@@ -937,22 +938,15 @@
         top: 0;
         right: 0;
         width: min(360px, 88vw);
+        height: 100vh;
         background: var(--text);
         z-index: 400;
         padding: 80px 48px 56px;
-        transform: translateY(-100%) translateX(0);
-        transition: transform .55s cubic-bezier(.16,1,.3,1);
+        display: none;
         overflow: hidden;
     }
-    .nav-panel::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: radial-gradient(ellipse 80% 60% at 80% 0%, rgba(75,27,143,.35) 0%, transparent 60%);
-    }
     .nav-panel.open {
-        transform: translateY(0) translateX(0);
+        display: block;
     }
     .nav-panel-links {
         position: relative;
@@ -1010,11 +1004,10 @@
         inset: 0;
         z-index: 390;
         background: rgba(26,18,8,.0);
-        pointer-events: none;
-        transition: background .4s ease;
+        display: none;
     }
     .nav-overlay.open {
-        pointer-events: all;
+        display: block;
         background: rgba(26,18,8,.35);
     }
 
