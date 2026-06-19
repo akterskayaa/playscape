@@ -216,7 +216,8 @@ nav {
 .hero-meta-row {
   font-family:'EB Garamond',serif; font-size:13px;
   letter-spacing:.22em; text-transform:uppercase;
-  color:var(--amber); font-weight:500;
+  color:var(--amber); font-weight:700;
+  -webkit-text-stroke: 0.3px rgba(90,60,10,.5);
 }
 .hero-meta-row:last-child { opacity:.85; }
 .hero-meta-row::before { display:none; }
@@ -294,9 +295,11 @@ nav {
   letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
 }
 @media(max-width:760px){
-  .hero-row { grid-template-columns:1fr; gap:24px 0; }
-  .hero-row-top { align-items:start; }
+  .hero-row { grid-template-columns:1fr; gap:16px 0; }
+  .hero-row-top { align-items:start; flex-direction:column; }
   .hero-line2 { font-size:clamp(3rem,15vw,5.5rem); white-space:normal; }
+  .hero-pronounce { order:-1; margin-bottom:8px; }
+  .hero-desc-title { order:1; }
 }
 
 /* ══════════════════════════════════════════
@@ -1154,7 +1157,7 @@ footer {
 }
 .ov-card:hover { background: rgba(255,255,255,.8); }
 .ov-q {
-  font-family: 'Fraunces', serif; font-weight: 300;
+  font-family: 'Fraunces', serif; font-weight: 500;
   font-size: 1.15rem; letter-spacing: -0.01em;
   color: var(--amber); margin-bottom: 12px; line-height: 1.3;
 }
@@ -1381,6 +1384,61 @@ footer {
   background: var(--amber); flex-shrink: 0; opacity:.75;
 }
 @media(max-width:900px){ .tracks-grid { grid-template-columns: 1fr; } }
+
+/* ── Info sessions with image ── */
+.info-with-image {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px;
+}
+.info-half {
+  border-left: 2px solid var(--amber);
+  margin-bottom: 0 !important;
+}
+.info-illus { overflow: hidden; }
+.info-illus-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  max-height: 260px;
+}
+@media(max-width:760px){
+  .info-with-image { grid-template-columns: 1fr; }
+  .info-illus-img { max-height: 200px; }
+}
+
+/* ── Fuji section rebuild ── */
+.fuji-main-title {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.03em; line-height: 1.1;
+  margin-bottom: 48px;
+}
+.fuji-main-title em { color: var(--violet); font-weight: 100; font-style: italic; }
+
+.fuji-media-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin-bottom: 40px; align-items: start;
+}
+.fuji-photo-col { }
+.fuji-photo {
+  width: 100%; display: block;
+  box-shadow: 0 8px 32px rgba(26,18,8,.12);
+}
+.fuji-video-col { display: flex; flex-direction: column; gap: 12px; }
+.fuji-video-wrap {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(26,18,8,.12);
+}
+.fuji-video-wrap iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+}
+.fuji-video-caption {
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  letter-spacing: .08em; color: var(--muted); font-style: italic;
+}
+.fuji-date-standalone {
+  margin-bottom: 48px;
+}
+@media(max-width:760px){
+  .fuji-media-row { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -1473,16 +1531,16 @@ footer {
         <div class="ov-a">A creative laboratory helping design an immersive peace experience for Fuji Sanctuary in Japan.</div>
       </div>
       <div class="ov-card">
-        <div class="ov-q">What are we asking?</div>
-        <div class="ov-a">Register your interest and join an Orientation gathering on <strong>June 28–29</strong>.</div>
+        <div class="ov-q">What are we asking right now?</div>
+        <div class="ov-a">Join an Orientation gathering on <strong>June 28 or 29</strong> — attend either date. If you can't make it, we'll send the recording.</div>
       </div>
       <div class="ov-card">
         <div class="ov-q">What happens next?</div>
-        <div class="ov-a">Participants will help shape the structure, timing, and activities through a combination of live and asynchronous collaboration.</div>
+        <div class="ov-a">After Orientation → participants enter the Collaboratorium (<strong>July – August</strong>) through a combination of live and asynchronous collaboration.</div>
       </div>
       <div class="ov-card">
         <div class="ov-q">What are we creating?</div>
-        <div class="ov-a">Ideas, stories, experiences, technologies, and artistic contributions that may become part of the <strong>October Fuji Sanctuary gathering</strong>.</div>
+        <div class="ov-a">Ideas, stories, experiences, technologies, and artistic contributions that may become part of the October Fuji Sanctuary gathering (<strong>17–19 October 2026</strong>).</div>
       </div>
     </div>
     <div class="overview-badge">◈ &nbsp;Live &amp; Asynchronous Participation Available</div>
@@ -1543,7 +1601,6 @@ footer {
       <div class="track-label">Art Track</div>
       <div class="track-title">How it feels</div>
       <div class="track-sub">Perception &amp; Experience</div>
-      <p class="track-desc">Shapes what the experience is perceived and interpreted. The layer people encounter before they can explain it.</p>
       <ul class="track-list">
         <li>Visual</li>
         <li>Sound</li>
@@ -1556,7 +1613,6 @@ footer {
       <div class="track-label">Tech Track</div>
       <div class="track-title">How it works</div>
       <div class="track-sub">Systems &amp; Interaction</div>
-      <p class="track-desc">Builds the systems that make interaction possible — the infrastructure that enables experience to behave, adapt, and respond to human presence.</p>
       <ul class="track-list">
         <li>AI</li>
         <li>XR &amp; projection mapping</li>
@@ -1569,7 +1625,6 @@ footer {
       <div class="track-label">Community &amp; Connection Track</div>
       <div class="track-title">How it is lived</div>
       <div class="track-sub">Human Experience &amp; Connection</div>
-      <p class="track-desc">Holds the relational and embodied layer — the dimension that determines whether collective experience actually forms or simply passes through.</p>
       <ul class="track-list">
         <li>Biomimicry world-building</li>
         <li>Embodiment practices</li>
@@ -1644,36 +1699,41 @@ footer {
       <p class="eyebrow">What happens?</p>
       <h2>Shared journey.<br>One <em>collective</em> field.</h2>
     </div>
-    <p class="weeks-header-desc">Each week builds on the last. Between sessions, small groups continue developing concepts and experiments. Selected contributions will help shape the experience at Fuji Sanctuary.</p>
+    <p class="weeks-header-desc">Sessions take place during July – August 2026. It is a mix of live gatherings and asynchronous collaboration.</p>
   </div>
 
-  <!-- Information Sessions — compact row with amber left border -->
-  <div class="info-sessions-card">
-    <div class="info-date-block">
-      <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1">June 2026</span></div>
+  <!-- Information Sessions + illustration side by side -->
+  <div class="info-with-image">
+    <div class="info-sessions-card info-half">
+      <div class="info-date-block">
+        <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1">June 2026</span></div>
+      </div>
+      <div class="info-content">
+        <span class="info-badge">Information Sessions</span>
+        <h3>Discover the vision</h3>
+        <p>Meet the community, explore the project, and prepare for the journey ahead.</p>
+      </div>
     </div>
-    <div class="info-content">
-      <span class="info-badge">Information Sessions</span>
-      <h3>Meet the hosting team and understand the playground</h3>
-      <p>Learn about the project, ask questions, and decide whether Collaboratorium feels aligned with your work and curiosity. Choose the session that fits your time zone.</p>
+    <div class="info-illus">
+      <img src="/assets/fuji-sanctuary-illustration.jpeg" alt="Fuji Sanctuary gathering" class="info-illus-img">
     </div>
   </div>
 
   <div class="weeks-grid">
     <div class="week-card">
-      <div class="week-session-label">Session 1</div>
-      <div class="week-title">Meet the emerging community</div>
-      <div class="week-desc">Meet the emerging community and understand the themes. Share perspectives, stories, questions, inspirations, and possibilities.</div>
+      <div class="week-session-label">Week 1</div>
+      <div class="week-title">Explore</div>
+      <div class="week-desc">Meet your group, discover your assigned scene, and generate first ideas.</div>
     </div>
     <div class="week-card">
-      <div class="week-session-label">Session 2</div>
-      <div class="week-title">Share inspirations</div>
-      <div class="week-desc">Find your co-lab partners. Develop concepts, worlds, interactions, rituals, and experiences across disciplines.</div>
+      <div class="week-session-label">Week 2</div>
+      <div class="week-title">Remix</div>
+      <div class="week-desc">Exchange perspectives, challenge assumptions, and develop stronger concepts.</div>
     </div>
     <div class="week-card">
-      <div class="week-session-label">Session 3</div>
-      <div class="week-title">Share prototypes</div>
-      <div class="week-desc">Launch a creative commons library. Shape ideas into tangible proposals and experiments. Reflect on what emerged and celebrate the process.</div>
+      <div class="week-session-label">Week 3</div>
+      <div class="week-title">Share</div>
+      <div class="week-desc">Present what emerged, participate in a collective ritual, and reflect together.</div>
     </div>
     </div>
   </div>
@@ -1694,28 +1754,35 @@ footer {
 
 <!-- ══ WHAT'S NEXT ══ -->
 <section class="section fuji" id="fuji">
-  <div class="fuji-grid">
-    <div>
-      <div class="fuji-svg-wrap">
-        <img src="/assets/fuji-sanctuary-illustration.jpeg" alt="Animals gathered at Fuji Sanctuary under flags of many nations" class="fuji-img">
-        <span class="fuji-img-note">Fuji Sanctuary, Japan</span>
-      </div>
+  <p class="eyebrow">At the foot of Mount Fuji</p>
+  <h2 class="fuji-main-title">A peace sanctuary.<br>An <em>ancient future.</em></h2>
+
+  <!-- Photo + YouTube side by side -->
+  <div class="fuji-media-row">
+    <div class="fuji-photo-col">
+      <img src="/assets/fuji-sanctuary-photo.jpg" alt="Fuji Sanctuary with Mount Fuji in the background" class="fuji-photo">
     </div>
-    <div class="fuji-right">
-      <p class="eyebrow">What's next?</p>
-      <div class="fuji-intro-lines">
-        <p class="fuji-intro-line">A step into the ancient future.</p>
-        <p class="fuji-intro-line">An interactive story for cross-cultural exchange.</p>
-        <p class="fuji-intro-line">A peace sanctuary at the foot of Mount Fuji.</p>
+    <div class="fuji-video-col">
+      <div class="fuji-video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/uzMXKhAmt5o?rel=0&modestbranding=1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Yuka Saionji — Byakko Shinko Kai">
+        </iframe>
       </div>
-      <div class="fuji-date-card">
-        <div class="fuji-date">October 2026</div>
-        <div class="fuji-date-sub">Prototype Gathering · Fuji Sanctuary, Japan</div>
-      </div>
+      <p class="fuji-video-caption">Yuka Saionji, Vice-chairperson of the Byakko Shinko Kai</p>
     </div>
   </div>
 
-  <!-- Full-width story section below the image+intro -->
+  <!-- Date card -->
+  <div class="fuji-date-card fuji-date-standalone">
+    <div class="fuji-date">October 17–19, 2026</div>
+    <div class="fuji-date-sub">Prototype Gathering · Fuji Sanctuary, Japan</div>
+  </div>
+
+  <!-- Story cards -->
   <div class="fuji-story">
     <div class="fuji-story-block">
       <div class="fuji-story-num">01</div>
@@ -1850,7 +1917,7 @@ footer {
     </div>
     <div class="faq-item">
       <button class="faq-q"><span class="faq-q-text">What time zones will sessions be in?</span><span class="faq-icon"></span></button>
-      <div class="faq-a"><div class="faq-a-inner"><p>The sessions are designed to accommodate participants across Asia, Europe, and North America. Session times will be finalized after applications are reviewed.</p></div></div>
+      <div class="faq-a"><div class="faq-a-inner"><p>The sessions are designed to accommodate participants across Asia, Europe, and North America. Session times will be finalized after applications are reviewed. Asynchronous participation will also be available, so you can contribute on your own schedule.</p></div></div>
     </div>
     <div class="faq-item">
       <button class="faq-q"><span class="faq-q-text">How is authorship and intellectual property handled?</span><span class="faq-icon"></span></button>
@@ -1860,11 +1927,14 @@ footer {
       <button class="faq-q"><span class="faq-q-text">What tangible outcomes does the laboratory produce?</span><span class="faq-icon"></span></button>
       <div class="faq-a"><div class="faq-a-inner"><p>Every Collaboratorium seasonal cycle produces new ideas and prototypes, experience concepts, rituals, participation models, and creative partnerships. But perhaps more importantly: a deeper capacity to create together, relationships that continue beyond a single project, and a shared language among collaborators.</p></div></div>
     </div>
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-q-text">What language will the laboratory be in?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><div class="faq-a-inner"><p>The Collaboratorium will be conducted primarily in English and Japanese. We welcome participants from all linguistic backgrounds and will do our best to support cross-cultural communication throughout.</p></div></div>
+    </div>
   </div><!-- /faq-list -->
 
     <!-- Japanese invitation image -->
     <div class="faq-jp-col">
-      <p class="faq-jp-label">招待状 — Japanese Invitation</p>
       <a href="/assets/invitation-japanese.png" target="_blank" class="faq-jp-link" title="Open to read full size">
         <img src="/assets/invitation-japanese.png"
              alt="集いへの呼びかけ — A Call to Gather (Japanese)"
