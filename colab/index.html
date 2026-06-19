@@ -638,7 +638,7 @@ nav {
   padding:4px 10px; margin-bottom:10px;
 }
 .info-content h3 {
-  font-family:'Fraunces',serif; font-weight:200;
+  font-family:'Fraunces',serif; font-weight:600;
   font-size:clamp(1.1rem,1.6vw,1.35rem);
   letter-spacing:-0.01em; margin-bottom:6px; color:var(--text);
 }
@@ -704,8 +704,9 @@ nav {
 .week-card.outcome .week-label { color:rgba(237,229,216,.4); }
 
 .week-title {
-  font-family:'Fraunces',serif; font-weight:200; font-size:1.3rem;
-  letter-spacing:-0.02em; margin-bottom:12px; color:var(--text);
+  font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem;
+  letter-spacing:-0.01em; margin-bottom:12px; color:var(--text);
+  font-style:normal;
 }
 .week-card.outcome .week-title { color:var(--ivory); }
 
@@ -1450,7 +1451,7 @@ footer {
 .week-card-col { display: flex; flex-direction: column; gap: 2px; }
 .week-card-sm { padding: 24px 28px; }
 .week-card-sm .week-session-label { margin-bottom: 6px; }
-.week-card-sm .week-title { font-size: 1.15rem; margin-bottom: 6px; }
+.week-card-sm .week-title { font-size: 1.15rem; margin-bottom: 6px; color: var(--text); font-style: normal; font-weight: 600; }
 .week-card-sm .week-desc { font-size: .95rem; }
 /* info-sessions-card inside right col — no left border from parent */
 .weeks-right-col .info-sessions-card { border-left: 2px solid var(--amber); margin-bottom: 0; }
@@ -1483,6 +1484,15 @@ footer {
 .yuka-video-col { }
 @media(max-width:760px){
   .yuka-row { grid-template-columns: 1fr; gap: 40px 0; }
+}
+
+/* Mobile: moon children appears after audio player (invite-moon), before FAQ */
+@media(max-width:760px){
+  .mobile-reorder {
+    display: flex; flex-direction: column;
+  }
+  .mobile-reorder .invite-moon { order: 1; }
+  .mobile-reorder .faq-section  { order: 2; }
 }
 </style>
 </head>
@@ -1757,7 +1767,7 @@ footer {
     <div class="weeks-right-col">
       <div class="info-sessions-card">
         <div class="info-date-block">
-          <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1">June 2026</span></div>
+          <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1;text-transform:none;font-size:clamp(.95rem,1.5vw,1.15rem);">June 2026</span></div>
         </div>
         <div class="info-content">
           <span class="info-badge">Information Sessions</span>
@@ -1864,6 +1874,7 @@ footer {
 </section>
 
 
+<div class="mobile-reorder">
 <!-- ══ MOON CHILDREN INVITATION ══ -->
 <section class="section invite-moon" id="invitation">
   <div class="invm-inner">
@@ -1924,7 +1935,7 @@ footer {
 </section>
 
 <!-- ══ FAQ ══ -->
-<section class="section faq" id="faq">
+<section class="section faq faq-section" id="faq">
   <div class="faq-hd">
     <p class="eyebrow">Questions &amp; answers</p>
     <h2>Frequently<br><em>asked</em></h2>
@@ -1993,6 +2004,7 @@ footer {
 
   </div><!-- /faq-layout -->
 </section>
+</div><!-- /mobile-reorder -->
 
 <!-- ══ CTA ══ -->
 <section class="section cta" id="apply">
