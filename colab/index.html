@@ -1439,6 +1439,51 @@ footer {
 @media(max-width:760px){
   .fuji-media-row { grid-template-columns: 1fr; }
 }
+
+/* ── WHAT HAPPENS: two-column layout ── */
+.weeks-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 0;
+}
+.weeks-left-col { overflow: hidden; }
+.weeks-full-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.weeks-right-col { display: flex; flex-direction: column; gap: 2px; }
+.week-card-col { display: flex; flex-direction: column; gap: 2px; }
+.week-card-sm { padding: 24px 28px; }
+.week-card-sm .week-session-label { margin-bottom: 6px; }
+.week-card-sm .week-title { font-size: 1.15rem; margin-bottom: 6px; }
+.week-card-sm .week-desc { font-size: .95rem; }
+/* info-sessions-card inside right col — no left border from parent */
+.weeks-right-col .info-sessions-card { border-left: 2px solid var(--amber); margin-bottom: 0; }
+
+@media(max-width:900px){
+  .weeks-layout { grid-template-columns: 1fr; }
+  .weeks-full-img { max-height: 280px; }
+}
+
+/* ── YUKA BIO row (mirrored: bio left, video right) ── */
+.yuka-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 8vw;
+  align-items: center; margin-bottom: 40px;
+}
+.yuka-bio { }
+.yuka-name {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.03em; line-height: 1.05;
+  color: var(--text); margin-bottom: 8px;
+}
+.yuka-name em { color: var(--violet); font-weight: 100; font-style: italic; }
+.yuka-role {
+  font-family: 'EB Garamond', serif; font-size: 13px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.yuka-role::before { content: ''; width: 18px; height: 1px; background: var(--amber); display: block; }
+.yuka-video-col { }
+@media(max-width:760px){
+  .yuka-row { grid-template-columns: 1fr; gap: 40px 0; }
+}
 </style>
 </head>
 <body>
@@ -1702,39 +1747,41 @@ footer {
     <p class="weeks-header-desc">Sessions take place during July – August 2026. It is a mix of live gatherings and asynchronous collaboration.</p>
   </div>
 
-  <!-- Information Sessions + illustration side by side -->
-  <div class="info-with-image">
-    <div class="info-sessions-card info-half">
-      <div class="info-date-block">
-        <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1">June 2026</span></div>
+  <!-- Two-column: left = image full height, right = info + weeks stacked -->
+  <div class="weeks-layout">
+    <!-- LEFT: illustration full -->
+    <div class="weeks-left-col">
+      <img src="/assets/fuji-sanctuary-illustration.jpeg" alt="Fuji Sanctuary gathering" class="weeks-full-img">
+    </div>
+    <!-- RIGHT: info sessions + weeks stacked -->
+    <div class="weeks-right-col">
+      <div class="info-sessions-card">
+        <div class="info-date-block">
+          <div class="info-date-inline"><span class="info-date-big">28 or 29</span><span class="info-date-month" style="color:var(--violet);opacity:1">June 2026</span></div>
+        </div>
+        <div class="info-content">
+          <span class="info-badge">Information Sessions</span>
+          <h3>Discover the vision</h3>
+          <p>Meet the community, explore the project, and prepare for the journey ahead.</p>
+        </div>
       </div>
-      <div class="info-content">
-        <span class="info-badge">Information Sessions</span>
-        <h3>Discover the vision</h3>
-        <p>Meet the community, explore the project, and prepare for the journey ahead.</p>
+      <div class="week-card-col">
+        <div class="week-card week-card-sm">
+          <div class="week-session-label">Week 1</div>
+          <div class="week-title">Explore</div>
+          <div class="week-desc">Meet your group, discover your assigned scene, and generate first ideas.</div>
+        </div>
+        <div class="week-card week-card-sm">
+          <div class="week-session-label">Week 2</div>
+          <div class="week-title">Remix</div>
+          <div class="week-desc">Exchange perspectives, challenge assumptions, and develop stronger concepts.</div>
+        </div>
+        <div class="week-card week-card-sm">
+          <div class="week-session-label">Week 3</div>
+          <div class="week-title">Share</div>
+          <div class="week-desc">Present what emerged, participate in a collective ritual, and reflect together.</div>
+        </div>
       </div>
-    </div>
-    <div class="info-illus">
-      <img src="/assets/fuji-sanctuary-illustration.jpeg" alt="Fuji Sanctuary gathering" class="info-illus-img">
-    </div>
-  </div>
-
-  <div class="weeks-grid">
-    <div class="week-card">
-      <div class="week-session-label">Week 1</div>
-      <div class="week-title">Explore</div>
-      <div class="week-desc">Meet your group, discover your assigned scene, and generate first ideas.</div>
-    </div>
-    <div class="week-card">
-      <div class="week-session-label">Week 2</div>
-      <div class="week-title">Remix</div>
-      <div class="week-desc">Exchange perspectives, challenge assumptions, and develop stronger concepts.</div>
-    </div>
-    <div class="week-card">
-      <div class="week-session-label">Week 3</div>
-      <div class="week-title">Share</div>
-      <div class="week-desc">Present what emerged, participate in a collective ritual, and reflect together.</div>
-    </div>
     </div>
   </div>
 
@@ -1757,12 +1804,13 @@ footer {
   <p class="eyebrow">At the foot of Mount Fuji</p>
   <h2 class="fuji-main-title">A peace sanctuary.<br>An <em>ancient future.</em></h2>
 
-  <!-- Photo + YouTube side by side -->
-  <div class="fuji-media-row">
-    <div class="fuji-photo-col">
-      <img src="/assets/fuji-sanctuary-photo.jpg" alt="Fuji Sanctuary with Mount Fuji in the background" class="fuji-photo">
+  <!-- Yuka bio left + video right (mirrored from Krishnan) -->
+  <div class="yuka-row">
+    <div class="yuka-bio">
+      <h2 class="yuka-name">Yuka<br><em>Saionji</em></h2>
+      <p class="yuka-role">Vice-chairperson, Byakko Shinko Kai</p>
     </div>
-    <div class="fuji-video-col">
+    <div class="yuka-video-col">
       <div class="fuji-video-wrap">
         <iframe
           src="https://www.youtube.com/embed/uzMXKhAmt5o?rel=0&modestbranding=1"
@@ -1772,7 +1820,6 @@ footer {
           title="Yuka Saionji — Byakko Shinko Kai">
         </iframe>
       </div>
-      <p class="fuji-video-caption">Yuka Saionji, Vice-chairperson of the Byakko Shinko Kai</p>
     </div>
   </div>
 
