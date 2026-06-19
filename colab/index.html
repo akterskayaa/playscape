@@ -1122,12 +1122,24 @@ footer {
 }
 .overview-inner { position:relative; z-index:1; }
 
+.ov-headline {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  letter-spacing: -0.03em; line-height: 1.15;
+  color: var(--text); margin-bottom: 16px;
+}
+.ov-headline em { color: var(--violet); font-style: italic; font-weight: 100; }
+.ov-body {
+  font-family: 'Alegreya', serif; font-size: 1.15rem;
+  color: var(--mid); line-height: 1.85; max-width: 720px;
+  margin-bottom: 48px;
+}
 .overview-badge {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: 'EB Garamond', serif; font-size: 12px;
   letter-spacing: .22em; text-transform: uppercase;
   color: var(--mid); border: 1px solid var(--border-mid);
-  padding: 8px 16px; margin-bottom: 40px;
+  padding: 8px 16px; margin-top: 32px;
 }
 .overview-badge::before { content:'◈'; font-size:10px; }
 
@@ -1143,7 +1155,7 @@ footer {
 .ov-card:hover { background: rgba(255,255,255,.8); }
 .ov-q {
   font-family: 'Fraunces', serif; font-weight: 300;
-  font-size: 1.0rem; letter-spacing: -0.01em;
+  font-size: 1.15rem; letter-spacing: -0.01em;
   color: var(--amber); margin-bottom: 12px; line-height: 1.3;
 }
 .ov-a {
@@ -1452,10 +1464,12 @@ footer {
 <!-- ══ QUICK OVERVIEW ══ -->
 <section class="overview-section">
   <div class="overview-inner">
-    <div class="overview-badge">Live &amp; Asynchronous Participation Available</div>
+    <p class="eyebrow" style="margin-bottom:20px;">What is Collaboratorium?</p>
+    <p class="ov-headline">Collaboratorium —<br><em>a community-powered creative laboratory.</em></p>
+    <p class="ov-body">It is a place to experiment with new forms of collaboration, contribute to a real-world project, build a cultural library of ritual interventions, and meet others who believe that art, technology, imagination, and community can shape a more connected future.</p>
     <div class="overview-grid">
       <div class="ov-card">
-        <div class="ov-q">What is Collaboratorium?</div>
+        <div class="ov-q">What is our purpose?</div>
         <div class="ov-a">A creative laboratory helping design an immersive peace experience for Fuji Sanctuary in Japan.</div>
       </div>
       <div class="ov-card">
@@ -1471,21 +1485,7 @@ footer {
         <div class="ov-a">Ideas, stories, experiences, technologies, and artistic contributions that may become part of the <strong>October Fuji Sanctuary gathering</strong>.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ══ WHY ══ -->
-<section class="section why" id="why">
-  <div class="why-inner">
-    <div class="why-left">
-      <p class="eyebrow">Why are we gathering?</p>
-      <h2>Peace as something<br>we can <em>practice.</em><br>Together.</h2>
-    </div>
-    <div class="why-right">
-      <p>This summer, people from around the world will gather online to playfully experiment with interactive storytelling experiences dedicated to peace and the strength of diversity.</p>
-      <p>In a time when so much energy is directed toward fear, separation, and conflict, we are asking a different question:</p>
-      <p class="why-q">What experiences allow people to listen, imagine, create, belong and empower each other?</p>
-    </div>
+    <div class="overview-badge">◈ &nbsp;Live &amp; Asynchronous Participation Available</div>
   </div>
 </section>
 
@@ -1515,14 +1515,22 @@ footer {
   </div>
 </section>
 
-<!-- ══ WHAT IS COLAB ══ -->
-<section class="section what" id="what">
-  <div class="what-single">
-    <p class="eyebrow">What is Collaboratorium?</p>
-    <p class="what-title-line">Collaboratorium —<br><span class="what-tagline-inline">a community-powered creative laboratory.</span></p>
-    <p class="what-body">It is a place to experiment with new forms of collaboration, contribute to a real-world project, build a cultural library of ritual interventions, and meet others who believe that art, technology, imagination, and community can shape a more connected future.</p>
+<!-- ══ WHY ══ -->
+<section class="section why" id="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <p class="eyebrow">Why are we gathering?</p>
+      <h2>Peace as something<br>we can <em>practice.</em><br>Together.</h2>
+    </div>
+    <div class="why-right">
+      <p>This summer, people from around the world will gather online to playfully experiment with interactive storytelling experiences dedicated to peace and the strength of diversity.</p>
+      <p>In a time when so much energy is directed toward fear, separation, and conflict, we are asking a different question:</p>
+      <p class="why-q">What experiences allow people to listen, imagine, create, belong and empower each other?</p>
+    </div>
   </div>
 </section>
+
+
 
 
 <!-- ══ TRACKS ══ -->
@@ -1573,40 +1581,7 @@ footer {
   </div>
 </section>
 
-<!-- ══ MEANING ══ -->
-<section class="section meaning" id="meaning">
-  <div class="meaning-intro">
-    <p class="eyebrow">What does Collaboratorium mean?</p>
-    <p class="m-line2"><span style="color:var(--violet);font-style:italic;">Collaboratorium</span> is an invented word that we use because none of the existing ones felt quite right.</p>
-    <p class="m-line3">It holds many ideas simultaneously — each one a small manifesto about how we want to work together.<br>Perhaps you have some additional inspiration?</p>
-  </div>
-  <div class="meaning-grid">
-    <div class="meaning-card">
-      <div class="meaning-word">Collaboration</div>
-      <div class="meaning-value">Participation over extraction.</div>
-    </div>
-    <div class="meaning-card">
-      <div class="meaning-word">Co-Creation</div>
-      <div class="meaning-value">Process before products.</div>
-    </div>
-    <div class="meaning-card">
-      <div class="meaning-word">Laboratory</div>
-      <div class="meaning-value">Experimentation over certainty.</div>
-    </div>
-    <div class="meaning-card">
-      <div class="meaning-word">Playground</div>
-      <div class="meaning-value">Curiosity over perfection.</div>
-    </div>
-    <div class="meaning-card">
-      <div class="meaning-word">Exploration</div>
-      <div class="meaning-value">Listening before answers.</div>
-    </div>
-    <div class="meaning-card">
-      <div class="meaning-word">Community</div>
-      <div class="meaning-value">Relationships through reciprocity.</div>
-    </div>
-  </div>
-</section>
+
 
 
 
