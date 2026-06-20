@@ -1103,7 +1103,7 @@ footer {
 
 /* RESPONSIVE */
 @media(max-width:960px){
-  .why-inner,.what-grid,.questions-inner,.who-grid,.fuji-grid,.weeks-header
+  .why-inner,.what-grid,.questions-inner,.who-grid,.fuji-grid,.weeks-header,.create-inner
   { grid-template-columns:1fr; gap:40px 0; }
   .what-right,.why-right,.fuji-right,.questions-right,.who-right { padding-top:0; }
   .weeks-grid { grid-template-columns:1fr 1fr; }
@@ -1170,6 +1170,43 @@ footer {
 
 @media(max-width:900px){ .overview-grid { grid-template-columns: 1fr 1fr; } }
 @media(max-width:600px){ .overview-grid { grid-template-columns: 1fr; } }
+
+/* ══ WHAT COULD COME OUT OF THIS ══ */
+.create { background: var(--ivory); }
+.create-inner {
+  display: grid; grid-template-columns: 5fr 6fr; gap: 0 8vw; align-items:start;
+}
+.create-left h2 {
+  font-family:'Fraunces',serif; font-weight:200;
+  font-size:clamp(2rem,4vw,3.4rem);
+  letter-spacing:-0.03em; line-height:1.1; margin-bottom:28px;
+}
+.create-left h2 em { color:var(--violet); font-weight:100; font-style:italic; }
+.create-list { list-style:none; margin-top:8px; }
+.create-list li {
+  display:flex; align-items:center; gap:18px;
+  padding:18px 0; border-bottom:1px solid var(--border);
+  font-family:'Alegreya',serif; font-size:1.12rem; color:var(--mid); line-height:1.4;
+}
+.create-list li:first-child { border-top:1px solid var(--border); }
+.create-list li:last-child { color:var(--text); font-style:italic; }
+.create-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:50%;
+  background:rgba(228,163,74,.12); color:var(--amber);
+  display:flex; align-items:center; justify-content:center;
+}
+.create-icon svg { width:18px; height:18px; }
+.create-right { padding-top:calc(11px + .25em + 28px); }
+.create-img-wrap {
+  width:100%; aspect-ratio:16/10.5; overflow:hidden;
+  background:var(--deep);
+}
+.create-img { width:100%; height:100%; object-fit:cover; display:block; }
+.create-img-caption {
+  margin-top:16px; font-family:'Alegreya',serif; font-style:italic;
+  font-size:.96rem; color:var(--muted); text-align:center;
+}
+@media(max-width:960px){ .create-right { padding-top:0; } }
 
 /* Apply note under hero button */
 .hero-apply-note {
@@ -1602,6 +1639,65 @@ footer {
   </div>
 </section>
 
+<!-- ══ WHAT COULD COME OUT OF THIS ══ -->
+<section class="section create" id="create">
+  <div class="create-inner">
+    <div class="create-left">
+      <p class="eyebrow">What could come out of this?</p>
+      <h2>Things we might<br><em>create together.</em></h2>
+      <ul class="create-list">
+        <li>
+          <span class="create-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+              <path d="M12 2.5 13.9 9.6 21 12 13.9 14.4 12 21.5 10.1 14.4 3 12 10.1 9.6 12 2.5Z"/>
+            </svg>
+          </span>
+          <span>An AI-powered story world</span>
+        </li>
+        <li>
+          <span class="create-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.5 12.5h4l2-7.5 4.2 15 3-10 1.8 2.5h4"/>
+            </svg>
+          </span>
+          <span>A biofeedback experience</span>
+        </li>
+        <li>
+          <span class="create-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+              <circle cx="5.5" cy="6" r="2.1"/><circle cx="18.5" cy="6" r="2.1"/><circle cx="12" cy="18.5" r="2.1"/>
+              <path d="M7.3 7.1 10.4 16.7M16.7 7.1 13.6 16.7M7.6 6h8.8"/>
+            </svg>
+          </span>
+          <span>A new format for online connection</span>
+        </li>
+        <li>
+          <span class="create-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+              <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/>
+            </svg>
+          </span>
+          <span>A ritual for collective decision making</span>
+        </li>
+        <li>
+          <span class="create-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.6 4" stroke-linecap="round">
+              <circle cx="12" cy="12" r="8.5"/>
+            </svg>
+          </span>
+          <span>Something none of us can imagine yet</span>
+        </li>
+      </ul>
+    </div>
+    <div class="create-right">
+      <div class="create-img-wrap">
+        <img src="/assets/create-together-moodboard.jpg" alt="A collage of immersive light, projection, and movement installations" class="create-img">
+      </div>
+      <p class="create-img-caption">Some of the worlds we hope to explore.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══ VIDEO INVITATION ══ -->
 <section class="section invite" id="invite">
   <div class="invite-inner">
@@ -1632,13 +1728,13 @@ footer {
 <section class="section why" id="why">
   <div class="why-inner">
     <div class="why-left">
-      <p class="eyebrow">Why are we gathering?</p>
+      <p class="eyebrow">Why are we doing it?</p>
       <h2>Peace as something<br>we can <em>practice.</em><br>Together.</h2>
     </div>
     <div class="why-right">
       <p>This summer, people from around the world will gather online to playfully experiment with interactive storytelling experiences dedicated to peace and the strength of diversity.</p>
-      <p>In a time when so much energy is directed toward fear, separation, and conflict, we are asking a different question:</p>
-      <p class="why-q">What experiences allow people to listen, imagine, create, belong and empower each other?</p>
+      <p>We believe peace is not only an idea. It is something people can practice, imagine, design, and experience together.</p>
+      <p>Collaboratorium brings together artists, technologists, storytellers, community builders, and curious minds to help prototype an immersive experience for Fuji Sanctuary in Japan while exploring new ways of creating across cultures.</p>
     </div>
   </div>
 </section>
@@ -1743,6 +1839,25 @@ footer {
         <span class="who-tag">Collective Intelligence Researcher</span>
         <span class="who-tag">Dreamer</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY PARTICIPATE ══ -->
+<section class="section questions" id="participate">
+  <div class="questions-inner">
+    <div class="questions-left">
+      <p class="eyebrow">Why participate?</p>
+      <h2>Reasons to<br><em>join in.</em></h2>
+    </div>
+    <div class="questions-right">
+      <ul class="q-list">
+        <li>Meet people who see the world differently</li>
+        <li>Explore ideas you couldn't develop alone</li>
+        <li>Learn through making, not just talking</li>
+        <li>Contribute to a real project for Fuji Sanctuary</li>
+        <li>Join a growing ecosystem of future collaborations</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1942,6 +2057,20 @@ footer {
   </div>
   <div class="faq-layout">
     <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-q-text">What am I making? Will my work be exhibited?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Participants will help prototype elements of an immersive experience for Fuji Sanctuary, including:</p>
+        <ol class="faq-steps">
+          <li>Stories and narrative journeys</li>
+          <li>Rituals and participatory experiences</li>
+          <li>Creative technology experiments</li>
+          <li>Visual and sensory environments</li>
+          <li>Community interaction models</li>
+        </ol>
+        <p>Not all ideas will become part of the final experience, but all contributions help shape what becomes possible.</p>
+      </div></div>
+    </div>
     <div class="faq-item">
       <button class="faq-q"><span class="faq-q-text">What happens after I apply?</span><span class="faq-icon"></span></button>
       <div class="faq-a"><div class="faq-a-inner">
