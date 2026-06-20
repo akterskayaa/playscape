@@ -1174,7 +1174,11 @@ footer {
 /* ══ WHAT COULD COME OUT OF THIS ══ */
 .create { background: var(--ivory); }
 .create-inner {
-  display: grid; grid-template-columns: 5fr 6fr; gap: 0 8vw; align-items:start;
+  display: grid; grid-template-columns: 5fr 6fr; grid-template-rows: auto auto;
+  column-gap: 8vw; row-gap: 0;
+}
+.create-left {
+  grid-column: 1; grid-row: 1;
 }
 .create-left h2 {
   font-family:'Fraunces',serif; font-weight:200;
@@ -1196,17 +1200,23 @@ footer {
   display:flex; align-items:center; justify-content:center;
 }
 .create-icon svg { width:18px; height:18px; }
-.create-right { padding-top:calc(11px + .25em + 28px); }
+.create-right {
+  grid-column: 2; grid-row: 1;
+  align-self: end;
+}
 .create-img-wrap {
-  width:100%; aspect-ratio:16/10.5; overflow:hidden;
+  width:100%; aspect-ratio:1920/1148; overflow:hidden;
   background:var(--deep);
 }
 .create-img { width:100%; height:100%; object-fit:cover; display:block; }
 .create-img-caption {
+  grid-column: 2; grid-row: 2;
   margin-top:16px; font-family:'Alegreya',serif; font-style:italic;
   font-size:.96rem; color:var(--muted); text-align:center;
 }
-@media(max-width:960px){ .create-right { padding-top:0; } }
+@media(max-width:960px){
+  .create-left,.create-right,.create-img-caption { grid-column:1; grid-row:auto; align-self:auto; }
+}
 
 /* Apply note under hero button */
 .hero-apply-note {
@@ -1693,8 +1703,8 @@ footer {
       <div class="create-img-wrap">
         <img src="/assets/create-together-moodboard.jpg" alt="A collage of immersive light, projection, and movement installations" class="create-img">
       </div>
-      <p class="create-img-caption">Some of the worlds we hope to explore.</p>
     </div>
+    <p class="create-img-caption">Some of the worlds we hope to explore.</p>
   </div>
 </section>
 
