@@ -989,6 +989,13 @@ nav {
   .faq-layout { grid-template-columns: 1fr; gap: 48px 0; }
   .faq-jp-col { width: 100%; max-width: 320px; }
 }
+.faq-jp-col-mobile { display:none; }
+@media(max-width:760px){
+  .faq-jp-col-desktop { display:none; }
+  .faq-jp-col-mobile {
+    display:block; margin-top:0; max-width:320px; margin-left:auto; margin-right:auto;
+  }
+}
 .faq-item { border-top:1px solid var(--border-mid); }
 .faq-item:last-child { border-bottom:1px solid var(--border-mid); }
 .faq-q {
@@ -1103,7 +1110,7 @@ footer {
 
 /* RESPONSIVE */
 @media(max-width:960px){
-  .why-inner,.what-grid,.questions-inner,.who-grid,.fuji-grid,.weeks-header,.create-inner
+  .why-inner,.what-grid,.questions-inner,.who-grid,.fuji-grid,.weeks-header
   { grid-template-columns:1fr; gap:40px 0; }
   .what-right,.why-right,.fuji-right,.questions-right,.who-right { padding-top:0; }
   .weeks-grid { grid-template-columns:1fr 1fr; }
@@ -1179,6 +1186,7 @@ footer {
 }
 .create-left {
   grid-column: 1; grid-row: 1;
+  min-width: 0;
 }
 .create-left h2 {
   font-family:'Fraunces',serif; font-weight:200;
@@ -1194,6 +1202,7 @@ footer {
 }
 .create-list li:first-child { border-top:1px solid var(--border); }
 .create-list li:last-child { color:var(--text); font-style:italic; }
+.create-list li > span:last-child { flex:1 1 0%; min-width:0; }
 .create-icon {
   flex-shrink:0; width:40px; height:40px; border-radius:50%;
   background:rgba(228,163,74,.12); color:var(--amber);
@@ -1203,6 +1212,7 @@ footer {
 .create-right {
   grid-column: 2; grid-row: 1;
   align-self: end;
+  min-width: 0;
 }
 .create-img-wrap {
   width:100%; aspect-ratio:1920/1148; overflow:hidden;
@@ -1215,7 +1225,8 @@ footer {
   font-size:.96rem; color:var(--muted); text-align:center;
 }
 @media(max-width:960px){
-  .create-left,.create-right,.create-img-caption { grid-column:1; grid-row:auto; align-self:auto; }
+  .create-inner { display:flex; flex-direction:column; }
+  .create-left,.create-right,.create-img-caption { width:100%; max-width:100%; }
 }
 
 /* Apply note under hero button */
@@ -1539,7 +1550,8 @@ footer {
     display: flex; flex-direction: column;
   }
   .mobile-reorder .invite-moon { order: 1; }
-  .mobile-reorder .faq-section  { order: 2; }
+  .mobile-reorder .faq-jp-col-mobile { order: 2; padding: 0 6vw 48px; }
+  .mobile-reorder .faq-section  { order: 3; }
 }
 </style>
 </head>
@@ -1634,7 +1646,7 @@ footer {
       </div>
       <div class="ov-card">
         <div class="ov-q">What are we asking right now?</div>
-        <div class="ov-a">Join an Orientation gathering on <strong>June 28 or 29</strong> — attend either date. If you can't make it, we'll send the recording.</div>
+        <div class="ov-a">Join a first Orientation gathering on <strong>June 28 or 29</strong> — attend either date. If you can't make it, we'll send the recording.</div>
       </div>
       <div class="ov-card">
         <div class="ov-q">What happens next?</div>
@@ -1728,7 +1740,7 @@ footer {
     <div class="invite-bio">
       <p class="eyebrow">An invitation</p>
       <h2 class="invite-name">Krishnan<br><em>Unnikrishnan</em></h2>
-      <p class="invite-role">Founder, Radiant IRIS Collective</p>
+      <p class="invite-role">Co-founder, Radiant IRIS Collective</p>
 
     </div>
   </div>
@@ -1743,7 +1755,7 @@ footer {
     </div>
     <div class="why-right">
       <p>This summer, people from around the world will gather online to playfully experiment with interactive storytelling experiences dedicated to peace and the strength of diversity.</p>
-      <p>We believe peace is not only an idea. It is something people can practice, imagine, design, and experience together.</p>
+      <p>We believe peace is not only an idea. It is something people can imagine, design, practice and experience together.</p>
       <p>Collaboratorium brings together artists, technologists, storytellers, community builders, and curious minds to help prototype an immersive experience for Fuji Sanctuary in Japan while exploring new ways of creating across cultures.</p>
     </div>
   </div>
@@ -1760,7 +1772,7 @@ footer {
 
     <div class="track-card">
       <div class="track-label">Art Track</div>
-      <div class="track-title">How it feels</div>
+      <div class="track-title">How it senses</div>
       <div class="track-sub">Perception &amp; Experience</div>
       <ul class="track-list">
         <li>Visual</li>
@@ -1784,7 +1796,7 @@ footer {
 
     <div class="track-card">
       <div class="track-label">Community &amp; Connection Track</div>
-      <div class="track-title">How it is lived</div>
+      <div class="track-title">How it is felt</div>
       <div class="track-sub">Human Experience &amp; Connection</div>
       <ul class="track-list">
         <li>Biomimicry world-building</li>
@@ -2123,8 +2135,8 @@ footer {
     </div>
   </div><!-- /faq-list -->
 
-    <!-- Japanese invitation image -->
-    <div class="faq-jp-col">
+    <!-- Japanese invitation image (desktop position: beside FAQ list) -->
+    <div class="faq-jp-col faq-jp-col-desktop">
       <a href="/assets/invitation-japanese.png" target="_blank" class="faq-jp-link" title="Open to read full size">
         <img src="/assets/invitation-japanese.png"
              alt="集いへの呼びかけ — A Call to Gather (Japanese)"
@@ -2143,6 +2155,24 @@ footer {
 
   </div><!-- /faq-layout -->
 </section>
+
+<!-- Japanese invitation image (mobile-only position: after "Look!", before FAQ) -->
+<div class="faq-jp-col faq-jp-col-mobile">
+  <a href="/assets/invitation-japanese.png" target="_blank" class="faq-jp-link" title="Open to read full size">
+    <img src="/assets/invitation-japanese.png"
+         alt="集いへの呼びかけ — A Call to Gather (Japanese)"
+         class="faq-jp-img">
+    <div class="faq-jp-overlay">
+      <div class="faq-jp-zoom">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+          <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </div>
+      <span class="faq-jp-hint">Open full size</span>
+    </div>
+  </a>
+</div>
 </div><!-- /mobile-reorder -->
 
 <!-- ══ CTA ══ -->
