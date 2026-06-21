@@ -1155,7 +1155,7 @@ footer {
 .overview-badge::before { content:'◈'; font-size:10px; }
 
 .overview-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
 }
 .ov-card {
   background: rgba(255,255,255,.5);
@@ -1177,6 +1177,61 @@ footer {
 
 @media(max-width:900px){ .overview-grid { grid-template-columns: 1fr 1fr; } }
 @media(max-width:600px){ .overview-grid { grid-template-columns: 1fr; } }
+
+/* ══ THE PURPOSE ══ */
+.purpose {
+  background: var(--ivory);
+  min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+.purpose-inner { max-width: 980px; margin: 0 auto; }
+.purpose-inner .eyebrow { justify-content: center; }
+.purpose-text p {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(1.6rem, 3.6vw, 2.7rem);
+  letter-spacing: -0.02em; line-height: 1.42;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+.purpose-text p:last-child { margin-bottom: 0; }
+.purpose-text em { color: var(--violet); font-style: italic; font-weight: 300; }
+
+/* ══ WHAT WE'RE CREATING ══ */
+.creating { background: var(--warm); }
+.creating-title {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.03em; line-height: 1.1;
+  margin-bottom: 56px;
+}
+.creating-title em { color: var(--violet); font-weight: 100; font-style: italic; }
+.creating-grid {
+  display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  column-gap: 6vw; row-gap: 0;
+}
+.creating-item {
+  display: flex; align-items: flex-start; gap: 22px;
+  padding: 26px 0; border-bottom: 1px solid var(--border);
+}
+.creating-item:nth-child(1), .creating-item:nth-child(5) { border-top: 1px solid var(--border); }
+.creating-num {
+  font-family: 'Fraunces', serif; font-weight: 300;
+  font-size: 1.6rem; color: var(--amber); opacity: .55;
+  min-width: 38px; flex-shrink: 0; line-height: 1.5;
+}
+.creating-item p {
+  font-family: 'Alegreya', serif; font-size: 1.08rem;
+  color: var(--mid); line-height: 1.6; margin: 0;
+}
+@media(max-width:900px){
+  .creating-grid { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; }
+  .creating-item:nth-child(5) { border-top: none; }
+}
+
+/* ══ PRACTICAL INFORMATION ══ */
+.practical { background: var(--deep); }
 
 /* ══ WHAT COULD COME OUT OF THIS ══ */
 .create { background: var(--ivory); }
@@ -1638,26 +1693,54 @@ footer {
   <div class="overview-inner">
     <p class="eyebrow" style="margin-bottom:20px;">What is Collaboratorium?</p>
     <p class="ov-headline">Collaboratorium —<br><em>a community-powered creative laboratory.</em></p>
-    <p class="ov-body">It is a place to experiment with new forms of collaboration, contribute to a real-world project, build a cultural library of ritual interventions, and meet others who believe that art, technology, imagination, and community can shape a more connected future.</p>
-    <div class="overview-grid">
-      <div class="ov-card">
-        <div class="ov-q">What is our purpose?</div>
-        <div class="ov-a">A creative laboratory helping design an immersive peace experience for Fuji Sanctuary in Japan.</div>
-      </div>
-      <div class="ov-card">
-        <div class="ov-q">What are we asking right now?</div>
-        <div class="ov-a">Join a first Orientation gathering on <strong>June 28 or 29</strong> — attend either date. If you can't make it, we'll send the recording.</div>
-      </div>
-      <div class="ov-card">
-        <div class="ov-q">What happens next?</div>
-        <div class="ov-a">After Orientation → participants enter the Collaboratorium (<strong>July – August</strong>) through a combination of live and asynchronous collaboration.</div>
-      </div>
-      <div class="ov-card">
-        <div class="ov-q">What are we creating?</div>
-        <div class="ov-a">Ideas, stories, experiences, technologies, and artistic contributions that may become part of the October Fuji Sanctuary gathering (<strong>17–19 October 2026</strong>).</div>
-      </div>
+    <p class="ov-body" style="margin-bottom:0;">It is a place to experiment with new forms of collaboration, contribute to a real-world project, build a cultural library of ritual interventions, and meet others who believe that art, technology, imagination, and community can shape a more connected future.</p>
+  </div>
+</section>
+
+<!-- ══ THE PURPOSE ══ -->
+<section class="section purpose" id="purpose">
+  <div class="purpose-inner">
+    <p class="eyebrow">The Purpose</p>
+    <div class="purpose-text">
+      <p>The purpose of the Collaboratorium is to create a creative laboratory for revitalizing <em>indigenous wisdom technologies</em> through modern technology and new forms of social connection.</p>
+      <p>Together, we will experiment at the intersection of <em>art, technology, and community</em> to prototype new forms of interactive rituals, collective experiences, and cross-cultural collaboration.</p>
     </div>
-    <div class="overview-badge">◈ &nbsp;Live &amp; Asynchronous Participation Available</div>
+  </div>
+</section>
+
+<!-- ══ WHAT WE'RE CREATING ══ -->
+<section class="section creating" id="creating">
+  <p class="eyebrow">Outcomes</p>
+  <h2 class="creating-title">What we're<br><em>creating.</em></h2>
+  <div class="creating-grid">
+    <div class="creating-item">
+      <span class="creating-num">01</span>
+      <p>A cross-cultural community of artists, technologists, storytellers, designers, facilitators, researchers, and dreamers.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">02</span>
+      <p>A living laboratory for experimenting with meaningful connection across distance.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">03</span>
+      <p>A growing library of experiments, methods, and discoveries.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">04</span>
+      <p>Prototypes of new rituals, experiences, and technologies for collective participation.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">05</span>
+      <p>New ways for people from different cultures and disciplines to create together.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">06</span>
+      <p>Foundations for future projects, collaborations, and shared experiences.</p>
+    </div>
+    <div class="creating-item">
+      <span class="creating-num">07</span>
+      <p>Contributions to an immersive gathering at Fuji Sanctuary in October, where selected ideas may be tested and experienced in person.</p>
+    </div>
   </div>
 </section>
 
@@ -1666,7 +1749,7 @@ footer {
   <div class="create-inner">
     <div class="create-left">
       <p class="eyebrow">What could come out of this?</p>
-      <h2>Things we might<br><em>create together.</em></h2>
+      <h2>What we might<br><em>explore together.</em></h2>
       <ul class="create-list">
         <li>
           <span class="create-icon">
@@ -1717,6 +1800,29 @@ footer {
       </div>
     </div>
     <p class="create-img-caption">Some of the worlds we hope to explore.</p>
+  </div>
+</section>
+
+<!-- ══ PRACTICAL INFORMATION ══ -->
+<section class="section practical" id="practical">
+  <div class="overview-inner">
+    <p class="eyebrow">Practical information</p>
+    <p class="tracks-intro">A quick orientation to where things stand right now, and what's ahead.</p>
+    <div class="overview-grid">
+      <div class="ov-card">
+        <div class="ov-q">What are we asking right now?</div>
+        <div class="ov-a">Join a first Orientation gathering on <strong>June 28 or 29</strong> — attend either date. If you can't make it, we'll send the recording.</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-q">What happens next?</div>
+        <div class="ov-a">After Orientation → participants enter the Collaboratorium (<strong>July – August</strong>) through a combination of live and asynchronous collaboration.</div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-q">What happens in the autumn?</div>
+        <div class="ov-a">Selected ideas and contributions may be invited into an immersive gathering at Fuji Sanctuary in Japan (<strong>17–19 October 2026</strong>).</div>
+      </div>
+    </div>
+    <div class="overview-badge">◈ &nbsp;Live &amp; Asynchronous Participation Available</div>
   </div>
 </section>
 
