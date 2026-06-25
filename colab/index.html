@@ -515,23 +515,30 @@
         .hero-left {
             grid-column: 1;
             grid-row: 1;
-            border-bottom: 1px solid var(--border-mid);
-        }
-
-        .hero-right-top {
-            grid-column: 1;
-            grid-row: 2;
-            border-bottom: 1px solid var(--border-mid);
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .hero-left-bottom {
             grid-column: 1;
+            grid-row: 2;
+            padding-top: 20px;
+            border-bottom: 1px solid var(--border-mid);
+            padding-bottom: 24px;
+        }
+
+        .hero-right-top {
+            grid-column: 1;
             grid-row: 3;
+            border-bottom: 1px solid var(--border-mid);
+            padding-top: 24px;
+            padding-bottom: 24px;
         }
 
         .hero-right-bottom {
             grid-column: 1;
             grid-row: 4;
+            padding-top: 24px;
         }
 
         .hero-title {
@@ -712,6 +719,21 @@
         font-size: 1rem;
         color: rgba(237, 229, 216, .35);
         text-align: center;
+    }/* Inline timezone link inside each session card */
+
+    .session-tz-link {
+        display: none;
+        margin-top: 16px;
+        font-family: 'Alegreya', serif;
+        font-size: .95rem;
+        color: var(--amber);
+        text-decoration: none;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .session-tz-link:hover {
+        color: rgba(228, 163, 74, .75);
     }
 
     @media (max-width: 900px) {
@@ -734,11 +756,15 @@
         }
 
         .convert-links {
-            grid-template-columns: 1fr;
+            display: none;
         }
 
         .tz-bars {
-            grid-template-columns: 1fr;
+            display: none;
+        }
+
+        .session-tz-link {
+            display: flex;
         }
     }
 
@@ -1929,7 +1955,16 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-        background: #0a0414 url('/assets/cta-bg-desktop.png') center center / cover no-repeat;
+        background: #0a0414;
+    }
+
+    .cta-bg {
+        background-image: url('/assets/cta-bg-desktop.png');
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
     }
 
     .cta::before {
@@ -1937,7 +1972,7 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        z-index: 0;
+        z-index: 1;
         background: rgba(8, 3, 18, .68);
     }
 
@@ -1946,13 +1981,13 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        z-index: 0;
-        background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(75, 27, 143, .45) 0%, transparent 55%), radial-gradient(ellipse 40% 30% at 50% 100%, rgba(228, 163, 74, .12) 0%, transparent 60%);
+        z-index: 1;
+        background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(75, 27, 143, .55) 0%, transparent 55%), radial-gradient(ellipse 40% 30% at 50% 100%, rgba(228, 163, 74, .15) 0%, transparent 60%);
     }
 
     @media (max-width: 760px) {
-        .cta {
-            background: #0a0414 url('/assets/cta-bg-mobile.png') center center / cover no-repeat;
+        .cta-bg {
+            background-image: url('/assets/cta-bg-mobile.png');
         }
     }
 
@@ -1963,13 +1998,13 @@
         transform: translate(-50%, -50%);
         width: clamp(400px, 75vw, 920px);
         opacity: .07;
-        z-index: 1;
+        z-index: 2;
         pointer-events: none;
     }
 
     .cta-inner {
         position: relative;
-        z-index: 2;
+        z-index: 3;
         max-width: 700px;
         margin: 0 auto;
     }
@@ -2426,6 +2461,14 @@
                         <span class="tz-time hi">2:00 PM</span>
                     </div>
                 </div>
+                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
+                    Your timezone 
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
             </div>
 
             <div class="session">
@@ -2458,6 +2501,14 @@
                         <span class="tz-time hi">4:00 PM</span>
                     </div>
                 </div>
+                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T070000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
+                    Your timezone 
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
             </div>
 
             <div class="session">
@@ -2493,6 +2544,14 @@
                         <span class="tz-time hi">2:00 PM</span>
                     </div>
                 </div>
+                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
+                    Your timezone 
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
             </div>
 
             <div class="session">
@@ -2528,6 +2587,14 @@
                         <span class="tz-time">7:00 AM</span>
                     </div>
                 </div>
+                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T220000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
+                    Your timezone 
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
             </div>
 
         </div>
@@ -2775,6 +2842,7 @@
       10. CTA
     ══════════════════════════════ -->
     <section class="cta reveal">
+        <div class="cta-bg"></div>
         <div class="cta-inner">
             <p class="cta-eyebrow">Curious?</p>
             <h2 class="cta-title">
