@@ -544,227 +544,182 @@
         .hero-title {
             font-size: clamp(3rem, 15vw, 5.5rem);
         }
-    }/* Sessions */
+    }/* Sessions — tab layout */
 
-    .sessions {
+    .sessions-tabs {
         position: relative;
         z-index: 1;
+        margin-bottom: 2px;
+    }
+
+    .session-tabs-nav {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 2px;
         margin-bottom: 2px;
     }
 
-    .session {
+    .session-tab-btn {
         background: rgba(255, 255, 255, .04);
-        padding: 32px 26px;
+        border: none;
+        padding: 20px 24px;
+        text-align: left;
+        cursor: none;
+        transition: background .25s, border-top-color .25s;
         border-top: 2px solid transparent;
-        transition: background .3s, border-color .3s;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
     }
 
-    .session:hover {
-        background: rgba(255, 255, 255, .08);
+    .session-tab-btn:hover {
+        background: rgba(255, 255, 255, .07);
+    }
+
+    .session-tab-btn.active {
+        background: rgba(255, 255, 255, .09);
         border-top-color: var(--amber);
     }
 
-    .session-label {
+    .stab-label {
         font-family: 'EB Garamond', serif;
         font-size: 11px;
         letter-spacing: .28em;
         text-transform: uppercase;
         color: var(--amber);
-        margin-bottom: 4px;
     }
 
-    .session-round {
-        font-family: 'EB Garamond', serif;
-        font-size: 11px;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        color: rgba(237, 229, 216, .3);
-        margin-bottom: 16px;
-    }
-
-    .session-date {
+    .stab-date {
         font-family: 'Fraunces', serif;
         font-weight: 200;
-        font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-        color: var(--ivory);
-        margin-bottom: 28px;
+        font-size: clamp(.9rem, 1.3vw, 1.1rem);
+        color: rgba(237, 229, 216, .7);
         line-height: 1.2;
+    }/* Panel */
+
+    .session-tab-panel {
+        display: none;
+        background: rgba(255, 255, 255, .04);
+        padding: 40px 48px;
     }
 
-    .tz-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .tz-row {
+    .session-tab-panel.active {
         display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: start;
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, .06);
-        gap: 16px;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 80px;
     }
 
-    .tz-row:last-child {
+    .panel-col {
+    }
+
+    .panel-heading {
+        font-family: 'Fraunces', serif;
+        font-weight: 200;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        color: var(--ivory);
+        margin-bottom: 32px;
+        line-height: 1.1;
+    }
+
+    .panel-heading em {
+        color: var(--amber);
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    .tz-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tz-table tr {
+        border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .tz-table tr:last-child {
         border-bottom: none;
     }
 
-    .tz-name {
+    .tz-table td {
+        padding: 12px 0;
+        vertical-align: middle;
+    }
+
+    .tz-table td:first-child {
         font-family: 'EB Garamond', serif;
-        font-size: 10px;
-        letter-spacing: .08em;
+        font-size: 12px;
+        letter-spacing: .12em;
         text-transform: uppercase;
-        color: rgba(237, 229, 216, .35);
-        line-height: 1.3;
+        color: rgba(237, 229, 216, .7);
+        width: 50%;
     }
 
-    .tz-note {
-        font-family: 'EB Garamond', serif;
-        font-size: 9px;
-        letter-spacing: .06em;
-        color: rgba(237, 229, 216, .2);
-        display: block;
-        margin-top: 1px;
-    }
-
-    .tz-time {
+    .tz-table td:last-child {
         font-family: 'Fraunces', serif;
         font-weight: 200;
-        font-size: 1.05rem;
-        letter-spacing: -.01em;
-        color: rgba(237, 229, 216, .4);
-        white-space: nowrap;
+        font-size: 1.15rem;
+        color: rgba(237, 229, 216, .65);
         text-align: right;
     }
 
-    .tz-time.hi {
+    .tz-table td.hi {
         color: var(--amber);
     }
 
-    .tz-bars {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2px;
-        margin-bottom: 32px;
-    }
-
-    .tz-bar-wrap {
-        position: relative;
-        height: 6px;
-        background: rgba(255, 255, 255, .07);
-        overflow: hidden;
-    }
-
-    .tz-bar-fill {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        background: var(--amber);
-    }
-
-    .tz-legend {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        margin-bottom: 48px;
-    }
-
-    .tz-legend-item {
-        display: flex;
+    .panel-convert {
+        margin-top: 28px;
+        display: inline-flex;
         align-items: center;
         gap: 8px;
+        font-family: 'Alegreya', serif;
+        font-size: 1rem;
+        color: var(--amber);
+        text-decoration: none;
+    }
+
+    .panel-convert:hover {
+        color: rgba(228, 163, 74, .75);
+    }
+
+    .panel-context-title {
+        font-family: 'Fraunces', serif;
+        font-weight: 200;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        color: rgba(237, 229, 216, .55);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .panel-context-sub {
         font-family: 'EB Garamond', serif;
         font-size: 12px;
         letter-spacing: .14em;
         text-transform: uppercase;
-        color: rgba(237, 229, 216, .4);
+        color: rgba(228, 163, 74, .6);
+        margin-bottom: 24px;
     }
 
-    .tz-legend-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-    }
-
-    .tz-legend-dot.amber {
-        background: var(--amber);
-    }
-
-    .tz-legend-dot.dim {
-        background: rgba(255, 255, 255, .15);
-    }
-
-    .convert-links {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2px;
-        margin-bottom: 32px;
-    }
-
-    .orient-note {
-        position: relative;
-        z-index: 1;
+    .panel-context-body {
         font-family: 'Alegreya', serif;
-        font-style: italic;
-        font-size: 1rem;
-        color: rgba(237, 229, 216, .35);
-        text-align: center;
-    }/* Inline timezone link inside each session card */
+        font-size: 1.08rem;
+        color: rgba(237, 229, 216, .7);
+        line-height: 1.82;
+    }/* Mobile: stack tabs 2+3 or accordion */
 
-    .session-tz-link {
-        display: none;
-        margin-top: 16px;
-        font-family: 'Alegreya', serif;
-        font-size: .95rem;
-        color: var(--amber);
-        text-decoration: none;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .session-tz-link:hover {
-        color: rgba(228, 163, 74, .75);
-    }
-
-    @media (max-width: 900px) {
-        .sessions {
-            grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 700px) {
+        .session-tabs-nav {
+            grid-template-columns: 1fr 1fr;
         }
 
-        .convert-links {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .tz-bars {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 500px) {
-        .sessions {
+        .session-tab-panel.active {
             grid-template-columns: 1fr;
+            gap: 32px 0;
         }
+    }
 
-        .convert-links {
-            display: none;
-        }
-
-        .tz-bars {
-            display: none;
-        }
-
-        .session-tz-link {
-            display: flex;
+    @media (max-width: 380px) {
+        .session-tabs-nav {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -2417,260 +2372,326 @@
             <div>
                 <p class="eyebrow">Orientation sessions</p>
                 <h2>
-                    Four sessions.
+                    Five sessions.
                     <br>
                     Find 
                     <em>your time.</em>
                 </h2>
             </div>
-            <p>Two rounds of Orientation — each with two time windows designed to reach participants in every part of the world. Attend any one session. Recordings available if you can't join live.</p>
+            <p>Two rounds of Orientation — five time windows designed to reach participants in every part of the world. Attend any one session. Recordings available if you can't join live.</p>
         </div>
 
-        <div class="sessions">
+        <div class="sessions-tabs">
 
-            <div class="session">
-                <div class="session-label">Session A</div>
-                <div class="session-round">Round 1 — June</div>
-                <div class="session-date">
-                    Sun / Mon
-                    <br>
-                    June 28–29
-                </div>
-                <div class="tz-list">
-                    <div class="tz-row">
-                        <span class="tz-name">
-                            Pacific US
-                            <span class="tz-note">(June 28)</span>
-                        </span>
-                        <span class="tz-time">10:00 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Eastern US</span>
-                        <span class="tz-time">1:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">London</span>
-                        <span class="tz-time">6:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">India</span>
-                        <span class="tz-time hi">10:30 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Japan</span>
-                        <span class="tz-time hi">2:00 PM</span>
-                    </div>
-                </div>
-                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
-                    Your timezone 
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="session">
-                <div class="session-label">Session B</div>
-                <div class="session-round">Round 1 — June</div>
-                <div class="session-date">
-                    Mon / Tue
-                    <br>
-                    June 29–30
-                </div>
-                <div class="tz-list">
-                    <div class="tz-row">
-                        <span class="tz-name">Pacific US</span>
-                        <span class="tz-time">12:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Eastern US</span>
-                        <span class="tz-time">3:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">London</span>
-                        <span class="tz-time hi">8:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">India</span>
-                        <span class="tz-time hi">12:30 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Japan</span>
-                        <span class="tz-time hi">4:00 PM</span>
-                    </div>
-                </div>
-                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T070000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
-                    Your timezone 
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
+            <!-- Tab buttons -->
+            <div class="session-tabs-nav" role="tablist">
+                <button class="session-tab-btn active" data-tab="a" role="tab">
+                    <span class="stab-label">Session A</span>
+                    <span class="stab-date">
+                        Sun / Mon
+                        <br>
+                        June 28–29
+                    </span>
+                </button>
+                <button class="session-tab-btn" data-tab="b" role="tab">
+                    <span class="stab-label">Session B</span>
+                    <span class="stab-date">
+                        Tuesday
+                        <br>
+                        June 30
+                    </span>
+                </button>
+                <button class="session-tab-btn" data-tab="c" role="tab">
+                    <span class="stab-label">Session C</span>
+                    <span class="stab-date">
+                        Sun / Mon
+                        <br>
+                        July 12–13
+                    </span>
+                </button>
+                <button class="session-tab-btn" data-tab="d" role="tab">
+                    <span class="stab-label">Session D</span>
+                    <span class="stab-date">
+                        Mon / Tue
+                        <br>
+                        July 13–14
+                    </span>
+                </button>
+                <button class="session-tab-btn" data-tab="e" role="tab">
+                    <span class="stab-label">Session E</span>
+                    <span class="stab-date">
+                        Wed / Thu
+                        <br>
+                        July 15–16
+                    </span>
+                </button>
             </div>
 
-            <div class="session">
-                <div class="session-label">Session C</div>
-                <div class="session-round">Round 2 — July</div>
-                <div class="session-date">
-                    Sun / Mon
-                    <br>
-                    July 12–13
+            <!-- Panel A -->
+            <div class="session-tab-panel active" data-panel="a" role="tabpanel">
+                <div class="panel-col">
+                    <h3 class="panel-heading">
+                        Session A &mdash;
+                        <br>
+                        <em>June 28 / 29</em>
+                    </h3>
+                    <table class="tz-table">
+                        <tr>
+                            <td>
+                                Pacific US 
+                                <small style="display:block;opacity:.55">(June 28)</small>
+                            </td>
+                            <td>10:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Eastern US</td>
+                            <td>1:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td>6:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Moscow</td>
+                            <td class="hi">8:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>India</td>
+                            <td class="hi">10:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Japan</td>
+                            <td class="hi">2:00 PM</td>
+                        </tr>
+                    </table>
+                    <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="panel-convert">
+                        Convert to your timezone 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="tz-list">
-                    <div class="tz-row">
-                        <span class="tz-name">
-                            Pacific US
-                            <span class="tz-note">(July 12)</span>
-                        </span>
-                        <span class="tz-time">10:00 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Eastern US</span>
-                        <span class="tz-time">1:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">London</span>
-                        <span class="tz-time">6:00 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">India</span>
-                        <span class="tz-time hi">10:30 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Japan</span>
-                        <span class="tz-time hi">2:00 PM</span>
-                    </div>
+                <div class="panel-col">
+                    <p class="panel-context-title">Round 1 — June</p>
+                    <p class="panel-context-sub">Moscow · India · Japan highlighted</p>
+                    <p class="panel-context-body">Best for participants in Europe, Russia, Asia, and the Pacific. Attendance requires a late evening for those on the US West Coast.</p>
                 </div>
-                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
-                    Your timezone 
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
             </div>
 
-            <div class="session">
-                <div class="session-label">Session D</div>
-                <div class="session-round">Round 2 — July</div>
-                <div class="session-date">
-                    Mon / Tue
-                    <br>
-                    July 13–14
+            <!-- Panel B -->
+            <div class="session-tab-panel" data-panel="b" role="tabpanel">
+                <div class="panel-col">
+                    <h3 class="panel-heading">
+                        Session B &mdash;
+                        <br>
+                        <em>Tuesday, June 30</em>
+                    </h3>
+                    <table class="tz-table">
+                        <tr>
+                            <td>Pacific US</td>
+                            <td>12:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Eastern US</td>
+                            <td>3:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td class="hi">8:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Moscow</td>
+                            <td class="hi">10:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>India</td>
+                            <td class="hi">12:30 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Japan</td>
+                            <td class="hi">4:00 PM</td>
+                        </tr>
+                    </table>
+                    <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260630T070000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="panel-convert">
+                        Convert to your timezone 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="tz-list">
-                    <div class="tz-row">
-                        <span class="tz-name">Pacific US</span>
-                        <span class="tz-time hi">3:00 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">Eastern US</span>
-                        <span class="tz-time hi">6:00 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">London</span>
-                        <span class="tz-time">11:00 PM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">India</span>
-                        <span class="tz-time">3:30 AM</span>
-                    </div>
-                    <div class="tz-row">
-                        <span class="tz-name">
-                            Japan
-                            <span class="tz-note">(July 14)</span>
-                        </span>
-                        <span class="tz-time">7:00 AM</span>
-                    </div>
+                <div class="panel-col">
+                    <p class="panel-context-title">Round 1 — June</p>
+                    <p class="panel-context-sub">London · Moscow · India · Japan highlighted</p>
+                    <p class="panel-context-body">Best for participants in Europe, Russia, Asia, and the Pacific. Morning hours across a wide range of time zones.</p>
                 </div>
-                <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T220000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="session-tz-link">
-                    Your timezone 
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
             </div>
 
-        </div>
+            <!-- Panel C -->
+            <div class="session-tab-panel" data-panel="c" role="tabpanel">
+                <div class="panel-col">
+                    <h3 class="panel-heading">
+                        Session C &mdash;
+                        <br>
+                        <em>July 12 / 13</em>
+                    </h3>
+                    <table class="tz-table">
+                        <tr>
+                            <td>
+                                Pacific US 
+                                <small style="display:block;opacity:.55">(July 12)</small>
+                            </td>
+                            <td>10:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Eastern US</td>
+                            <td>1:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td>6:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Moscow</td>
+                            <td class="hi">8:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>India</td>
+                            <td class="hi">10:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Japan</td>
+                            <td class="hi">2:00 PM</td>
+                        </tr>
+                    </table>
+                    <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="panel-convert">
+                        Convert to your timezone 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="panel-col">
+                    <p class="panel-context-title">Round 2 — July</p>
+                    <p class="panel-context-sub">Moscow · India · Japan highlighted</p>
+                    <p class="panel-context-body">Same window as Session A — for those who missed the June round or prefer July. Best for Europe, Russia, and Asia.</p>
+                </div>
+            </div>
 
-        <!-- Daytime coverage indicator bars -->
-        <div class="tz-bars">
-            <div class="tz-bar-wrap">
-                <div class="tz-bar-fill" style="left:30%;width:50%"></div>
+            <!-- Panel D -->
+            <div class="session-tab-panel" data-panel="d" role="tabpanel">
+                <div class="panel-col">
+                    <h3 class="panel-heading">
+                        Session D &mdash;
+                        <br>
+                        <em>July 13 / 14</em>
+                    </h3>
+                    <table class="tz-table">
+                        <tr>
+                            <td>Pacific US</td>
+                            <td class="hi">3:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Eastern US</td>
+                            <td class="hi">6:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td>11:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Moscow</td>
+                            <td>1:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>India</td>
+                            <td>3:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Japan 
+                                <small style="display:block;opacity:.55">(July 14)</small>
+                            </td>
+                            <td>7:00 AM</td>
+                        </tr>
+                    </table>
+                    <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T220000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="panel-convert">
+                        Convert to your timezone 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="panel-col">
+                    <p class="panel-context-title">Round 2 — July</p>
+                    <p class="panel-context-sub">Pacific US · Eastern US highlighted</p>
+                    <p class="panel-context-body">Best for participants in the Americas. Afternoon hours on the US West Coast. Late evening in London.</p>
+                </div>
             </div>
-            <div class="tz-bar-wrap">
-                <div class="tz-bar-fill" style="left:35%;width:48%"></div>
-            </div>
-            <div class="tz-bar-wrap">
-                <div class="tz-bar-fill" style="left:30%;width:50%"></div>
-            </div>
-            <div class="tz-bar-wrap">
-                <div class="tz-bar-fill" style="left:63%;width:36%"></div>
-            </div>
-        </div>
-        <div class="tz-legend">
-            <div class="tz-legend-item">
-                <div class="tz-legend-dot amber"></div>
-                Daytime across time zones
-            </div>
-            <div class="tz-legend-item">
-                <div class="tz-legend-dot dim"></div>
-                Night / early morning
-            </div>
-        </div>
 
-        <!-- Convert links -->
-        <div class="convert-links">
-            <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="convert-link">
-                <span class="convert-label">Session A</span>
-                <span class="convert-action">
-                    Your timezone 
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </span>
-            </a>
-            <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260629T070000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="convert-link">
-                <span class="convert-label">Session B</span>
-                <span class="convert-action">
-                    Your timezone 
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </span>
-            </a>
-            <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T050000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="convert-link">
-                <span class="convert-label">Session C</span>
-                <span class="convert-action">
-                    Your timezone 
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </span>
-            </a>
-            <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260713T220000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="convert-link">
-                <span class="convert-label">Session D</span>
-                <span class="convert-action">
-                    Your timezone 
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </span>
-            </a>
+            <!-- Panel E -->
+            <div class="session-tab-panel" data-panel="e" role="tabpanel">
+                <div class="panel-col">
+                    <h3 class="panel-heading">
+                        Session E &mdash;
+                        <br>
+                        <em>July 15 / 16</em>
+                    </h3>
+                    <table class="tz-table">
+                        <tr>
+                            <td>
+                                Pacific US 
+                                <small style="display:block;opacity:.55">(July 15)</small>
+                            </td>
+                            <td class="hi">6:30 PM</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Eastern US 
+                                <small style="display:block;opacity:.55">(July 15)</small>
+                            </td>
+                            <td class="hi">9:30 PM</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td>2:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Moscow</td>
+                            <td>4:30 AM</td>
+                        </tr>
+                        <tr>
+                            <td>India</td>
+                            <td>7:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>Japan</td>
+                            <td class="hi">10:30 AM</td>
+                        </tr>
+                    </table>
+                    <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20260716T013000&p1=137&p2=179&p3=136&p4=166&p5=176&p6=tz_jst" target="_blank" class="panel-convert">
+                        Convert to your timezone 
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="panel-col">
+                    <p class="panel-context-title">Round 2 — July</p>
+                    <p class="panel-context-sub">Pacific US · Eastern US · Japan highlighted</p>
+                    <p class="panel-context-body">Best for the Americas and Japan. Evening hours in the US, morning in Tokyo. A good bridge session across the Pacific.</p>
+                </div>
+            </div>
+
         </div>
 
         <p class="orient-note">Recordings will be available if you are unable to attend live.</p>
@@ -2990,7 +3011,16 @@
         });
     });
 
-    // FAQ ACCORDION
+    // SESSION TABS
+    document.querySelectorAll('.session-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.dataset.tab;
+            document.querySelectorAll('.session-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.session-tab-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelector(`.session-tab-panel[data-panel="${tab}"]`).classList.add('active');
+        });
+    });
     document.querySelectorAll('.faq-item').forEach(item => {
         item.querySelector('.faq-q').addEventListener('click', () => {
             const isOpen = item.classList.contains('open');
