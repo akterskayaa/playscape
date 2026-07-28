@@ -6,7 +6,7 @@
     <title>Collaboratorium — Participant Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <style>
     *, * ::before, * ::after {
@@ -1704,6 +1704,527 @@
         text-transform: uppercase;
         letter-spacing: .01em;
         word-break: break-word
+    }/* ===== Art-Tech Reference Library (scoped to #page-library) ===== */
+    #page-library {
+        --lib-bg: #0B0E1A;
+        --lib-surface: #131829;
+        --lib-line: rgba(255, 255, 255, .08);
+        --lib-line-strong: rgba(255, 255, 255, .14);
+        --lib-text: #F2F0EA;
+        --lib-text2: #8B90A8;
+        --lib-text3: #5B6180;
+        --lib-font-display: 'Space Grotesk', sans-serif;
+        --lib-font-body: 'Inter', sans-serif;
+        --lib-font-mono: 'JetBrains Mono', monospace;
+        --lib-glow-color: #E8A33D;
+        font-family: var(--lib-font-body);
+        background: var(--lib-bg);
+        color: var(--lib-text);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    #page-library .atl-glow {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse 900px 500px at 50% -10%, var(--lib-glow-color), transparent 70%);
+        opacity: .16;
+        transition: background 0.6s ease;
+    }
+
+    #page-library .atl-wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 24px 100px;
+        position: relative;
+        z-index: 1
+    }
+
+    #page-library .atl-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--lib-font-mono);
+        font-size: 11.5px;
+        color: var(--lib-text2);
+        cursor: pointer;
+        padding-top: 24px
+    }
+
+    #page-library .atl-back:hover {
+        color: var(--lib-text)
+    }
+
+    #page-library header {
+        padding: 24px 0 32px;
+        text-align: center
+    }
+
+    #page-library .eyebrow-mono {
+        font-family: var(--lib-font-mono);
+        font-size: 11px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--lib-text2);
+        margin-bottom: 18px
+    }
+
+    #page-library .eyebrow-mono span {
+        color: var(--lib-glow-color);
+        transition: color .6s ease
+    }
+
+    #page-library h1 {
+        font-family: var(--lib-font-display);
+        font-weight: 700;
+        font-size: clamp(34px, 6vw, 58px);
+        letter-spacing: -.02em;
+        line-height: 1.05;
+        margin-bottom: 14px;
+        color: var(--lib-text)
+    }
+
+    #page-library .subtitle {
+        font-size: 15px;
+        color: var(--lib-text2);
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.6
+    }
+
+    #page-library .howto {
+        margin: 36px auto 0;
+        max-width: 680px;
+        background: var(--lib-surface);
+        border: 1px solid var(--lib-line);
+        border-radius: 14px;
+        padding: 20px 24px;
+        text-align: left
+    }
+
+    #page-library .howto-label {
+        font-family: var(--lib-font-mono);
+        font-size: 10.5px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--lib-text3);
+        margin-bottom: 12px
+    }
+
+    #page-library .howto ul {
+        list-style: none
+    }
+
+    #page-library .howto li {
+        font-size: 13.5px;
+        color: var(--lib-text2);
+        line-height: 1.6;
+        padding-left: 20px;
+        position: relative;
+        margin-bottom: 10px
+    }
+
+    #page-library .howto li:last-child {
+        margin-bottom: 0
+    }
+
+    #page-library .howto li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--lib-glow-color);
+        font-weight: 700;
+        transition: color .6s ease
+    }
+
+    #page-library .dir-nav {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 36px 0 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none
+    }
+
+    #page-library .dir-nav::-webkit-scrollbar {
+        display: none
+    }
+
+    #page-library .dir-pill {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 18px;
+        border-radius: 100px;
+        border: 1px solid var(--lib-line-strong);
+        background: var(--lib-surface);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--lib-text2);
+        white-space: nowrap;
+        transition: all .2s ease
+    }
+
+    #page-library .dir-pill:hover {
+        border-color: var(--pill-accent, var(--lib-line-strong));
+        color: var(--lib-text)
+    }
+
+    #page-library .dir-pill.active {
+        background: var(--pill-accent);
+        border-color: var(--pill-accent);
+        color: #0B0E1A
+    }
+
+    #page-library .dir-pill .dir-num {
+        font-family: var(--lib-font-mono);
+        font-size: 11px;
+        opacity: .7
+    }
+
+    #page-library .dir-pill i {
+        font-size: 15px
+    }
+
+    #page-library .dir-head {
+        padding: 28px 0 22px;
+        border-bottom: 1px solid var(--lib-line);
+        margin-bottom: 28px
+    }
+
+    #page-library .dir-head-top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px
+    }
+
+    #page-library .dir-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        background: var(--dir-accent-bg);
+        color: var(--dir-accent);
+        flex-shrink: 0
+    }
+
+    #page-library .dir-title {
+        font-family: var(--lib-font-display);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -.01em
+    }
+
+    #page-library .dir-count {
+        font-family: var(--lib-font-mono);
+        font-size: 11px;
+        color: var(--lib-text3);
+        margin-top: 2px
+    }
+
+    #page-library .dir-desc {
+        font-size: 14px;
+        color: var(--lib-text2);
+        line-height: 1.6;
+        max-width: 640px
+    }
+
+    #page-library .search-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 22px;
+        flex-wrap: wrap
+    }
+
+    #page-library .search-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--lib-surface);
+        border: 1px solid var(--lib-line-strong);
+        border-radius: 10px;
+        padding: 10px 14px;
+        flex: 1;
+        min-width: 200px;
+        max-width: 340px
+    }
+
+    #page-library .search-box input {
+        background: none;
+        border: none;
+        outline: none;
+        color: var(--lib-text);
+        font-family: var(--lib-font-body);
+        font-size: 13px;
+        width: 100%
+    }
+
+    #page-library .search-box input::placeholder {
+        color: var(--lib-text3)
+    }
+
+    #page-library .search-box i {
+        color: var(--lib-text3);
+        font-size: 15px
+    }
+
+    #page-library .surprise-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: 1px solid var(--lib-line-strong);
+        color: var(--lib-text);
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-family: var(--lib-font-body);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color .2s
+    }
+
+    #page-library .surprise-btn:hover {
+        border-color: var(--lib-glow-color)
+    }
+
+    #page-library .atl-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 18px
+    }
+
+    #page-library .atl-card {
+        background: var(--lib-surface);
+        border: 1px solid var(--lib-line);
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform .18s ease, border-color .18s ease;
+        display: flex;
+        flex-direction: column
+    }
+
+    #page-library .atl-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--card-accent, var(--lib-line-strong))
+    }
+
+    #page-library .card-thumb {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #000;
+        overflow: hidden
+    }
+
+    #page-library .card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: .88;
+        transition: opacity .2s, transform .3s
+    }
+
+    #page-library .atl-card:hover .card-thumb img {
+        opacity: 1;
+        transform: scale(1.04)
+    }
+
+    #page-library .card-num {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-family: var(--lib-font-mono);
+        font-size: 11px;
+        font-weight: 600;
+        background: rgba(0, 0, 0, .55);
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 6px;
+        backdrop-filter: blur(4px)
+    }
+
+    #page-library .card-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    #page-library .card-play i {
+        font-size: 15px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, .5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, .25);
+        transition: transform .18s, background .18s
+    }
+
+    #page-library .atl-card:hover .card-play i {
+        transform: scale(1.12);
+        background: var(--card-accent)
+    }
+
+    #page-library .card-body {
+        padding: 16px 18px 18px;
+        flex: 1;
+        display: flex;
+        flex-direction: column
+    }
+
+    #page-library .card-title {
+        font-family: var(--lib-font-display);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        color: var(--lib-text)
+    }
+
+    #page-library .card-tech {
+        font-size: 12.5px;
+        color: var(--lib-text2);
+        line-height: 1.6;
+        flex: 1
+    }
+
+    #page-library .card-foot {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        font-family: var(--lib-font-mono);
+        font-size: 10.5px;
+        color: var(--lib-text3)
+    }
+
+    #page-library .card-foot i {
+        font-size: 12px
+    }
+
+    #page-library .empty-state {
+        padding: 60px 20px;
+        text-align: center;
+        color: var(--lib-text3);
+        font-size: 13.5px
+    }
+
+    #page-library .atl-modal-bg {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 6, 12, .85);
+        z-index: 400;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        backdrop-filter: blur(3px)
+    }
+
+    #page-library .atl-modal-bg.open {
+        display: flex
+    }
+
+    #page-library .atl-modal-box {
+        background: #000;
+        border-radius: 14px;
+        overflow: hidden;
+        width: 100%;
+        max-width: 760px;
+        border: 1px solid var(--lib-line-strong)
+    }
+
+    #page-library .atl-modal-box iframe {
+        width: 100%;
+        aspect-ratio: 16/9;
+        display: block;
+        border: none
+    }
+
+    #page-library .modal-info {
+        padding: 18px 22px;
+        background: var(--lib-surface)
+    }
+
+    #page-library .modal-title {
+        font-family: var(--lib-font-display);
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--lib-text)
+    }
+
+    #page-library .modal-tech {
+        font-size: 13px;
+        color: var(--lib-text2);
+        line-height: 1.6;
+        margin-bottom: 10px
+    }
+
+    #page-library .atl-modal-close {
+        position: absolute;
+        top: -44px;
+        right: 0;
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        opacity: .7
+    }
+
+    #page-library .atl-modal-close:hover {
+        opacity: 1
+    }
+
+    #page-library .modal-yt {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--lib-font-mono);
+        font-size: 11.5px;
+        color: var(--lib-glow-color);
+        text-decoration: none;
+        transition: color .6s ease
+    }
+
+    #page-library .footer-credit {
+        text-align: center;
+        padding: 40px 0 0;
+        font-family: var(--lib-font-mono);
+        font-size: 11px;
+        color: var(--lib-text3);
+        letter-spacing: .05em
+    }
+
+    @media (max-width: 640px) {
+        #page-library header {
+            padding: 16px 0 24px
+        }
+
+        #page-library .dir-title {
+            font-size: 20px
+        }
+
+        #page-library .atl-grid {
+            grid-template-columns: 1fr
+        }
     }
     </style>
 </head>
@@ -2070,6 +2591,79 @@
         </div>
     </div>
 
+    <!-- ================= ART-TECH REFERENCE LIBRARY ================= -->
+    <div id="page-library" style="display:none">
+        <div class="atl-glow" id="lib-glow"></div>
+        <div class="atl-wrap">
+
+            <div class="atl-back" onclick="location.hash='/'">
+                <i class="ti ti-arrow-left"></i>
+                 Back to Portal
+            </div>
+
+            <header>
+                <div class="eyebrow-mono">
+                    Radiant IRIS Collaboratorium 
+                    <span>·</span>
+                     Art-Tech Reference Library
+                </div>
+                <h1>
+                    Art-Tech Tools
+                    <br>
+                    for Ritual &amp; Community
+                </h1>
+                <p class="subtitle">A curated reference library of 46 real installations and projects. Look for one simple principle that could inspire your own experiment — not the scale of the project.</p>
+
+                <div class="howto">
+                    <div class="howto-label">How to use this library</div>
+                    <ul>
+                        <li>Do not focus only on the scale of a project. Look for one simple principle that could inspire your own experiment.</li>
+                        <li>For longer videos, watching the first 1–3 minutes or jumping to key moments is usually enough.</li>
+                    </ul>
+                </div>
+            </header>
+
+            <nav class="dir-nav" id="lib-dir-nav"></nav>
+
+            <div class="dir-head" id="lib-dir-head"></div>
+
+            <div class="search-row">
+                <div class="search-box">
+                    <i class="ti ti-search"></i>
+                    <input type="text" id="lib-search-input" placeholder="Search by artist or title…">
+                </div>
+                <button class="surprise-btn" id="lib-surprise-btn">
+                    <i class="ti ti-dice-5"></i>
+                     Surprise me
+                </button>
+            </div>
+
+            <div class="atl-grid" id="lib-grid"></div>
+            <div class="empty-state" id="lib-empty-state" style="display:none;">No matches — try a different search term.</div>
+
+            <div class="footer-credit">Curated by Anastasia · Radiant IRIS Collaboratorium</div>
+        </div>
+
+        <div class="atl-modal-bg" id="lib-modal-bg">
+            <div style="position:relative;width:100%;max-width:760px;">
+                <div class="atl-modal-close" id="lib-modal-close">
+                    <i class="ti ti-x"></i>
+                </div>
+                <div class="atl-modal-box">
+                    <iframe id="lib-modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="modal-info">
+                        <div class="modal-title" id="lib-modal-title"></div>
+                        <div class="modal-tech" id="lib-modal-tech"></div>
+                        <a class="modal-yt" id="lib-modal-yt-link" href="#" target="_blank">
+                            <i class="ti ti-brand-youtube"></i>
+                             Watch on YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="bottom-nav">
         <a class="bottom-nav-item" href="#startHere">
             <i class="ti ti-star"></i>
@@ -2276,6 +2870,14 @@
             by: 'Radiant Iris',
             kind: 'video',
             videoId: 'odk5BZqAeuw'
+        },
+        {
+            t: 'ART-TECH REFERENCE LIBRARY',
+            by: '46 curated installations — explore by direction',
+            kind: 'link',
+            action: function() {
+                location.hash = '/library'
+            }
         },
         {
             t: 'Dragon Dreaming',
@@ -3231,21 +3833,535 @@
     }
 
     /* ---------- routing between the Portal and the Guide "page" ---------- */
+    var ATL_DIRECTIONS = [
+    {
+        id: 'projection',
+        n: 1,
+        name: 'Projection Mapping',
+        icon: 'ti-bulb-filled',
+        accent: '#E8A33D',
+        accentBg: '#3A2E17',
+        desc: 'Light and projection used to transform architecture, objects, bodies, temporary structures, or natural surfaces.'
+    },
+    {
+        id: 'generative',
+        n: 2,
+        name: 'Generative Visuals, AI & Data Art',
+        icon: 'ti-sparkles',
+        accent: '#9D6FFF',
+        accentBg: '#241A3D',
+        desc: 'Images created by algorithms that change over time and can respond to data, movement, or audience participation.'
+    },
+    {
+        id: 'sound',
+        n: 3,
+        name: 'Generative Sound & Sound Installations',
+        icon: 'ti-wave-sine',
+        accent: '#4FD1C5',
+        accentBg: '#14312F',
+        desc: 'Sound created through rules, natural processes, movement, vibration, or audience actions.'
+    },
+    {
+        id: 'body',
+        n: 4,
+        name: 'Body Tracking, Kinect & Dance',
+        icon: 'ti-walk',
+        accent: '#FF6B6B',
+        accentBg: '#3A1F1F',
+        desc: 'The body becomes an interface: a camera or sensor reads gesture, position, silhouette, or voice and immediately changes image or sound.'
+    },
+    {
+        id: 'bio',
+        n: 5,
+        name: 'Biofeedback & Physiological Data Art',
+        icon: 'ti-heartbeat',
+        accent: '#B4E61D',
+        accentBg: '#2A3312',
+        desc: 'Heart rate, breathing, EEG, and other body signals become inputs for light, sound, water, or a collective narrative.'
+    }
+    ];
+
+    var ATL_ITEMS = [// 1. Projection Mapping
+    {
+        dir: 'projection',
+        n: 1,
+        title: 'teamLab Borderless — Digital Art Museum',
+        tech: 'An immersive environment built from many synchronized projectors. Images move from one surface to another, respond to visitors, and create the feeling of a living space without fixed borders.',
+        id: '-DtLKZLol4A'
+    },
+    {
+        dir: 'projection',
+        n: 2,
+        title: 'Sila Sveta — Levitation',
+        tech: 'Projection mapping is combined with choreography and precise stage synchronization. Digital light appears to interact with the dancer\u2019s body and transform the space around the performer.',
+        id: '5wmAvZcOcUY'
+    },
+    {
+        dir: 'projection',
+        n: 3,
+        title: 'Sila Sveta — MANIFEST, iMapp Bucharest',
+        tech: 'Large-scale architectural mapping designed around windows, columns, and the shape of a building facade. A clear example of real architecture becoming part of the visual narrative.',
+        id: 'XbqVeofQzV0'
+    },
+    {
+        dir: 'projection',
+        n: 4,
+        title: 'OMOTE — Real-Time Face Tracking & Projection Mapping',
+        tech: 'A camera tracks the face and its position while a projector places a digital \u201cmask\u201d directly onto the skin in real time. The image stays attached to the face as the performer moves.',
+        id: 'lPBv5Y-3-UI'
+    },
+    {
+        dir: 'projection',
+        n: 5,
+        title: 'Le Petit Chef — Tabletop Projection Story',
+        tech: 'A small projector turns a table and plate into a miniature stage. Animation is precisely aligned with real objects to create a simple story before the food is served.',
+        id: 'gk6lIgkSt4g'
+    },
+    {
+        dir: 'projection',
+        n: 6,
+        title: 'Lumipen 2 — Dynamic Projection Mapping',
+        tech: 'A high-speed camera and controlled mirror track a moving object. The projection stays visually \u201cattached\u201d to a ball or other object even while it moves quickly.',
+        id: 'p7IL0Gvux7U'
+    },
+    {
+        dir: 'projection',
+        n: 7,
+        title: 'Philipp Frank — Live Projection on Natural Forms',
+        tech: 'A small-scale example of projection on a natural object. It shows that mapping does not need to be monumental: gentle light can work with stone, bark, fungi, or other small forms.',
+        id: 'zOy8Bl2RmVE'
+    },
+    {
+        dir: 'projection',
+        n: 8,
+        title: 'Philipp Frank — CHU: Liquid States',
+        tech: 'Projection is aligned with a three-dimensional surface and animated texture. The physical object appears fluid and constantly changing, even though the form itself does not move.',
+        id: 'A-Kuayhdr78'
+    },
+    {
+        dir: 'projection',
+        n: 9,
+        title: 'Coral Ghosts — 360° Projection Mapping Installation',
+        tech: 'Several projectors create a panoramic audiovisual environment around the audience. The project demonstrates how documentary or natural imagery can become a spatial experience.',
+        id: 'MwxJjV-Hr_E'
+    },
+    {
+        dir: 'projection',
+        n: 10,
+        title: 'JACK — Projection-Mapped Sculpture',
+        tech: 'Animation is precisely mapped onto a complex sculptural form, emphasizing its volume and giving one object many different identities. Useful for masks, totems, and temporary sculptures.',
+        id: 'dIN8FYTU8P4'
+    },
+    // 2. Generative Visuals, AI & Data Art
+    {
+        dir: 'generative',
+        n: 1,
+        title: 'Refik Anadol — Unsupervised at MoMA',
+        tech: 'An AI model interprets the museum archive and creates new visual compositions in real time. External data and algorithmic rules influence color, form, speed, and image structure.',
+        id: '5Y384U-bOJo'
+    },
+    {
+        dir: 'generative',
+        n: 2,
+        title: 'Memo Akten — Learning to See',
+        tech: 'A camera shows everyday objects, fabric, and hand movements to a neural network. The system tries to \u201csee\u201d patterns from its training data and creates a changing digital image in real time.',
+        id: 'MXf7jycXLgM'
+    },
+    {
+        dir: 'generative',
+        n: 3,
+        title: 'Quayola — Jardins d\u2019Été',
+        tech: 'Algorithms analyze footage of a garden and transform plants into painterly digital structures. The result continuously shifts between a recognizable landscape and abstraction.',
+        id: 'zLlkl8QYkGk'
+    },
+    {
+        dir: 'generative',
+        n: 4,
+        title: 'Universal Everything — Walking City',
+        tech: 'One algorithmically generated character continuously changes material, shape, and movement style. It shows how a simple rule system can create many states of one digital body.',
+        id: 'DWDXknaUixQ'
+    },
+    {
+        dir: 'generative',
+        n: 5,
+        title: 'Universal Everything — Transfiguration',
+        tech: 'A generative animation gradually transforms a walking figure. Changes in surface, weight, and texture are synchronized with movement, creating a sense of constant evolution.',
+        id: 'Jy9M0gynZNE'
+    },
+    {
+        dir: 'generative',
+        n: 6,
+        title: 'fuse* — Multiverse',
+        tech: 'An audiovisual installation uses a generative system to create endlessly changing digital worlds. Light, image, and sound follow the same algorithmic logic.',
+        id: '7Xj8_JDgNXA'
+    },
+    {
+        dir: 'generative',
+        n: 7,
+        title: 'onformative — Meandering River',
+        tech: 'An algorithm models river movement and landscape change. Visual composition and sound evolve together, so every moment is slightly different from the previous one.',
+        id: 'KzPzfggC4uE'
+    },
+    {
+        dir: 'generative',
+        n: 8,
+        title: 'Ryoji Ikeda — data-verse',
+        tech: 'Scientific and digital data become a large composition of points, lines, numbers, and sound. The work shows how invisible information can become a physically felt environment.',
+        id: 'BmEz0nTl4qw'
+    },
+    {
+        dir: 'generative',
+        n: 9,
+        title: 'Tyler Hobbs — Generative Art / Fidenza',
+        tech: 'The artist writes code that defines rules for composition, line, color, and randomness. Each run creates a unique image while staying inside one recognizable visual system.',
+        id: '5ETrXegVj_g'
+    },
+    // 3. Generative Sound & Sound Installations
+    {
+        dir: 'sound',
+        n: 1,
+        title: 'Google — A.I. Duet',
+        tech: 'A person plays several notes on a keyboard and a neural network answers with a new musical phrase. It is a simple example of AI generating a live response rather than playing a fixed recording.',
+        id: '0ZE1bfPtvZo'
+    },
+    {
+        dir: 'sound',
+        n: 2,
+        title: 'KYMAT — Sonic Water',
+        tech: 'Sound frequencies are sent into a container of water and create visible wave patterns. Vibration turns sound into a moving physical form that can be observed directly.',
+        id: 'SjhNqRNuAk8'
+    },
+    {
+        dir: 'sound',
+        n: 3,
+        title: 'KYMAT — Sonic Bloom',
+        tech: 'Cymatics, light, and sound are combined in a spatial installation. Frequencies shape patterns on water, while the visual system enlarges and transforms these changes into a meditative image.',
+        id: 'sd2gTR29ooA'
+    },
+    {
+        dir: 'sound',
+        n: 4,
+        title: 'KYMAT — Plant Music Experiment',
+        tech: 'A sensor reads changes in the electrical activity of a plant and maps them to sound parameters. The plant does not literally \u201csing,\u201d but its data becomes material for a musical system.',
+        id: 'LIDrW6N6XDE'
+    },
+    {
+        dir: 'sound',
+        n: 5,
+        title: 'Sea Organ, Zadar',
+        tech: 'Ocean waves push air through pipes built into the waterfront. The sea becomes the performer and creates a new, unpredictable sequence of sounds every moment.',
+        id: 'Bt681vP2OlI'
+    },
+    {
+        dir: 'sound',
+        n: 6,
+        title: 'Doug Aitken — Sonic Pavilion',
+        tech: 'Microphones placed deep underground amplify low-frequency vibrations and geological noise. The pavilion turns normally inaudible processes of the Earth into a sound environment.',
+        id: 'UbWsRU4f2qo'
+    },
+    {
+        dir: 'sound',
+        n: 7,
+        title: 'The Singing Ringing Tree',
+        tech: 'A sculpture made of metal pipes works like a large wind instrument. Wind direction and strength determine which tones and sound combinations appear.',
+        id: '4B0hGyKV9qs'
+    },
+    {
+        dir: 'sound',
+        n: 8,
+        title: 'Luke Jerram — Aeolus, Acoustic Wind Pavilion',
+        tech: 'Tensioned strings and tubes amplify the movement of the wind and turn it into a changing choir. Visitors can enter the pavilion and listen as weather shapes the composition.',
+        id: 'JEwhpVAoUK8'
+    },
+    {
+        dir: 'sound',
+        n: 9,
+        title: 'Google Arts & Culture — Blob Opera',
+        tech: 'A machine-learning model generates multi-voice singing in response to the user\u2019s movements. Participants control pitch and vocal character without needing musical training.',
+        id: 'aW8mrsx8WCI'
+    },
+    // 4. Body Tracking, Kinect & Dance
+    {
+        dir: 'body',
+        n: 1,
+        title: 'Chris Milk — The Treachery of Sanctuary',
+        tech: 'Cameras read visitors\u2019 silhouettes and transform their shadows into characters in a three-part visual story. The audience controls the work with the body and becomes its central image.',
+        id: 'I5__9hq-yas'
+    },
+    {
+        dir: 'body',
+        n: 2,
+        title: 'Camille Utterback & Romy Achituv — Text Rain',
+        tech: 'A camera detects the human silhouette while falling virtual letters stop on hands, heads, and shoulders. Simple body movement changes the behavior of digital text.',
+        id: 'f_u3sSffS78'
+    },
+    {
+        dir: 'body',
+        n: 3,
+        title: 'Adrien M & Claire B / Mourad Merzouki — PIXEL',
+        tech: 'Dancers interact with projected dots, lines, and surfaces. Precise choreography and programmed animation create the illusion that the digital environment has weight and physical laws.',
+        id: 'z_Hu57QTqqE'
+    },
+    {
+        dir: 'body',
+        n: 4,
+        title: 'Adrien M & Claire B — Hakanaï',
+        tech: 'A dancer performs inside a transparent cube covered with interactive graphics. Body movement and tracking help the visual environment respond to the performer.',
+        id: 'wF9C1QFyclc'
+    },
+    {
+        dir: 'body',
+        n: 5,
+        title: 'Klaus Obermaier — Apparition',
+        tech: 'Computer vision analyzes the dancers\u2019 position and movement while generative projection changes in real time. Body and digital image become one stage composition.',
+        id: '-wVq41Bi2yE'
+    },
+    {
+        dir: 'body',
+        n: 6,
+        title: 'Chunky Move — Mortal Engine',
+        tech: 'Sensors and cameras connect the performer\u2019s movement to light, projection, and sound. The stage changes with the body rather than following only a pre-recorded timeline.',
+        id: 'CHKLr_pvj2I'
+    },
+    {
+        dir: 'body',
+        n: 7,
+        title: 'Asphyxia — Motion Capture Dance Film',
+        tech: 'A dancer\u2019s movement is recorded with depth cameras and motion capture. The coordinates become point clouds, lines, and digital sculptures of the body.',
+        id: '3q3AgvC_C7E'
+    },
+    {
+        dir: 'body',
+        n: 8,
+        title: 'ELEVENPLAY × Rhizomatiks — discrete figures',
+        tech: 'Choreography is combined with machine vision, drones, light, and algorithmic graphics. Technology becomes a stage partner that performs beside the real dancers.',
+        id: 'VO4nCojmb_k'
+    },
+    {
+        dir: 'body',
+        n: 9,
+        title: 'Golan Levin & Zachary Lieberman — Messa di Voce',
+        tech: 'Microphones analyze the performers\u2019 voices and software immediately turns the sound into moving graphic forms. Voice becomes both a musical and visual gesture.',
+        id: 'STRMcmj-gHc'
+    },
+    // 5. Biofeedback & Physiological Data Art
+    {
+        dir: 'bio',
+        n: 1,
+        title: 'Rafael Lozano-Hemmer — Pulse Room',
+        tech: 'A visitor holds a sensor that reads their heartbeat. The rhythm is recorded and transferred to one light bulb, so the room gradually fills with the pulses of many people.',
+        id: 'h1i7l1wnNCE'
+    },
+    {
+        dir: 'bio',
+        n: 2,
+        title: 'Lisa Park — Eunoia II',
+        tech: 'An EEG headset reads the performer\u2019s brain activity. The signals control speakers under bowls of water, making an internal state visible through real movement on the water surface.',
+        id: 'f0eYHPhA0n8'
+    },
+    {
+        dir: 'bio',
+        n: 3,
+        title: 'Suzanne Dikker & Matthias Oostrik — Mutual Wave Machine',
+        tech: 'Two participants wear EEG headsets inside a shared audiovisual environment. The system compares their brain activity and visualizes changes in synchrony through light and image.',
+        id: 'nmMy42SuBns'
+    },
+    {
+        dir: 'bio',
+        n: 4,
+        title: 'Marcus Lyall — On Your Wavelength',
+        tech: 'A participant\u2019s EEG is analyzed in real time and controls a large laser composition and generative sound. Invisible changes in attention and arousal become a spatial light experience.',
+        id: '0ZQ3AjtknEk'
+    },
+    {
+        dir: 'bio',
+        n: 5,
+        title: 'George Khut — Cardiomorphologies',
+        tech: 'Sensors read a participant\u2019s heartbeat and breathing. These signals control color, form, image movement, and sound, helping the person observe their own body rhythms.',
+        id: 'efiDTIpiHR4'
+    },
+    {
+        dir: 'bio',
+        n: 6,
+        title: 'TERMINALBEACH — The Heart Chamber Orchestra',
+        tech: 'Musicians perform while wearing pulse sensors. Each performer\u2019s heartbeat influences the computer composition and visualization, creating one system of bodies, instruments, and algorithms.',
+        id: 'T3FJ4YYJC0U'
+    },
+    {
+        dir: 'bio',
+        n: 7,
+        title: 'HEARTSYNC — Interactive Biofeedback Installation',
+        tech: 'The system receives the heart rhythms of several participants and turns them into one shared visualization. A useful example of combining individual data into a collective image.',
+        id: 'cI6uLbyJeUY'
+    },
+    {
+        dir: 'bio',
+        n: 8,
+        title: 'PluginHUMAN — DREAM 2.2',
+        tech: 'Visitors wear EEG headsets and their neural activity changes immersive light and sound. The project shows how biofeedback can influence the atmosphere of an entire environment.',
+        id: 'G42ZJgUBO3M'
+    },
+    {
+        dir: 'bio',
+        n: 9,
+        title: 'Laura Jade — Interactive Brain Light',
+        tech: 'A musician\u2019s EEG signals are translated into light inside a brain sculpture. Changes in brain activity become a visible layer of a live performance.',
+        id: 'QyMwKeGUIrQ'
+    }
+    ];
+
+    /* ---------- Art-Tech Reference Library ---------- */
+    var atlCurrentDir = ATL_DIRECTIONS[0].id;
+    var atlSearchTerm = '';
+
+    function atlDirById(id) {
+        return ATL_DIRECTIONS.filter(function(d) {
+            return d.id === id;
+        })[0];
+    }
+
+    function atlSetAccent(dir) {
+        document.getElementById('page-library').style.setProperty('--lib-glow-color', dir.accent);
+    }
+
+    function atlRenderNav() {
+        var nav = document.getElementById('lib-dir-nav');
+        nav.innerHTML = '';
+        ATL_DIRECTIONS.forEach(function(d) {
+            var el = document.createElement('div');
+            el.className = 'dir-pill' + (d.id === atlCurrentDir ? ' active' : '');
+            el.style.setProperty('--pill-accent', d.accent);
+            el.innerHTML = '<span class="dir-num">0' + d.n + '</span><i class="ti ' + d.icon + '"></i> ' + d.name.split(',')[0].split('&')[0].trim();
+            el.addEventListener('click', function() {
+                atlCurrentDir = d.id;
+                atlSearchTerm = '';
+                document.getElementById('lib-search-input').value = '';
+                atlRenderAll();
+                document.getElementById('page-library').scrollIntoView({
+                    block: 'start'
+                });
+            });
+            nav.appendChild(el);
+        });
+    }
+
+    function atlRenderHead() {
+        var d = atlDirById(atlCurrentDir);
+        atlSetAccent(d);
+        var count = ATL_ITEMS.filter(function(i) {
+            return i.dir === atlCurrentDir;
+        }).length;
+        document.getElementById('lib-dir-head').innerHTML =
+        '<div class="dir-head-top">' +
+        '<div class="dir-icon" style="--dir-accent:' + d.accent + ';--dir-accent-bg:' + d.accentBg + ';"><i class="ti ' + d.icon + '"></i></div>' +
+        '<div><div class="dir-title">' + d.n + '. ' + d.name + '</div><div class="dir-count">' + count + ' references</div></div>' +
+        '</div>' +
+        '<div class="dir-desc">' + d.desc + '</div>';
+    }
+
+    function atlRenderGrid() {
+        var d = atlDirById(atlCurrentDir);
+        var grid = document.getElementById('lib-grid');
+        grid.innerHTML = '';
+        var items = ATL_ITEMS.filter(function(i) {
+            return i.dir === atlCurrentDir;
+        });
+        if (atlSearchTerm) {
+            var q = atlSearchTerm.toLowerCase();
+            items = items.filter(function(i) {
+                return i.title.toLowerCase().indexOf(q) !== -1 || i.tech.toLowerCase().indexOf(q) !== -1;
+            });
+        }
+        document.getElementById('lib-empty-state').style.display = items.length ? 'none' : 'block';
+        items.forEach(function(it) {
+            var el = document.createElement('div');
+            el.className = 'atl-card';
+            el.style.setProperty('--card-accent', d.accent);
+            el.innerHTML =
+            '<div class="card-thumb">' +
+            '<img src="https://img.youtube.com/vi/' + it.id + '/hqdefault.jpg" loading="lazy" alt="">' +
+            '<div class="card-num">0' + it.n + '</div>' +
+            '<div class="card-play"><i class="ti ti-player-play-filled"></i></div>' +
+            '</div>' +
+            '<div class="card-body">' +
+            '<div class="card-title">' + it.title + '</div>' +
+            '<div class="card-tech">' + it.tech + '</div>' +
+            '<div class="card-foot"><i class="ti ti-brand-youtube"></i> Watch reference</div>' +
+            '</div>';
+            el.addEventListener('click', function() {
+                atlOpenModal(it, d);
+            });
+            grid.appendChild(el);
+        });
+    }
+
+    function atlRenderAll() {
+        atlRenderNav();
+        atlRenderHead();
+        atlRenderGrid();
+    }
+
+    function atlOpenModal(it, d) {
+        document.getElementById('lib-modal-iframe').src = 'https://www.youtube.com/embed/' + it.id + '?autoplay=1';
+        document.getElementById('lib-modal-title').textContent = it.title;
+        document.getElementById('lib-modal-tech').textContent = it.tech;
+        document.getElementById('lib-modal-yt-link').href = 'https://www.youtube.com/watch?v=' + it.id;
+        document.getElementById('lib-modal-yt-link').style.color = d.accent;
+        document.getElementById('lib-modal-bg').classList.add('open');
+    }
+    function atlCloseModal() {
+        document.getElementById('lib-modal-bg').classList.remove('open');
+        document.getElementById('lib-modal-iframe').src = '';
+    }
+    document.getElementById('lib-modal-close').addEventListener('click', atlCloseModal);
+    document.getElementById('lib-modal-bg').addEventListener('click', function(e) {
+        if (e.target === this)
+            atlCloseModal();
+    });
+
+    document.getElementById('lib-search-input').addEventListener('input', function(e) {
+        atlSearchTerm = e.target.value;
+        atlRenderGrid();
+    });
+
+    document.getElementById('lib-surprise-btn').addEventListener('click', function() {
+        var pick = ATL_ITEMS[Math.floor(Math.random() * ATL_ITEMS.length)];
+        atlCurrentDir = pick.dir;
+        atlSearchTerm = '';
+        document.getElementById('lib-search-input').value = '';
+        atlRenderAll();
+        var d = atlDirById(pick.dir);
+        setTimeout(function() {
+            atlOpenModal(pick, d);
+        }, 350);
+    });
+
+    atlRenderAll();
+
     function syncFromHash() {
         var hash = location.hash || '#/';
         if (hash === '#/guide') {
             document.getElementById('page-portal').style.display = 'none';
             document.getElementById('page-guide').style.display = '';
             document.getElementById('page-team').style.display = 'none';
+            document.getElementById('page-library').style.display = 'none';
             window.scrollTo(0, 0);
         } else if (hash === '#/team') {
             document.getElementById('page-portal').style.display = 'none';
             document.getElementById('page-guide').style.display = 'none';
             document.getElementById('page-team').style.display = '';
+            document.getElementById('page-library').style.display = 'none';
+            window.scrollTo(0, 0);
+        } else if (hash === '#/library') {
+            document.getElementById('page-portal').style.display = 'none';
+            document.getElementById('page-guide').style.display = 'none';
+            document.getElementById('page-team').style.display = 'none';
+            document.getElementById('page-library').style.display = '';
             window.scrollTo(0, 0);
         } else {
             document.getElementById('page-guide').style.display = 'none';
             document.getElementById('page-team').style.display = 'none';
+            document.getElementById('page-library').style.display = 'none';
             document.getElementById('page-portal').style.display = '';
             if (hash && hash !== '#/' && hash !== '#') {
                 var id = hash.slice(1);
