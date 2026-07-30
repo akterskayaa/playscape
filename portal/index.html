@@ -1333,6 +1333,78 @@
         opacity: .55
     }
 
+    .step-resource-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--purple);
+        background: var(--purple-bg);
+        border-radius: 9px;
+        padding: 3px 9px;
+        margin-top: 8px
+    }
+
+    .step-resource-tag i {
+        font-size: 12px
+    }
+
+    .locked-resource-tag {
+        color: var(--t3);
+        background: var(--bg2);
+        margin-top: 4px
+    }
+
+    .mentalmap-card {
+        background: #fff;
+        border: .5px solid var(--bl);
+        border-radius: var(--rlg);
+        padding: 1.2rem 1.4rem;
+        margin-top: 12px
+    }
+
+    .mentalmap-title {
+        font-size: 14.5px;
+        font-weight: 700;
+        margin-bottom: 12px
+    }
+
+    .mentalmap-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 0;
+        border-top: .5px solid var(--bl)
+    }
+
+    .mentalmap-row:first-of-type {
+        border-top: none
+    }
+
+    .mentalmap-icon {
+        font-size: 19px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: var(--bg2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0
+    }
+
+    .mentalmap-name {
+        font-size: 13px;
+        font-weight: 700
+    }
+
+    .mentalmap-desc {
+        font-size: 12px;
+        color: var(--t2);
+        margin-top: 1px
+    }
+
     .locked-row:first-child {
         border-top: none
     }
@@ -2372,6 +2444,52 @@
                               
                     </div>
                 </div>
+
+                <div class="mentalmap-card">
+                    <div class="mentalmap-title">Here's how the Collaboratorium works</div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">🏡</div>
+                        <div>
+                            <div class="mentalmap-name">Portal</div>
+                            <div class="mentalmap-desc">Your home base.</div>
+                        </div>
+                    </div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">🧭</div>
+                        <div>
+                            <div class="mentalmap-name">Explorer's Guide</div>
+                            <div class="mentalmap-desc">Understand the journey.</div>
+                        </div>
+                    </div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">📜</div>
+                        <div>
+                            <div class="mentalmap-name">Quest</div>
+                            <div class="mentalmap-desc">Discover what you're creating.</div>
+                        </div>
+                    </div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">📖</div>
+                        <div>
+                            <div class="mentalmap-name">Experiment Playbook</div>
+                            <div class="mentalmap-desc">Learn how to create it.</div>
+                        </div>
+                    </div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">🗺️</div>
+                        <div>
+                            <div class="mentalmap-name">Miro</div>
+                            <div class="mentalmap-desc">Capture your team's work.</div>
+                        </div>
+                    </div>
+                    <div class="mentalmap-row">
+                        <div class="mentalmap-icon">✉️</div>
+                        <div>
+                            <div class="mentalmap-name">Daily Emails</div>
+                            <div class="mentalmap-desc">Guide you one step at a time.</div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- ================= UPCOMING GATHERINGS ================= -->
@@ -2760,6 +2878,7 @@
     {
         n: 1,
         title: 'Arrive',
+        resource: "Explorer's Guide",
         unlocked: true,
         tasks: [
         {
@@ -2803,6 +2922,7 @@
     {
         n: 2,
         title: 'Enter Mirrorwood',
+        resource: 'Mirrorwood Narrative',
         unlocked: true,
         tasks: [
         {
@@ -2834,26 +2954,31 @@
     {
         n: 3,
         title: 'Accept Your Quest',
+        resource: 'Team Quest + Miro Board',
         unlocked: false
     },
     {
         n: 4,
         title: 'Dream',
+        resource: 'Experiment Playbook + Design Moves',
         unlocked: false
     },
     {
         n: 5,
         title: 'Design',
+        resource: 'Continue with the Playbook',
         unlocked: false
     },
     {
         n: 6,
         title: 'Bring it to Life',
+        resource: 'Complete your Experiment Template in Miro',
         unlocked: false
     },
     {
         n: 7,
         title: 'Make it Real',
+        resource: 'Playtest + Harvest',
         unlocked: false
     }
     ];
@@ -3099,6 +3224,7 @@
                 '<div class="card-sub" id="inv-progress-' + inv.n + '">' + p.done + ' of ' + p.total + ' complete</div>' +
                 '<div class="saved-note"><i class="ti ti-device-floppy"></i> Saved on this device</div>' +
                 '</div>' +
+                (inv.resource ? '<div class="step-resource-tag"><i class="ti ti-arrow-forward-up"></i> ' + inv.resource + '</div>' : '') +
                 '</div>' +
                 '</div>' +
                 '<div class="card-body" style="padding:4px 18px;"><div class="checklist" id="inv-tasks-' + inv.n + '"></div></div>';
@@ -3114,7 +3240,9 @@
                 el.style.cursor = 'pointer';
                 el.innerHTML =
                 '<div class="locked-icon"><i class="ti ti-lock"></i></div>' +
-                '<div class="locked-label">Step ' + inv.n + ' • ' + inv.title + '</div>';
+                '<div style="flex:1;"><div class="locked-label">Step ' + inv.n + ' • ' + inv.title + '</div>' +
+                (inv.resource ? '<div class="step-resource-tag locked-resource-tag"><i class="ti ti-arrow-forward-up"></i> ' + inv.resource + '</div>' : '') +
+                '</div>';
                 el.addEventListener('click', function() {
                     toast("This step isn't open yet — check back soon!");
                 });
