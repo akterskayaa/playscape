@@ -2803,7 +2803,33 @@
     {
         n: 2,
         title: 'Enter Mirrorwood',
-        unlocked: false
+        unlocked: true,
+        tasks: [
+        {
+            id: 'narrative',
+            icon: 'ti-book-2',
+            title: 'Read the Mirrorwood Narrative',
+            desc: 'Find it in Resources → Participate.',
+            time: '10 min',
+            done: false,
+            action: function() {
+                scrollToSection('resources')
+            },
+            openLabel: 'Open in Resources'
+        },
+        {
+            id: 'reflect2',
+            icon: 'ti-brand-whatsapp',
+            title: 'Share a reflection with your team in WhatsApp',
+            desc: 'What stood out to you in the story?',
+            time: '5 min',
+            done: false,
+            action: function() {
+                window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY', '_blank')
+            },
+            openLabel: 'Open WhatsApp'
+        }
+        ]
     },
     {
         n: 3,
@@ -2817,17 +2843,17 @@
     },
     {
         n: 5,
-        title: 'Choose',
-        unlocked: false
-    },
-    {
-        n: 6,
         title: 'Design',
         unlocked: false
     },
     {
+        n: 6,
+        title: 'Bring it to Life',
+        unlocked: false
+    },
+    {
         n: 7,
-        title: 'Play',
+        title: 'Make it Real',
         unlocked: false
     }
     ];
@@ -2846,6 +2872,12 @@
             action: function() {
                 location.hash = '/guide'
             }
+        },
+        {
+            t: 'The Mirrorwood Narrative',
+            by: 'PDF — the story your Quest brings to life',
+            kind: 'extlink',
+            url: 'https://drive.google.com/file/d/18szktcnwLntLqTFikiSkHW165HZMvArC/view?usp=sharing'
         },
         {
             t: 'Hippo Participant Journey Map',
@@ -4389,30 +4421,24 @@
 
     atlRenderAll();
 
+
+    var ALL_PAGES = {
+        '#/guide': 'page-guide',
+        '#/team': 'page-team',
+        '#/library': 'page-library'
+    };
     function syncFromHash() {
         var hash = location.hash || '#/';
-        if (hash === '#/guide') {
+        if (ALL_PAGES[hash]) {
             document.getElementById('page-portal').style.display = 'none';
-            document.getElementById('page-guide').style.display = '';
-            document.getElementById('page-team').style.display = 'none';
-            document.getElementById('page-library').style.display = 'none';
-            window.scrollTo(0, 0);
-        } else if (hash === '#/team') {
-            document.getElementById('page-portal').style.display = 'none';
-            document.getElementById('page-guide').style.display = 'none';
-            document.getElementById('page-team').style.display = '';
-            document.getElementById('page-library').style.display = 'none';
-            window.scrollTo(0, 0);
-        } else if (hash === '#/library') {
-            document.getElementById('page-portal').style.display = 'none';
-            document.getElementById('page-guide').style.display = 'none';
-            document.getElementById('page-team').style.display = 'none';
-            document.getElementById('page-library').style.display = '';
+            Object.keys(ALL_PAGES).forEach(function(h) {
+                document.getElementById(ALL_PAGES[h]).style.display = (h === hash) ? '' : 'none';
+            });
             window.scrollTo(0, 0);
         } else {
-            document.getElementById('page-guide').style.display = 'none';
-            document.getElementById('page-team').style.display = 'none';
-            document.getElementById('page-library').style.display = 'none';
+            Object.keys(ALL_PAGES).forEach(function(h) {
+                document.getElementById(ALL_PAGES[h]).style.display = 'none';
+            });
             document.getElementById('page-portal').style.display = '';
             if (hash && hash !== '#/' && hash !== '#') {
                 var id = hash.slice(1);
