@@ -1953,15 +1953,9 @@
 
     #page-library .dir-nav {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
-        overflow-x: auto;
-        padding: 36px 0 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none
-    }
-
-    #page-library .dir-nav::-webkit-scrollbar {
-        display: none
+        padding: 36px 0 8px
     }
 
     #page-library .dir-pill {
@@ -2153,6 +2147,15 @@
         transform: scale(1.04)
     }
 
+    #page-library .card-thumb-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px
+    }
+
     #page-library .card-num {
         position: absolute;
         top: 10px;
@@ -2336,6 +2339,16 @@
 
         #page-library .atl-grid {
             grid-template-columns: 1fr
+        }
+
+        #page-library .dir-pill {
+            padding: 9px 14px;
+            font-size: 12px;
+            gap: 7px
+        }
+
+        #page-library .dir-pill .dir-num {
+            display: none
         }
     }
     </style>
@@ -2776,7 +2789,7 @@
                     <br>
                     for Ritual &amp; Community
                 </h1>
-                <p class="subtitle">A curated reference library of 46 real installations and projects. Look for one simple principle that could inspire your own experiment — not the scale of the project.</p>
+                <p class="subtitle" id="lib-total-count">A curated reference library of real installations and projects. Look for one simple principle that could inspire your own experiment — not the scale of the project.</p>
 
                 <div class="howto">
                     <div class="howto-label">How to use this library</div>
@@ -3070,7 +3083,7 @@
         },
         {
             t: 'ART-TECH REFERENCE LIBRARY',
-            by: '46 curated installations — explore by direction',
+            by: 'Curated installations — explore by direction',
             kind: 'link',
             action: function() {
                 location.hash = '/library'
@@ -3639,6 +3652,82 @@
 
     },
     {
+        id: 'toolkit',
+        title: 'Your Creative Toolkit',
+        icon: 'ti-tools',
+        color: 'green',
+        defaultOpen: false,
+        body: `
+      <p>A few different things will show up over the next few days. Here's what each one is for, so you always know which one to reach for.</p>
+      <div class="glossary-grid">
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🏡</div>
+          <div class="glossary-term">Portal</div>
+          <div class="glossary-def">Your home base. Whenever you're not sure what to do, start here.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🧭</div>
+          <div class="glossary-term">Explorer's Guide</div>
+          <div class="glossary-def">This document. Helps you understand the shape of the whole journey.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">📜</div>
+          <div class="glossary-term">Quest</div>
+          <div class="glossary-def">Your team's creative challenge — what you're actually setting out to create.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">📖</div>
+          <div class="glossary-term">Experiment Playbook</div>
+          <div class="glossary-def">Practical guidance for how to design and build your experience.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🗺️</div>
+          <div class="glossary-term">Miro</div>
+          <div class="glossary-def">Your team's shared workspace to capture ideas, prototypes, and progress.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">✉️</div>
+          <div class="glossary-term">Daily Emails</div>
+          <div class="glossary-def">Short notes that guide you one step at a time during your first week.</div>
+        </div>
+      </div>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
         id: 'journey',
         title: 'Your Journey',
         icon: 'ti-route',
@@ -3836,12 +3925,12 @@
         defaultOpen: false,
         body: `
       <ul style="margin-left:18px;">
-        <li>Most of the Collaboratorium happens <b>asynchronously</b> — your team decides when and how often to meet. There isn't a single "correct" schedule, so choose a rhythm that works for everyone.</li>
-        <li>Before the Collaboratorium begins, we'll create a <b>dedicated WhatsApp group</b> for your team — your primary space for getting to know one another, sharing ideas, asking questions, and coordinating your work.</li>
-        <li>Each team also has a <b>Radiant IRIS guide</b> available to answer questions, offer encouragement, and support your creative process.</li>
-        <li>Expect to spend <b>a few hours each week</b> engaging with the Collaboratorium.</li>
-        <li>Some teams meet more often than others, and that's perfectly okay — discovering your own rhythm is part of the experiment.</li>
-        <li>If you miss a day, don't worry. Simply return to the Participant Portal, catch up at your own pace, and ask your teammates or your Radiant IRIS guide if you need help. This journey is designed to be flexible.</li>
+        <li>Most of the Collaboratorium happens <b>asynchronously</b>. Your team can decide when and how often to meet, so there isn't a single "correct" schedule. Choose a rhythm that works for everyone.</li>
+        <li>Before the Collaboratorium begins, we'll create a <b>dedicated WhatsApp group</b> for your team. This will be your primary space for getting to know one another, sharing ideas, asking questions, and coordinating your work together.</li>
+        <li>Each team will also have <b>Radiant IRIS guides</b> available to answer questions, offer encouragement, and support your creative process.</li>
+        <li>We expect most participants will spend <b>a few hours each week</b> engaging with the Collaboratorium. Because the experience is largely asynchronous, your team can choose a rhythm that works for everyone's schedule.</li>
+        <li>Some teams may meet more often than others, and that's perfectly okay. Discovering your rhythm is part of the experiment.</li>
+        <li>We understand that life happens. If you miss a day, don't worry. Simply return to the Participant Portal, catch up at your own pace, and ask your teammates or your Radiant IRIS guide if you need help. We're designing this journey to be flexible.</li>
       </ul>
     `
 
@@ -3925,12 +4014,12 @@
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">💗</div>
           <div class="glossary-term">StoryHeart</div>
-          <div class="glossary-def">The storytelling engine we're exploring throughout the Collaboratorium. It helps transform participant offerings into shared narratives, so stories can respond and evolve through the group's participation.</div>
+          <div class="glossary-def">The storytelling engine we're exploring throughout the Collaboratorium. StoryHeart helps transform participant offerings into shared narratives, making it possible for stories to respond and evolve through the group's participation.</div>
         </div>
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🎭</div>
           <div class="glossary-term">Playscape</div>
-          <div class="glossary-def">The shared interactive space where participants experience the story together — stepping in as active participants, rather than watching from the outside.</div>
+          <div class="glossary-def">The shared interactive space where participants experience the story together. Rather than watching from the outside, the Playscape invites people to step into the experience as active participants.</div>
         </div>
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🔧</div>
@@ -3940,7 +4029,7 @@
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">✨</div>
           <div class="glossary-term">Emergence</div>
-          <div class="glossary-def">One of our favorite words! What happens when something unexpected and meaningful arises through collaboration — new ideas and experiences unfolding together, rather than being planned in advance.</div>
+          <div class="glossary-def">One of our favorite words! Emergence describes what happens when something unexpected and meaningful arises through collaboration. Rather than planning every detail in advance, we create the conditions for new ideas, insights, and experiences to unfold together.</div>
         </div>
       </div>
     `
@@ -4089,6 +4178,24 @@
         accent: '#B4E61D',
         accentBg: '#2A3312',
         desc: 'Heart rate, breathing, EEG, and other body signals become inputs for light, sound, water, or a collective narrative.'
+    },
+    {
+        id: 'light',
+        n: 6,
+        name: 'Light, Laser & Kinetic Installations',
+        icon: 'ti-bolt',
+        accent: '#5EC8F2',
+        accentBg: '#142B36',
+        desc: 'Suspended forms, lasers, and moving light sculptures that turn a beam or a fixture into a spatial, walk-through experience.'
+    },
+    {
+        id: 'xr',
+        n: 7,
+        name: 'XR, VR & Hybrid Immersive Experiences',
+        icon: 'ti-device-vr-headset',
+        accent: '#C265E0',
+        accentBg: '#2E1A38',
+        desc: 'Headsets, connected garments, and phones combine with live performers to create shared experiences between direct participants and observers.'
     }
     ];
 
@@ -4162,6 +4269,41 @@
         title: 'JACK — Projection-Mapped Sculpture',
         tech: 'Animation is precisely mapped onto a complex sculptural form, emphasizing its volume and giving one object many different identities. Useful for masks, totems, and temporary sculptures.',
         id: 'dIN8FYTU8P4'
+    },
+    {
+        dir: 'projection',
+        n: 11,
+        title: 'Projections in the Forest — Friedrich van Schoor & Tarek Mawad',
+        tech: 'A poetic projection experiment using irregular organic surfaces — mushrooms, leaves, branches and spiderwebs — as natural screens. A strong reference for intimate, small-scale mapping in a forest rather than projection onto architecture.',
+        id: 'YJ6SC7lkPoo'
+    },
+    {
+        dir: 'projection',
+        n: 12,
+        title: 'Photosynthesis — Sínoca (Silvia Isach) & Roger Subirana',
+        tech: 'Site-specific audiovisual projection mapping on trees, ground and leaves. Visuals and surround sound turn a forest into a responsive narrative environment, framing plant life as an active character rather than a backdrop.',
+        id: 'ECTauYNVY8g'
+    },
+    {
+        dir: 'projection',
+        n: 13,
+        title: 'Perennial Land — Laia Cabrera & Isabelle Duverger',
+        tech: 'An immersive installation combining cinema, projection mapping, interactive technology, Unreal Engine and sound. Environmental data and projected imagery build a \u2018data forest\u2019 that connects climate themes with participatory experience.',
+        id: 'XBDMLXBouAA'
+    },
+    {
+        dir: 'projection',
+        n: 14,
+        title: 'Lumina Series — Enchanted Night Walks',
+        tech: 'A recurring outdoor light-walk format combining projection, lighting, sound, landscape design and narrative wayfinding. Useful for studying how a visitor can move through a forest or park as part of a slow, story-led ritual.',
+        id: 'R85b_eKfKNM'
+    },
+    {
+        dir: 'projection',
+        n: 15,
+        title: 'Lone Tree Projection Mapping Installation',
+        tech: 'A focused mapping study on one tree. Projected visuals follow the trunk, branches and silhouette, showing how a single natural form can become the centre of an outdoor visual intervention.',
+        id: 'Jjf3ExEllx8'
     },
     // 2. Generative Visuals, AI & Data Art
     {
@@ -4418,6 +4560,85 @@
         title: 'Laura Jade — Interactive Brain Light',
         tech: 'A musician\u2019s EEG signals are translated into light inside a brain sculpture. Changes in brain activity become a visible layer of a live performance.',
         id: 'QyMwKeGUIrQ'
+    },
+    // 6. Light, Laser & Kinetic Installations
+    {
+        dir: 'light',
+        n: 1,
+        title: 'Parallels — NONOTAK',
+        tech: 'A spatial light installation where projected geometry and sound create an abstract room. Visitors alter the image simply by walking through and breaking the beams of light; the body becomes part of the composition.',
+        id: 'HXZiTC3JrEk'
+    },
+    {
+        dir: 'light',
+        n: 2,
+        title: 'The Day We Left Field — TUNDRA',
+        tech: 'A spatial light installation of suspended \u2018grass\u2019 forms animated through light. The work recreates a floating meadow in an urban interior and explores the tension between natural/synthetic and real/virtual.',
+        id: '0yJ6Zss6YVo'
+    },
+    {
+        dir: 'light',
+        n: 3,
+        title: 'ROW — TUNDRA',
+        tech: 'A kinetic light sculpture built from high-speed LED hologram fans. Abstract forms appear to float in air, using changing light patterns and optical depth to create an image with no conventional screen.',
+        id: 'jMTZcNlueCY'
+    },
+    {
+        dir: 'light',
+        n: 4,
+        title: 'My Whale V2 — TUNDRA',
+        tech: 'An immersive light-and-projection installation made from luminous hexagonal cells. The spatial visual system creates the sensation of moving inside an underwater living structure; sound supports the experience.',
+        id: 'RJ4qiah4YVg'
+    },
+    {
+        dir: 'light',
+        n: 5,
+        title: 'NOMAD Live — TUNDRA',
+        tech: 'A live visual performance combining generative laser projection and real-time image systems. Useful as a reference for concert-scale immersion and for turning algorithms, lines and light into a performative event.',
+        id: 'b34OVhcwlFY'
+    },
+    {
+        dir: 'light',
+        n: 6,
+        title: 'OUTLINES — TUNDRA',
+        tech: 'A large-scale laser-beam installation that turns a grid of light into a walk-through spatial drawing. A tunnel version demonstrates how a minimal laser system can reshape a visitor\u2019s sense of scale and direction.',
+        id: 'w-GlwGJ5hM0'
+    },
+    // 7. XR, VR & Hybrid Immersive Experiences
+    {
+        dir: 'xr',
+        n: 1,
+        title: 'Free UR Head — Tung-Yen Chou / Very Theatre (Venice Immersive 2024)',
+        tech: 'A multi-user live VR performance. A dancer/choreographer guides many headset-wearing participants at once through light cues, movement and music, turning the group into an unrehearsed collective dance.',
+        id: 'Fcb_EFwm_aE'
+    },
+    {
+        dir: 'xr',
+        n: 2,
+        title: 'Ancestors — Steye Hallema (Venice Immersive 2025)',
+        tech: 'A 70-minute interactive group experience guided through visitors\u2019 own smartphones. Participants take a selfie and become fictional ancestors of people 200 years in the future; AI connects players inside a collective future-facing narrative.',
+        id: 'mAfxvuoRqQU'
+    },
+    {
+        dir: 'xr',
+        n: 3,
+        title: 'Ceci est mon cœur / This Is My Heart — Stéphane Hueber-Blies & Nicolas Blies (Venice Immersive 2024)',
+        tech: 'A sensory installation combining projection mapping, sound and a connected garment with luminous embroidery. The clothing lights up in sync with spoken narrative, so the experience unfolds across body, room and image.',
+        id: 'jf3909F8UI8'
+    },
+    {
+        dir: 'xr',
+        n: 4,
+        title: 'Mammary Mountain — Tara Baoth Mooney, Camille C. Baker & Maf\u2019j Alvarez (Venice Immersive 2024)',
+        tech: 'A seated VR and haptic installation made in Unity. A specially designed tactile garment vibrates at mapped points on the body while the headset carries the visual narrative, linking immersive media with embodied care and empathy.',
+        id: 'ThEkIrqgDK0'
+    },
+    {
+        dir: 'xr',
+        n: 5,
+        title: 'Uncanny Alley: A New Day — Ferryman Collective & Virtual Worlds Company (2024)',
+        tech: 'A live, multi-user VR theatre performance in a hybrid festival format. At NoHo CineFest, up to 12 people entered the VR world in headsets and interacted with two remote live performers, while the performance was projected on a cinema screen for up to 50 in-person spectators — a model for direct participants and observers sharing one live narrative.',
+        link: 'https://www.nohocinefest.com/vrtheater'
     }
     ];
 
@@ -4488,19 +4709,28 @@
             var el = document.createElement('div');
             el.className = 'atl-card';
             el.style.setProperty('--card-accent', d.accent);
+            var thumbHtml = it.id
+            ? '<img src="https://img.youtube.com/vi/' + it.id + '/hqdefault.jpg" loading="lazy" alt="">'
+            : '<div class="card-thumb-fallback" style="background:' + d.accentBg + ';color:' + d.accent + ';"><i class="ti ti-external-link"></i></div>';
+            var footHtml = it.id
+            ? '<div class="card-foot"><i class="ti ti-brand-youtube"></i> Watch reference</div>'
+            : '<div class="card-foot"><i class="ti ti-external-link"></i> Visit website</div>';
             el.innerHTML =
             '<div class="card-thumb">' +
-            '<img src="https://img.youtube.com/vi/' + it.id + '/hqdefault.jpg" loading="lazy" alt="">' +
+            thumbHtml +
             '<div class="card-num">0' + it.n + '</div>' +
-            '<div class="card-play"><i class="ti ti-player-play-filled"></i></div>' +
+            '<div class="card-play"><i class="ti ' + (it.id ? 'ti-player-play-filled' : 'ti-arrow-up-right') + '"></i></div>' +
             '</div>' +
             '<div class="card-body">' +
             '<div class="card-title">' + it.title + '</div>' +
             '<div class="card-tech">' + it.tech + '</div>' +
-            '<div class="card-foot"><i class="ti ti-brand-youtube"></i> Watch reference</div>' +
+            footHtml +
             '</div>';
             el.addEventListener('click', function() {
-                atlOpenModal(it, d);
+                if (it.id)
+                    atlOpenModal(it, d);
+                else
+                    window.open(it.link, '_blank');
             });
             grid.appendChild(el);
         });
@@ -4510,6 +4740,9 @@
         atlRenderNav();
         atlRenderHead();
         atlRenderGrid();
+        var countEl = document.getElementById('lib-total-count');
+        if (countEl)
+            countEl.textContent = 'A curated reference library of ' + ATL_ITEMS.length + ' real installations and projects. Look for one simple principle that could inspire your own experiment — not the scale of the project.';
     }
 
     function atlOpenModal(it, d) {
@@ -4542,9 +4775,15 @@
         document.getElementById('lib-search-input').value = '';
         atlRenderAll();
         var d = atlDirById(pick.dir);
-        setTimeout(function() {
-            atlOpenModal(pick, d);
-        }, 350);
+        if (pick.id) {
+            setTimeout(function() {
+                atlOpenModal(pick, d);
+            }, 350);
+        } else {
+            setTimeout(function() {
+                window.open(pick.link, '_blank');
+            }, 350);
+        }
     });
 
     atlRenderAll();
