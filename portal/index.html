@@ -2968,7 +2968,45 @@
         n: 3,
         title: 'Accept Your Quest',
         resource: 'Team Quest + Miro Board',
-        unlocked: false
+        unlocked: true,
+        tasks: [
+        {
+            id: 'readquest',
+            icon: 'ti-scroll',
+            title: 'Read your Team Quest',
+            desc: 'Find it on your Team Page.',
+            time: '5 min',
+            done: false,
+            action: function() {
+                location.hash = '/team'
+            },
+            openLabel: 'Open Team Page'
+        },
+        {
+            id: 'miroboard',
+            icon: 'ti-layout-board-split',
+            title: "Visit your team's Miro Board",
+            desc: 'Find it in Connect & Get Help → Shared Workspace.',
+            time: '5 min',
+            done: false,
+            action: function() {
+                scrollToSection('connect')
+            },
+            openLabel: 'Go to Connect'
+        },
+        {
+            id: 'decidework',
+            icon: 'ti-message-circle',
+            title: "Decide how you'd like to collaborate",
+            desc: "Will you meet on Zoom, work asynchronously in WhatsApp, or a mix of both?",
+            time: '10 min',
+            done: false,
+            action: function() {
+                window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY', '_blank')
+            },
+            openLabel: 'Open WhatsApp'
+        }
+        ]
     },
     {
         n: 4,
@@ -3010,6 +3048,12 @@
             action: function() {
                 location.hash = '/guide'
             }
+        },
+        {
+            t: 'Miro Tutorial',
+            by: 'How to use your team\'s shared workspace',
+            kind: 'video',
+            videoId: 'MaxFF307efw'
         },
         {
             t: 'The Mirrorwood Narrative',
