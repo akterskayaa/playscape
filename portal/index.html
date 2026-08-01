@@ -1111,6 +1111,118 @@
         font-size: 12px;
         color: var(--t2);
         line-height: 1.55
+    }/* ---- experiment playbook (image + prose accordion) ---- */
+    .pb-hero-img {
+        width: 100%;
+        display: block;
+        border-radius: var(--rmd);
+        border: .5px solid var(--bl);
+        margin-bottom: 16px;
+        background: var(--bg2)
+    }
+
+    .pb-tagline {
+        font-size: 12.5px;
+        font-style: italic;
+        color: var(--t2);
+        margin: -8px 0 16px
+    }
+
+    .pb-subhead {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: var(--t2);
+        margin: 0 0 8px
+    }
+
+    .pb-callout {
+        border-radius: var(--rmd);
+        padding: 14px 16px;
+        font-size: 13px;
+        line-height: 1.65;
+        margin: 0 0 16px
+    }
+
+    .pb-callout b {
+        font-weight: 700
+    }
+
+    .pb-check-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        margin: 0 0 16px
+    }
+
+    .pb-check-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--t1)
+    }
+
+    .pb-check-row i {
+        color: var(--green);
+        font-size: 15px;
+        margin-top: 2px;
+        flex-shrink: 0
+    }
+
+    .pb-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 16px
+    }
+
+    .pb-tag {
+        font-size: 11.5px;
+        font-weight: 600;
+        background: var(--bg2);
+        color: var(--t2);
+        padding: 4px 10px;
+        border-radius: 12px
+    }
+
+    .pb-numlist {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 0 16px
+    }
+
+    .pb-numrow {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start
+    }
+
+    .pb-numrow-badge {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 700;
+        font-size: 11.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px
+    }
+
+    .pb-numrow-text {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--t1)
+    }
+
+    .pb-numrow-text b {
+        color: var(--t1)
     }/* ---- teams ---- */
     .team-card {
         background: #fff;
@@ -2691,6 +2803,59 @@
 
         </div>
     </div>
+
+    <!-- ================= EXPERIMENT PLAYBOOK ================= -->
+    <div id="page-playbook" style="display:none">
+        <div class="wrap">
+
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Portal
+                </div>
+                <div class="welcome-card guide-welcome">
+                    <div class="welcome-title" id="playbook-welcome-toggle" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:0;">
+                        <span>📖 Experiment Playbook</span>
+                        <span class="guide-welcome-tap">
+                            <span class="guide-welcome-tap-text" id="playbook-welcome-tap-text">Tap to read</span>
+                            <i class="ti ti-chevron-down" id="playbook-welcome-chevron"></i>
+                        </span>
+                    </div>
+                    <div class="welcome-text" id="playbook-welcome-body" style="display:none;margin-top:16px;">
+                        <p>
+                            <i>Create a Small Experiment. Learn Together. Have Fun.</i>
+                        </p>
+                        <p>You've already entered the world of Mirrorwood. You've explored the story, received your Quest, and begun imagining what your chapter could become.</p>
+                        <p>Now it's time to begin experimenting.</p>
+                        <p>Every team has received a different Quest. Together, those Quests become one larger story. Your experiment is one piece of the Mirrorwood journey — not the whole thing.</p>
+                        <p>Over the next few days, we'll gradually release a series of creative tools to support your process. These aren't daily assignments or deadlines — think of each one as another tool becoming available whenever your team is ready to use it. Move at whatever pace works for you.</p>
+                        <p>
+                            <b>Keep it simple. Keep it playful. Most importantly, enjoy creating together.</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="section-sub" style="margin:14px 2px 0;">This is your guide to designing your experiment. Tap a section below to open it — image first, then the walkthrough.</div>
+            </section>
+
+            <section class="section-block">
+                <div id="playbook-accordion"></div>
+            </section>
+
+            <section class="section-block">
+                <div class="stuck-banner">
+                    <div class="stuck-icon">🙋</div>
+                    <div>
+                        <b>Feeling stuck?</b>
+                         Reach out to your Radiant IRIS Guide, or 
+                        <a href="https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY" target="_blank">ask in WhatsApp</a>
+                        . A short conversation can unlock the next step.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
     <!-- ================= DEDICATED TEAM PAGE ================= -->
     <div id="page-team" style="display:none">
         <div class="wrap">
@@ -3031,8 +3196,22 @@
     {
         n: 4,
         title: 'Dream',
-        resource: 'Experiment Playbook + Design Moves',
-        unlocked: false
+        resource: 'Experiment Playbook',
+        unlocked: false,
+        tasks: [
+        {
+            id: 'readplaybook',
+            icon: 'ti-book-2',
+            title: 'Read the Experiment Playbook',
+            desc: 'Your guide to designing your experiment — start with Welcome & Your Goal, then Dream.',
+            time: '15 min',
+            done: false,
+            action: function() {
+                location.hash = '/playbook'
+            },
+            openLabel: 'Open the Playbook'
+        }
+        ]
     },
     {
         n: 5,
@@ -3067,6 +3246,14 @@
             kind: 'link',
             action: function() {
                 location.hash = '/guide'
+            }
+        },
+        {
+            t: 'Experiment Playbook',
+            by: 'Your guide to designing your experiment',
+            kind: 'link',
+            action: function() {
+                location.hash = '/playbook'
             }
         },
         {
@@ -3568,6 +3755,17 @@
         var body = document.getElementById('guide-welcome-body');
         var chevron = document.getElementById('guide-welcome-chevron');
         var tapText = document.getElementById('guide-welcome-tap-text');
+        var isOpen = body.style.display !== 'none';
+        body.style.display = isOpen ? 'none' : 'block';
+        chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        tapText.textContent = isOpen ? 'Tap to read' : 'Tap to close';
+    });
+
+    /* ---------- playbook welcome collapsible ---------- */
+    document.getElementById('playbook-welcome-toggle').addEventListener('click', function() {
+        var body = document.getElementById('playbook-welcome-body');
+        var chevron = document.getElementById('playbook-welcome-chevron');
+        var tapText = document.getElementById('playbook-welcome-tap-text');
         var isOpen = body.style.display !== 'none';
         body.style.display = isOpen ? 'none' : 'block';
         chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
@@ -4198,6 +4396,475 @@
             '<i class="ti ti-chevron-down kb-chevron' + (sec.defaultOpen ? ' open' : '') + '"></i>' +
             '</div>' +
             '<div class="kb-body guide-prose' + (sec.defaultOpen ? ' open' : '') + '" style="padding:0 18px 18px;">' + sec.body + '</div>';
+            el.querySelector('.kb-header').addEventListener('click', function() {
+                el.querySelector('.kb-body').classList.toggle('open');
+                el.querySelector('.kb-chevron').classList.toggle('open');
+                var disc = el.querySelector('.kb-disclosure');
+                disc.textContent = disc.textContent === '▶' ? '▼' : '▶';
+            });
+            wrap.appendChild(el);
+        });
+    }
+
+    /* ---------- Experiment Playbook: data + accordion ---------- */
+    var playbookSections = [
+    {
+        id: 'welcome-goal',
+        title: 'Welcome & Your Goal',
+        icon: 'ti-flag-3',
+        color: 'purple',
+        defaultOpen: true,
+        img: 'Assets/playbook-1-welcome-goal.jpg',
+        imgAlt: "Experiment Playbook — Create a Small Experiment. Learn Together. Have Fun.",
+        body: `
+      <p>You've already entered the world of Mirrorwood. You've explored the story, received your Quest, and begun imagining what your chapter could become.</p>
+      <p>Now it's time to begin experimenting.</p>
+      <p>Every team has received a different Quest. Together, those Quests become one larger story. Your experiment is one piece of the Mirrorwood journey.</p>
+      <p>Your goal is <b>not</b> to recreate the entire story. Instead, your team will design one small interactive experiment that invites people to experience the transformation at the heart of your chapter.</p>
+      <p>Over the next few days, we'll gradually release a series of creative tools to support your process. These are not daily assignments or deadlines — think of each invitation as another tool becoming available whenever your team is ready to use it.</p>
+      <p>Move at whatever pace works for your team. Collaborate in the way that feels most natural. Simply make sure your experiment is ready for Demo Day.</p>
+      <p><b>Keep it simple. Keep it playful. Most importantly, enjoy creating together.</b></p>
+      <div class="pb-subhead">Your Experiment Is...</div>
+      <div class="glossary-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">🌱</div><div class="glossary-term">Small</div><div class="glossary-def">You're not recreating the whole chapter. You're creating one small piece of it.</div></div>
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🙌</div><div class="glossary-term">Interactive</div><div class="glossary-def">People do something. They participate, make choices, and experience it.</div></div>
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">🔍</div><div class="glossary-term">Testable</div><div class="glossary-def">You can try it, learn from real people, and make it better.</div></div>
+      </div>
+      <div class="pb-subhead">Your Goal</div>
+      <div class="pb-callout" style="background:var(--purple-bg);">
+        <p style="margin-bottom:10px;">By Demo Day, your team will have created one or more small interactive experiments inspired by your Mirrorwood chapter.</p>
+        <p style="margin-bottom:10px;">Its purpose is to invite people into opportunities for meaningful transformation while learning about what works and where we could iterate.</p>
+        <p style="margin-bottom:0;">You'll playtest your experiment, learn from real participants, make any improvements you'd like, and then share it with the rest of the Collaboratorium. <b>Every experiment helps shape what Mirrorwood can become.</b></p>
+      </div>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'story-baton',
+        title: 'The Story Baton',
+        icon: 'ti-torch',
+        color: 'pink',
+        defaultOpen: false,
+        img: 'Assets/playbook-2-story-baton.jpg',
+        imgAlt: "The Story Baton — like a relay race, each chapter receives something and passes something forward.",
+        body: `
+      <p>The Mirrorwood narrative is one unfolding journey.</p>
+      <p>As participants move from one chapter to the next, each experience leaves them with something that continues the story. We call this the <b>story baton</b>.</p>
+      <p>Like a relay race, each team receives something from the chapter before them and passes something forward to the chapter that follows. The baton isn't usually a physical object — more often, it's something people carry within themselves. It might be...</p>
+      <div class="pb-tags">
+        <span class="pb-tag">a feeling</span><span class="pb-tag">a question</span><span class="pb-tag">a symbol</span><span class="pb-tag">a simple object</span><span class="pb-tag">a new perspective</span><span class="pb-tag">a shared memory</span><span class="pb-tag">a commitment</span><span class="pb-tag">an intention</span><span class="pb-tag">a spark of curiosity</span>
+      </div>
+      <div class="pb-callout" style="background:var(--pink-bg);">
+        <p style="margin-bottom:0;"><b>As you design your experiment, keep asking yourselves:</b><br>When participants leave our experience, what might they carry with them into the next chapter?</p>
+      </div>
+      <p>That question often reveals the heart of your design.</p>
+      <p><b>Your experiment isn't simply an ending. It's a bridge to whatever comes next.</b></p>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'great-experiment',
+        title: 'What Makes a Great Experiment?',
+        icon: 'ti-sparkles',
+        color: 'blue',
+        defaultOpen: false,
+        img: 'Assets/playbook-3-great-experiment.jpg',
+        imgAlt: "What makes a great experiment — a compass of six qualities.",
+        body: `
+      <p>A great experiment...</p>
+      <div class="pb-check-grid">
+        <div class="pb-check-row"><i class="ti ti-seedling"></i> Creates opportunities for meaningful transformation.</div>
+        <div class="pb-check-row"><i class="ti ti-hand-click"></i> Invites people to participate.</div>
+        <div class="pb-check-row"><i class="ti ti-wand"></i> Is simple enough to test.</div>
+        <div class="pb-check-row"><i class="ti ti-telescope"></i> Teaches your team something new.</div>
+        <div class="pb-check-row"><i class="ti ti-heart"></i> Leaves people with something meaningful to carry forward.</div>
+        <div class="pb-check-row"><i class="ti ti-confetti"></i> Leaves room for surprise.</div>
+      </div>
+      <div class="pb-callout" style="background:var(--blue-bg);text-align:center;">
+        <p style="margin-bottom:0;font-style:italic;">There are no perfect experiments, only meaningful discoveries.</p>
+      </div>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'dream',
+        title: 'Dream — A Field to Explore',
+        icon: 'ti-cloud',
+        color: 'green',
+        defaultOpen: false,
+        img: 'Assets/playbook-4-dream.jpg',
+        imgAlt: "Dream — a field to explore.",
+        body: `
+      <p><b>Begin with possibility.</b> Spend some time dreaming together. Before thinking about what others might experience, begin with yourselves.</p>
+      <div class="pb-callout" style="background:var(--green-bg);">
+        <p style="margin-bottom:0;"><b>If your team could step into this chapter of Mirrorwood, what kind of experience would you genuinely love to have together?</b></p>
+      </div>
+      <p>The more authentic your own curiosity, excitement, and transformation, the more likely your experiment will resonate with others.</p>
+      <p>Don't worry yet about logistics, technology, or whether an idea is "good." Simply explore possibilities together. What excites your team? What feels alive? What would you genuinely enjoy creating together?</p>
+      <p>You might begin with questions like:</p>
+      <div class="glossary-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="glossary-card"><div class="glossary-term">🌱 Transformation</div><div class="glossary-def">What inner shift does our chapter invite? How do people arrive? How would we love them to leave?</div></div>
+        <div class="glossary-card"><div class="glossary-term">📖 Story</div><div class="glossary-def">Which scene keeps calling to us? Which symbol feels especially meaningful? Which relationship or moment would we love people to experience?</div></div>
+        <div class="glossary-card"><div class="glossary-term">🎈 Play</div><div class="glossary-def">What would we love to experiment with? What would be joyful to create together? What have we always wanted to try?</div></div>
+      </div>
+      <p>You might play with:</p>
+      <div class="pb-tags">
+        <span class="pb-tag">movement</span><span class="pb-tag">sound</span><span class="pb-tag">conversation</span><span class="pb-tag">nature</span><span class="pb-tag">storytelling</span><span class="pb-tag">technology</span><span class="pb-tag">images</span><span class="pb-tag">objects</span><span class="pb-tag">silence</span><span class="pb-tag">…or something completely unexpected</span>
+      </div>
+      <p><b>Don't judge ideas yet. Collect possibilities. Stay curious. Dream first. Choose later.</b></p>
+      <p>Looking for more inspiration? Explore the <b>Design Inspiration</b> deck — a collection of Design Moves drawn from immersive theatre, collaborative games, ritual, escape rooms, and other interactive experiences. You'll also find <b>StoryHeart Inspiration</b>, the specific patterns our team is playing with using technology. Think of it as an optional deck whenever you're looking for a fresh perspective.</p>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'design',
+        title: 'Design — Design Is an Invitation',
+        icon: 'ti-ruler-2',
+        color: 'purple',
+        defaultOpen: false,
+        img: 'Assets/playbook-5-design.jpg',
+        imgAlt: "Design — start small. Build the first experiment, not the perfect one.",
+        body: `
+      <p><b>Design is an invitation.</b> You don't create transformation. You create the conditions where transformation becomes possible.</p>
+      <p>Your team isn't trying to design a perfect experience or create transformation for someone else. You're creating the conditions where something meaningful <i>might</i> happen.</p>
+      <p>Think of your experiment as an invitation. A space. A sequence of moments. A question. A shared activity. What participants do with that invitation is up to them — each person brings their own history, perspective, and way of engaging. Leave room for surprise and improvisation.</p>
+      <p>Your Dream session has probably generated more possibilities than you can explore. Now it's time to choose one and begin bringing it to life. Don't worry about getting it right — choose one idea your team feels most excited to experience together.</p>
+      <div class="pb-numlist">
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--purple);">1</div><div class="pb-numrow-text"><b>What are we most excited to explore?</b> Which idea keeps pulling your attention? If you only had time to build one experiment, which one would you choose — and why does it matter to your team?</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--green);">2</div><div class="pb-numrow-text"><b>What would we love to experience ourselves?</b> Imagine your own team stepping into this experience. What would make it meaningful? Start by designing for yourselves — authentic experiences are often the easiest for others to connect with.</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--blue);">3</div><div class="pb-numrow-text"><b>How might we bring this to life?</b> What's the simplest way to let people experience this idea — a conversation, a ritual, a game, a creative activity, a walk, an encounter, or something entirely unexpected? Keep asking: "What's the smallest version we could try?"</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--pink);">4</div><div class="pb-numrow-text"><b>What could we test this week?</b> Don't design the finished experience — design the first experiment. Something simple enough that you can try it together, learn from it, and improve it. Then move on to the Experiment Template.</div></div>
+      </div>
+      <div class="pb-subhead">Keep It Small</div>
+      <p>Your experiment should:</p>
+      <div class="pb-check-grid">
+        <div class="pb-check-row"><i class="ti ti-check"></i> Explore at least one transformation</div>
+        <div class="pb-check-row"><i class="ti ti-check"></i> Last about 5–15 minutes</div>
+        <div class="pb-check-row"><i class="ti ti-check"></i> Invite participation</div>
+        <div class="pb-check-row"><i class="ti ti-check"></i> Use tools you already have</div>
+        <div class="pb-check-row"><i class="ti ti-check"></i> Be simple enough to playtest before Demo Day</div>
+      </div>
+      <div class="pb-callout" style="background:var(--purple-bg);">
+        <p style="margin-bottom:0;">A small experiment you can <b>actually run</b> is far more valuable than a brilliant idea that never leaves the drawing board.</p>
+      </div>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'experiment-template',
+        title: 'Experiment Template',
+        icon: 'ti-clipboard-list',
+        color: 'blue',
+        defaultOpen: false,
+        img: 'Assets/playbook-6-experiment-template.jpg',
+        imgAlt: "Experiment Template — Build, Play, Reflect, Refine.",
+        body: `
+      <p>Don't wait until it's finished. A simple experiment you can play today teaches you more than a perfect idea on paper. Use this page to capture the heart of your experiment and share it on the Miro Board.</p>
+      <div class="pb-subhead">1. Our Experiment</div>
+      <ul>
+        <li><b>Our Chapter</b> — What is meaningful and inspiring to us about this chapter?</li>
+        <li><b>The Transformation</b> — What change are we inviting people to experience? Participants begin... / Participants leave...</li>
+        <li><b>Our Experiment</b> — In two or three sentences, describe the hypothesis you're testing: what conditions are you creating, what transformation are you inviting, what are you curious might happen?</li>
+      </ul>
+      <div class="pb-subhead">2. The Flow</div>
+      <div class="pb-numlist">
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--purple);">A</div><div class="pb-numrow-text"><b>Beginning</b> — What world are participants entering? What invitation do they receive?</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--blue);">B</div><div class="pb-numrow-text"><b>Middle</b> — What choice must they face?</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--green);">C</div><div class="pb-numrow-text"><b>Ending</b> — How do they leave? What do they carry forward?</div></div>
+      </div>
+      <div class="pb-subhead">Ingredients We'll Explore</div>
+      <div class="pb-tags"><span class="pb-tag">Materials</span><span class="pb-tag">Technology</span><span class="pb-tag">Space</span><span class="pb-tag">People</span></div>
+      <div class="pb-subhead">Passing It Forward</div>
+      <p>When participants leave your experience... what might they carry forward into the next chapter? It might be a feeling, a question, a symbol, an object, a memory, a new relationship, or an intention. Describe what your team hopes to pass forward.</p>
+      <div class="pb-subhead">Our Playtest Question</div>
+      <p>What are we most curious to discover? For example:</p>
+      <ul>
+        <li>Will people feel the transformation?</li>
+        <li>Will this activity create connection?</li>
+        <li>Will participants understand what we're inviting them into?</li>
+        <li>Will this feel meaningful?</li>
+      </ul>
+      <div class="pb-callout" style="background:var(--blue-bg);">
+        <p style="margin-bottom:0;">Remember: your playtest question may evolve as your experiment evolves. Updating your hypothesis is part of the process.</p>
+      </div>
+      <div class="pb-subhead">🌿 Try It Yourselves — Before You Playtest</div>
+      <p>Before inviting other people into your experiment, try it yourselves. Don't wait until everything feels finished — run your experiment with your own team. Keep it simple and playful. Even half-baked. Improvise.</p>
+      <p>If your first attempt doesn't work, that's not a problem. Every surprise teaches you something about what to try next. Afterward, reflect together:</p>
+      <div class="glossary-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="glossary-card"><div class="glossary-def">What felt meaningful? What surprised us? What felt confusing? What ritual ingredients naturally emerged?</div></div>
+        <div class="glossary-card"><div class="glossary-def">What are we passing forward? What challenges or constraints did we discover? What assumptions changed? Has our hypothesis changed?</div></div>
+      </div>
+      <p>Now make a few small adjustments, then try it again. Two or three quick iterations are often enough to reveal what really matters — far more than trying to think your way to the perfect design.</p>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'playtest',
+        title: 'Playtest — Learn With Real People',
+        icon: 'ti-flask',
+        color: 'pink',
+        defaultOpen: false,
+        img: 'Assets/playbook-7-playtest.jpg',
+        imgAlt: "Playtest — learn with real people. Experimenting, not performing.",
+        body: `
+      <p>Once your team has something you're excited to try, it's time to invite a few people into the experience. Don't wait until every detail feels perfect — every experiment becomes clearer through repeated cycles of trying, reflecting, and refining.</p>
+      <p><b>Real participants will be your best teachers.</b> You're not testing whether your experiment is perfect. You're discovering what it wants to become.</p>
+      <div class="pb-subhead">Invite</div>
+      <p>For your playtest, please invite:</p>
+      <div class="pb-check-grid">
+        <div class="pb-check-row"><i class="ti ti-check"></i> at least one Radiant IRIS Guide</div>
+        <div class="pb-check-row"><i class="ti ti-check"></i> at least two people who were not involved in designing the experiment</div>
+      </div>
+      <div class="pb-callout" style="background:var(--pink-bg);text-align:center;">
+        <p style="margin-bottom:0;"><b>Experimenting, not performing.</b> Remind participants that you're testing, not showcasing. Fresh perspectives often reveal things your own team can't see.</p>
+      </div>
+      <div class="pb-subhead">What Does a Playtest Look Like?</div>
+      <div class="pb-numlist">
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--green);">1</div><div class="pb-numrow-text"><b>Welcome (~2 min)</b> — Welcome everyone. Let them know you're testing a new experiment and you're interested in honest feedback. You don't need to explain every detail — simply invite them into the experience.</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--blue);">2</div><div class="pb-numrow-text"><b>Experience (~5–15 min)</b> — Run your experiment. Observe. Listen. Stay open to surprise. Notice what captures people's attention, where they hesitate, laugh, connect, or surprise you. Avoid stopping to explain unless participant care requires it.</div></div>
+        <div class="pb-numrow"><div class="pb-numrow-badge" style="background:var(--pink);">3</div><div class="pb-numrow-text"><b>Conversation (~10–15 min)</b> — Invite people to share their experience. Instead of asking "Did you like it?" try: What stayed with you? What surprised you? What moment felt most meaningful? Where did you feel confused? If you could change one thing, what would it be? Listen more than you speak — you're collecting discoveries.</div></div>
+      </div>
+      <p><b>Need another perspective?</b> If your team feels stuck at any point, reach out to your Radiant IRIS Guide — sometimes a short conversation is all it takes to unlock the next step.</p>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'harvest',
+        title: 'Harvest — Every Experiment Teaches Us Something',
+        icon: 'ti-leaf',
+        color: 'green',
+        defaultOpen: false,
+        img: 'Assets/playbook-8-harvest.jpg',
+        imgAlt: "Harvest — pause, reflect, grow.",
+        body: `
+      <p>Before changing anything, take a moment to <b>celebrate</b> what you've created together. Then gather what you've learned.</p>
+      <div class="pb-subhead">1. Celebrate</div>
+      <p>Every experiment is a gift. Thank your team and celebrate what you've created together.</p>
+      <div class="pb-subhead">2. Reflect Together</div>
+      <p>Discuss together:</p>
+      <div class="pb-tags">
+        <span class="pb-tag">What surprised us?</span><span class="pb-tag">What delighted us?</span><span class="pb-tag">What worked better than expected?</span><span class="pb-tag">What challenged us?</span><span class="pb-tag">What constraints did we discover?</span><span class="pb-tag">What confused participants?</span><span class="pb-tag">What unexpected moments emerged?</span><span class="pb-tag">What should we simplify?</span><span class="pb-tag">What should we definitely keep?</span><span class="pb-tag">What changed about our understanding?</span><span class="pb-tag">What might another team learn from this?</span>
+      </div>
+      <div class="pb-callout" style="background:var(--green-bg);text-align:center;">
+        <p style="margin-bottom:0;">Listen more than you speak. Curiosity opens better discoveries.</p>
+      </div>
+      <div class="pb-subhead">3. Capture Your Discoveries</div>
+      <p>Record your discoveries on your team's Harvest Cards in the shared Miro Board: what you discovered, what you'll keep, what you'll change, and what you learned. Your observations are just as valuable as your experiment — the purpose isn't simply to document what happened, it's to contribute your team's discoveries to the larger Collaboratorium so every team can learn together.</p>
+      <div class="pb-subhead">4. Tools &amp; Next Steps</div>
+      <p>If your team discovered tools, technologies, or capabilities that would make your experiment easier to create, capture those as well. Your Radiant IRIS Guides may suggest existing tools, identify opportunities for StoryHeart and other technologies, or evolve in response to what your team is discovering.</p>
+      <p style="text-align:center;margin-top:6px;"><b>Every harvest plants the seeds of even better experiments.<br>Reflect. Share. Learn. Grow.</b></p>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+    {
+        id: 'looking-ahead',
+        title: 'Looking Ahead',
+        icon: 'ti-telescope',
+        color: 'purple',
+        defaultOpen: false,
+        img: 'Assets/playbook-9-looking-ahead.jpg',
+        imgAlt: "Looking ahead — Demo Day, Refine, Showcase, Celebration Gathering.",
+        body: `
+      <p>Your playtest prepares you for <b>Demo Day</b>, where every team will share its experiment with the rest of the Collaboratorium.</p>
+      <div class="glossary-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">📖</div><div class="glossary-term">Demo Day</div><div class="glossary-def">Share your experiment with the Collaboratorium. Experience one another's work, receive ideas and encouragement, and see how our chapters connect.</div></div>
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">🌱</div><div class="glossary-term">Refine</div><div class="glossary-def">Take what you've learned from feedback. Make your experiment even stronger and more meaningful.</div></div>
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">✨</div><div class="glossary-term">Showcase</div><div class="glossary-def">Experience the complete Mirrorwood journey together and share it with the Fuji Sanctuary team.</div></div>
+        <div class="glossary-card"><div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">❤️</div><div class="glossary-term">Celebration Gathering</div><div class="glossary-def">An optional final gathering to celebrate, reflect, appreciate one another, and imagine what comes next.</div></div>
+      </div>
+      <p>After Demo Day, you'll have time to refine your experiment before the Showcase. Finally, we'll gather one last time for our Celebration Gathering — optional, but we warmly encourage everyone to join.</p>
+      <div class="pb-callout" style="background:var(--purple-bg);text-align:center;">
+        <p style="margin-bottom:0;"><b>Thank you for helping bring Mirrorwood to life.</b><br>Your experiment is one chapter in a much larger story, and every discovery you make helps shape the future of this journey. 🌿</p>
+      </div>
+    `
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+    ];
+
+    function renderPlaybookAccordion() {
+        var wrap = document.getElementById('playbook-accordion');
+        if (!wrap)
+            return;
+        wrap.innerHTML = '';
+        playbookSections.forEach(function(sec) {
+            var c = colorMapGuide[sec.color];
+            var el = document.createElement('div');
+            el.className = 'kb-section';
+            el.innerHTML =
+            '<div class="kb-header">' +
+            '<div class="kb-header-left">' +
+            '<div class="kb-icon" style="background:' + c[0] + ';color:' + c[1] + ';"><i class="ti ' + sec.icon + '"></i></div>' +
+            '<div><div class="kb-title" style="font-size:15px;"><span class="kb-disclosure">' + (sec.defaultOpen ? '▼' : '▶') + '</span> ' + sec.title + '</div></div>' +
+            '</div>' +
+            '<i class="ti ti-chevron-down kb-chevron' + (sec.defaultOpen ? ' open' : '') + '"></i>' +
+            '</div>' +
+            '<div class="kb-body guide-prose' + (sec.defaultOpen ? ' open' : '') + '" style="padding:0 18px 18px;">' +
+            '<img class="pb-hero-img" src="' + sec.img + '" alt="' + sec.imgAlt + '" loading="lazy">' +
+            sec.body +
+            '</div>';
             el.querySelector('.kb-header').addEventListener('click', function() {
                 el.querySelector('.kb-body').classList.toggle('open');
                 el.querySelector('.kb-chevron').classList.toggle('open');
@@ -4867,6 +5534,7 @@
 
     var ALL_PAGES = {
         '#/guide': 'page-guide',
+        '#/playbook': 'page-playbook',
         '#/team': 'page-team',
         '#/library': 'page-library'
     };
@@ -4905,6 +5573,7 @@
     renderKB();
     renderConnect();
     renderGuideAccordion();
+    renderPlaybookAccordion();
     renderAll();
     syncFromHash();
     </script>
