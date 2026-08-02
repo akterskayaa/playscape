@@ -39,6 +39,10 @@
         --blue-bg: #E6F1FB;
         --pink: #993556;
         --pink-bg: #FBEAF0;
+        --orange: #B15E1C;
+        --orange-bg: #FBEEE0;
+        --gold: #8A6D14;
+        --gold-bg: #FBF3DA;
     }
 
     body {
@@ -1377,6 +1381,52 @@
         font-size: 14px;
         margin-top: 3px;
         flex-shrink: 0
+    }
+
+    .dm-detail-list {
+        margin: 0 0 16px 18px
+    }
+
+    .dm-detail-list li {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--t1);
+        margin-bottom: 5px
+    }
+
+    .dm-card-icon-band {
+        padding: 24px 14px 16px;
+        text-align: center
+    }
+
+    .dm-card-icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .08)
+    }
+
+    .dm-detail-icon-band {
+        padding: 30px 22px 18px;
+        text-align: center
+    }
+
+    .dm-detail-icon-circle {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+        margin: 0 auto
     }/* ---- teams ---- */
     .team-card {
         background: #fff;
@@ -3064,6 +3114,60 @@
         </div>
     </div>
 
+    <!-- ================= STORYHEART INSPIRATION PAGE ================= -->
+    <div id="page-storyheart" style="display:none">
+        <div class="wrap">
+
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Portal
+                </div>
+                <div class="welcome-card guide-welcome">
+                    <div class="welcome-title" style="margin-bottom:14px;">💫 StoryHeart Inspiration</div>
+                    <div class="welcome-text">
+                        <p>
+                            <i>Optional inspiration for your experiment.</i>
+                        </p>
+                        <p>These are the areas our team is currently exploring. If one of these excites you, you're welcome to incorporate it into your experiment!</p>
+                    </div>
+                    <div class="dm-intro-grid">
+                        <div class="dm-intro-card">
+                            <b>Five paths</b>
+                            Each one is a different lens on how a group's story could take shape.
+                        </div>
+                        <div class="dm-intro-card">
+                            <b>Just browse</b>
+                            Tap the ones that catch your eye. You only need one to spark an idea.
+                        </div>
+                        <div class="dm-intro-card">
+                            <b>Then capture it</b>
+                            Ideas you love go straight into your Experiment Template.
+                        </div>
+                    </div>
+                </div>
+                <div class="section-sub" style="margin:14px 2px 0;">Tap a card to open it and see examples + reflection questions.</div>
+            </section>
+
+            <section class="section-block">
+                <div class="dm-grid" id="storyheart-grid"></div>
+            </section>
+
+            <section class="section-block">
+                <div class="stuck-banner">
+                    <div class="stuck-icon">🙋</div>
+                    <div>
+                        <b>Feeling stuck?</b>
+                         Reach out to your Radiant IRIS Guide, or 
+                        <a href="https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY" target="_blank">ask in WhatsApp</a>
+                        . A short conversation can unlock the next step.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
     <!-- ================= DEDICATED TEAM PAGE ================= -->
     <div id="page-team" style="display:none">
         <div class="wrap">
@@ -3445,7 +3549,7 @@
         n: 5,
         title: 'Design',
         resource: 'Continue with the Playbook',
-        unlocked: false,
+        unlocked: true,
         tasks: [
         {
             id: 'designmoves',
@@ -3458,6 +3562,18 @@
                 location.hash = '/design-moves'
             },
             openLabel: 'Open Design Moves'
+        },
+        {
+            id: 'storyheart',
+            icon: 'ti-sparkles',
+            title: 'Explore StoryHeart Inspiration',
+            desc: 'Optional — areas our team is currently exploring, in case one sparks your experiment.',
+            time: '10 min',
+            done: false,
+            action: function() {
+                location.hash = '/storyheart'
+            },
+            openLabel: 'Open StoryHeart Inspiration'
         }
         ]
     },
@@ -3504,6 +3620,14 @@
             kind: 'link',
             action: function() {
                 location.hash = '/design-moves'
+            }
+        },
+        {
+            t: 'StoryHeart Inspiration',
+            by: 'Five paths exploring the future of StoryHeart',
+            kind: 'link',
+            action: function() {
+                location.hash = '/storyheart'
             }
         },
         {
@@ -4627,7 +4751,9 @@
         purple: ['var(--purple-bg)', 'var(--purple)'],
         green: ['var(--green-bg)', 'var(--green)'],
         blue: ['var(--blue-bg)', 'var(--blue)'],
-        pink: ['var(--pink-bg)', 'var(--pink)']
+        pink: ['var(--pink-bg)', 'var(--pink)'],
+        orange: ['var(--orange-bg)', 'var(--orange)'],
+        gold: ['var(--gold-bg)', 'var(--gold)']
     };
 
     function renderGuideAccordion() {
@@ -5085,6 +5211,139 @@
         document.getElementById('modal-bg').classList.add('open');
     }
 
+    /* ---------- StoryHeart Inspiration: data + card grid + detail modal ---------- */
+    var storyheartData = [
+    {
+        id: 'shared-playspace',
+        title: 'Shared Playspace',
+        emoji: '🌍',
+        color: 'green',
+        hook: 'What if people in different places could feel like they were standing inside the same story?',
+        sections: [
+        {
+            label: 'Maybe You Explore',
+            items: ['walking through one shared world', 'moving closer or farther from one another', 'becoming larger or smaller as you move', 'entering a new place together', 'using space itself as part of the story']
+        }
+        ],
+        questions: ['When does a group begin to feel they are really "there" together?', 'How can movement change the meaning of a moment?']
+    },
+    {
+        id: 'storyheart',
+        title: 'StoryHeart',
+        emoji: '💙',
+        color: 'blue',
+        hook: "What if a group's offerings could change the story?",
+        sections: [
+        {
+            label: 'Maybe The Group...',
+            items: ['shares wishes', 'makes an offering', 'tells a story', 'speaks a fear', 'answers a question together']
+        },
+        {
+            label: 'Imagine Those Becoming...',
+            items: ['a new path', 'a new challenge', 'a new character', 'a new possibility']
+        }
+        ],
+        questions: ['What kind of offering changes a story?', 'How should a group make an important choice together?']
+    },
+    {
+        id: 'animal-transformation',
+        title: 'Animal Transformation',
+        emoji: '🦊',
+        color: 'purple',
+        hook: 'What if becoming an animal changed how you experienced the world?',
+        sections: [
+        {
+            label: 'Maybe...',
+            items: ['you receive an animal guide', "your appearance changes", "your voice changes", "you move differently", "you begin seeing through another creature's eyes"]
+        }
+        ],
+        questions: ['When does someone feel transformed?', 'What helps a symbolic change feel real?']
+    },
+    {
+        id: 'collective-action',
+        title: 'Collective Action',
+        emoji: '🧑\u200d🤝\u200d🧑',
+        color: 'orange',
+        hook: 'What if the story only changed when people acted together?',
+        sections: [
+        {
+            label: 'Maybe...',
+            items: ['everyone moves together', 'everyone becomes quiet', 'everyone makes the same gesture', 'everyone contributes one piece', 'everyone offers something']
+        },
+        {
+            label: 'Then...',
+            items: ['something changes.']
+        }
+        ],
+        questions: ['What kinds of actions require a whole group?', 'What makes people feel they created a real response together?']
+    },
+    {
+        id: 'great-wish',
+        title: 'Great Wish',
+        emoji: '✨',
+        color: 'gold',
+        hook: "What if everyone's individual hopes became one shared gift?",
+        sections: [
+        {
+            label: 'Maybe...',
+            items: ['many wishes become one story', 'many voices become one poem', 'many drawings become one image', 'many memories become one blessing']
+        }
+        ],
+        questions: ['How do many voices become one without losing anyone?', 'What should the group carry home together?']
+    }
+    ];
+
+    function renderStoryheart() {
+        var wrap = document.getElementById('storyheart-grid');
+        if (!wrap)
+            return;
+        wrap.innerHTML = '';
+        storyheartData.forEach(function(sh) {
+            var c = colorMapGuide[sh.color];
+            var el = document.createElement('div');
+            el.className = 'dm-card';
+            el.innerHTML =
+            '<div class="dm-card-icon-band" style="background:' + c[0] + ';"><div class="dm-card-icon-circle">' + sh.emoji + '</div></div>' +
+            '<div class="dm-card-body">' +
+            '<div class="dm-card-title" style="color:' + c[1] + ';">' + sh.title + '</div>' +
+            '<div class="dm-card-hook">' + sh.hook + '</div>' +
+            '<div class="dm-card-tap"><i class="ti ti-hand-click"></i> Tap to explore</div>' +
+            '</div>';
+            el.addEventListener('click', function() {
+                openStoryheartCard(sh.id);
+            });
+            wrap.appendChild(el);
+        });
+    }
+
+    function openStoryheartCard(id) {
+        var sh = storyheartData.find(function(d) {
+            return d.id === id;
+        });
+        if (!sh)
+            return;
+        var c = colorMapGuide[sh.color];
+        var box = document.getElementById('modal-box');
+        box.classList.add('light', 'wide');
+        var sectionsHtml = sh.sections.map(function(sec) {
+            return '<div class="dm-detail-sub">' + sec.label + '</div>' +
+            '<ul class="dm-detail-list">' + sec.items.map(function(it) {
+                return '<li>' + it + '</li>';
+            }).join('') + '</ul>';
+        }).join('');
+        document.getElementById('modal-content').innerHTML =
+        '<div class="dm-detail-icon-band" style="background:' + c[0] + ';"><div class="dm-detail-icon-circle">' + sh.emoji + '</div></div>' +
+        '<div class="dm-detail-body">' +
+        '<div class="dm-detail-title" style="color:' + c[1] + ';">' + sh.title + '</div>' +
+        '<div class="dm-detail-hook">' + sh.hook + '</div>' +
+        sectionsHtml +
+        '<div class="dm-detail-sub">Questions To Play With</div>' +
+        '<div class="dm-detail-q">' + sh.questions.map(function(q) {
+            return '<div><i class="ti ti-point-filled"></i>' + q + '</div>';
+        }).join('') + '</div>' +
+        '</div>';
+        document.getElementById('modal-bg').classList.add('open');
+    }
 
     var ATL_DIRECTIONS = [
     {
@@ -5746,6 +6005,7 @@
         '#/guide': 'page-guide',
         '#/playbook': 'page-playbook',
         '#/design-moves': 'page-design-moves',
+        '#/storyheart': 'page-storyheart',
         '#/team': 'page-team',
         '#/library': 'page-library'
     };
@@ -5786,6 +6046,7 @@
     renderGuideAccordion();
     renderPlaybookAccordion();
     renderDesignMoves();
+    renderStoryheart();
     renderAll();
     syncFromHash();
     </script>
