@@ -3581,7 +3581,21 @@
         n: 6,
         title: 'Bring it to Life',
         resource: 'Complete your Experiment Template in Miro',
-        unlocked: false
+        unlocked: true,
+        tasks: [
+        {
+            id: 'experimenttemplate',
+            icon: 'ti-layout-board-split',
+            title: 'Complete your Experiment Template in Miro',
+            desc: 'Capture the heart of your experiment on your team\'s shared Miro board.',
+            time: '20 min',
+            done: false,
+            action: function() {
+                scrollToSection('connect')
+            },
+            openLabel: 'Go to Connect'
+        }
+        ]
     },
     {
         n: 7,
