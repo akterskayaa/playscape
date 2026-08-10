@@ -2881,18 +2881,22 @@
                     <div class="gathering-title">Kickoff Day</div>
                     <div class="gathering-meta">August 11 · 4:00 PM PDT</div>
                     <div class="gathering-actions">
+                        <button class="gbtn primary" onclick="window.open('https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1','_blank')">
+                            <i class="ti ti-video" style="margin-right:5px;"></i>
+                            Join on Zoom
+                        </button>
                         <button class="gbtn secondary" onclick="addToCalendar('Kickoff Day','2026-08-11T23:00:00Z','2026-08-12T00:30:00Z','Collaboratorium Kickoff Day.')">
                             <i class="ti ti-calendar-plus" style="margin-right:5px;"></i>
                             Add to Calendar
                         </button>
-                        <button class="gbtn primary" onclick="openFullCalendar()">
+                        <button class="gbtn secondary" onclick="openFullCalendar()">
                             <i class="ti ti-calendar" style="margin-right:5px;"></i>
                             View Full Calendar
                         </button>
                     </div>
                     <div class="gathering-hint">
                         <i class="ti ti-info-circle"></i>
-                         Please open the full co-lab Calendar and add the events to your own calendar. Adding the event is important because it converts the time to your own timezone.
+                         This is the same Zoom link we'll use for every live gathering — save it! Please also add the events to your own calendar so times convert to your timezone.
                     </div>
                 </div>
             </section>
@@ -4157,6 +4161,13 @@
 
     var connectData = [
     {
+        title: 'Zoom',
+        desc: 'Same link for every live gathering — save it!',
+        icon: 'ti-video',
+        color: 'purple',
+        url: 'https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1'
+    },
+    {
         title: 'Miro Board',
         desc: 'Your team\'s shared board for brainstorming and prototypes.',
         icon: 'ti-layout-board-split',
@@ -4373,7 +4384,7 @@
                     '</div>';
                     row.querySelector('[data-act="zoom"]').addEventListener('click', function(e) {
                         e.stopPropagation();
-                        window.open('https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1', '_blank');
+                        window.open('https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1', '_blank');
                     });
                     row.querySelector('[data-act="cal"]').addEventListener('click', function(e) {
                         e.stopPropagation();
