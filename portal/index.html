@@ -1771,6 +1771,56 @@
         }
     }
 
+    .connect-block-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--t1);
+        margin-bottom: 6px
+    }
+
+    .connect-block-desc {
+        font-size: 12.5px;
+        color: var(--t2);
+        line-height: 1.55
+    }
+
+    .open-hours-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: var(--t2);
+        margin: 16px 0 8px
+    }
+
+    .open-hours-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px
+    }
+
+    .open-hours-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--bg2);
+        border-radius: var(--rmd);
+        padding: 9px 12px;
+        font-size: 12.5px
+    }
+
+    .open-hours-name {
+        font-weight: 700;
+        color: var(--t1);
+        flex-shrink: 0
+    }
+
+    .open-hours-time {
+        color: var(--t2);
+        text-align: right
+    }
+
     .conn-card {
         background: #fff;
         border: .5px solid var(--bl);
@@ -2046,6 +2096,42 @@
 
     .tz-notice b {
         font-weight: 700
+    }
+
+    .heads-up-notice {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: #FDF3E0;
+        border: 1.5px solid #E0A72D;
+        border-radius: var(--rmd);
+        padding: 14px 16px;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+        color: #7A5A0A;
+        text-align: left;
+        line-height: 1.5;
+        box-shadow: 0 2px 10px rgba(224, 167, 45, .14)
+    }
+
+    .heads-up-notice i {
+        font-size: 22px;
+        flex-shrink: 0;
+        color: #C6900F;
+        margin-top: 1px
+    }
+
+    .heads-up-notice b {
+        font-weight: 800;
+        font-size: 14.5px
+    }
+
+    .heads-up-sub {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 11.5px;
+        font-weight: 400;
+        color: #A47A1E
     }/* ---- calendar modal ---- */
     .cal-wrap {
         padding: 18px
@@ -2721,7 +2807,7 @@
                             <div class="orient-link-icon">
                                 <i class="ti ti-player-play-filled"></i>
                             </div>
-                            <span class="orient-link-text">Watch the Welcome Video Tour</span>
+                            <span class="orient-link-text">Watch the Welcome Tour</span>
                             <i class="ti ti-chevron-right"></i>
                         </a>
                         <a class="orient-link" href="#/guide">
@@ -2729,6 +2815,13 @@
                                 <i class="ti ti-book-2"></i>
                             </div>
                             <span class="orient-link-text">Open the Explorer's Guide</span>
+                            <i class="ti ti-chevron-right"></i>
+                        </a>
+                        <a class="orient-link" onclick="openFullCalendar()">
+                            <div class="orient-link-icon">
+                                <i class="ti ti-calendar-plus"></i>
+                            </div>
+                            <span class="orient-link-text">Add the gathering dates to your calendar</span>
                             <i class="ti ti-chevron-right"></i>
                         </a>
                         <a class="orient-link" href="https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY" target="_blank">
@@ -2742,7 +2835,7 @@
                             <div class="orient-link-icon">
                                 <i class="ti ti-route"></i>
                             </div>
-                            <span class="orient-link-text">Continue your journey in Journey Progress below</span>
+                            <span class="orient-link-text">Continue to Journey Progress</span>
                             <i class="ti ti-chevron-right"></i>
                         </a>
                     </div>
@@ -2774,80 +2867,32 @@
                     </div>
                 </div>
 
-                <div class="mentalmap-card">
-                    <div class="mentalmap-title">Here's how the Collaboratorium works</div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">🏡</div>
-                        <div>
-                            <div class="mentalmap-name">Portal</div>
-                            <div class="mentalmap-desc">Your home base.</div>
-                        </div>
-                    </div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">🧭</div>
-                        <div>
-                            <div class="mentalmap-name">Explorer's Guide</div>
-                            <div class="mentalmap-desc">Understand the journey.</div>
-                        </div>
-                    </div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">📜</div>
-                        <div>
-                            <div class="mentalmap-name">Quest</div>
-                            <div class="mentalmap-desc">Discover what you're creating.</div>
-                        </div>
-                    </div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">📖</div>
-                        <div>
-                            <div class="mentalmap-name">Experiment Playbook</div>
-                            <div class="mentalmap-desc">Learn how to create it.</div>
-                        </div>
-                    </div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">🗺️</div>
-                        <div>
-                            <div class="mentalmap-name">Miro</div>
-                            <div class="mentalmap-desc">Capture your team's work.</div>
-                        </div>
-                    </div>
-                    <div class="mentalmap-row">
-                        <div class="mentalmap-icon">✉️</div>
-                        <div>
-                            <div class="mentalmap-name">Daily Emails</div>
-                            <div class="mentalmap-desc">Guide you one step at a time.</div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- ================= UPCOMING GATHERINGS ================= -->
             <section id="gatherings" class="section-block">
                 <div class="section-head">
                     <div class="section-eyebrow">Don't miss this</div>
-                    <div class="section-title">📅 Upcoming Gatherings</div>
+                    <div class="section-title">📅 Save Your Dates</div>
+                    <div class="section-sub">Here are the live gatherings coming up.</div>
                 </div>
                 <div class="gathering-card">
-                    <div class="gathering-label">Next gathering</div>
-                    <div class="gathering-title">Demo Day</div>
-                    <div class="gathering-meta">Sunday, August 23 · 3:00 PM Pacific Time (PDT)</div>
+                    <div class="gathering-label">Next event:</div>
+                    <div class="gathering-title">Kickoff Day</div>
+                    <div class="gathering-meta">August 11 · 4:00 PM PDT</div>
                     <div class="gathering-actions">
-                        <button class="gbtn primary" onclick="window.open('https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1','_blank')">
-                            <i class="ti ti-video" style="margin-right:5px;"></i>
-                            Join on Zoom
-                        </button>
-                        <button class="gbtn secondary" onclick="addToCalendar('Demo Day','2026-08-23T22:00:00Z','2026-08-23T23:30:00Z','Collaboratorium Demo Day.')">
+                        <button class="gbtn secondary" onclick="addToCalendar('Kickoff Day','2026-08-11T23:00:00Z','2026-08-12T00:30:00Z','Collaboratorium Kickoff Day.')">
                             <i class="ti ti-calendar-plus" style="margin-right:5px;"></i>
                             Add to Calendar
                         </button>
-                        <button class="gbtn secondary" onclick="openFullCalendar()">
+                        <button class="gbtn primary" onclick="openFullCalendar()">
                             <i class="ti ti-calendar" style="margin-right:5px;"></i>
                             View Full Calendar
                         </button>
                     </div>
                     <div class="gathering-hint">
                         <i class="ti ti-info-circle"></i>
-                         "Add to Calendar" shows the time in your own timezone automatically.
+                         Please open the full co-lab Calendar and add the events to your own calendar. Adding the event is important because it converts the time to your own timezone.
                     </div>
                 </div>
             </section>
@@ -2857,7 +2902,7 @@
                 <div class="section-head">
                     <div class="section-eyebrow">Where am I today?</div>
                     <div class="section-title">🧭 Journey Progress</div>
-                    <div class="section-sub">This is where you are in the journey. New steps unlock one at a time.</div>
+                    <div class="section-sub">This is where you are in the journey. New content is released over the first seven days. You don't have to complete each step on the day it appears. Work at your team's own pace towards Demo Day.</div>
                 </div>
                 <div id="invitation-list"></div>
                 <div class="stuck-banner">
@@ -2890,6 +2935,45 @@
                         <div>
                             <div class="team-index-name">Purple Dragon Den Team</div>
                             <div class="team-index-sub">4 participants</div>
+                        </div>
+                    </div>
+                    <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
+                </div>
+
+                <div class="team-index-card" onclick="location.hash='/team2'" style="margin-top:10px;">
+                    <div class="team-index-left">
+                        <div class="team-index-icon">
+                            <i class="ti ti-users-group"></i>
+                        </div>
+                        <div>
+                            <div class="team-index-name">Team 2</div>
+                            <div class="team-index-sub">4 participants</div>
+                        </div>
+                    </div>
+                    <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
+                </div>
+
+                <div class="team-index-card" onclick="location.hash='/team3'" style="margin-top:10px;">
+                    <div class="team-index-left">
+                        <div class="team-index-icon">
+                            <i class="ti ti-users-group"></i>
+                        </div>
+                        <div>
+                            <div class="team-index-name">Team 3</div>
+                            <div class="team-index-sub">4 participants</div>
+                        </div>
+                    </div>
+                    <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
+                </div>
+
+                <div class="team-index-card" onclick="location.hash='/team4'" style="margin-top:10px;">
+                    <div class="team-index-left">
+                        <div class="team-index-icon">
+                            <i class="ti ti-users-group"></i>
+                        </div>
+                        <div>
+                            <div class="team-index-name">Team 4</div>
+                            <div class="team-index-sub">Roster coming soon</div>
                         </div>
                     </div>
                     <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
@@ -2931,7 +3015,45 @@
                     <div class="section-title">🤝 Connect and Get Help</div>
                     <div class="section-sub">Every communication tool in one place. Never wonder where to ask a question.</div>
                 </div>
-                <div class="connect-grid" id="connect-grid"></div>
+
+                <div class="team-card" style="margin-bottom:14px;">
+                    <div class="connect-block-title">💬 Ask Questions &amp; Share Ideas</div>
+                    <div class="connect-block-desc">Ask questions, share ideas, and connect with other Explorers.</div>
+                    <div class="conn-btn" style="margin-top:14px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
+                        <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
+                        Open WhatsApp Community
+                    </div>
+                </div>
+
+                <div class="team-card" style="margin-bottom:14px;">
+                    <div class="connect-block-title">🌿 Talk to a Radiant IRIS Guide</div>
+                    <div class="connect-block-desc">
+                        Open Hours
+                        <br>
+                        Need help getting unstuck, want another perspective, or simply want to talk through an idea? Drop us a message on WhatsApp during open hours.
+                    </div>
+                    <div class="open-hours-title">Guide Open Hours</div>
+                    <div class="open-hours-list">
+                        <div class="open-hours-row">
+                            <span class="open-hours-name">Steph</span>
+                            <span class="open-hours-time">1pm – 7pm PDT, Monday to Friday, August 10–21</span>
+                        </div>
+                        <div class="open-hours-row">
+                            <span class="open-hours-name">Krishnan</span>
+                            <span class="open-hours-time">8am – 10pm PDT, Monday to Friday, August 10–21</span>
+                        </div>
+                    </div>
+                    <div class="conn-btn" style="margin-top:14px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
+                        <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
+                        Message on WhatsApp
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="connect-block-title">🗺 Shared Workspace</div>
+                    <div class="connect-block-desc">Your team's shared space for ideas, experiments, and discoveries.</div>
+                    <div class="connect-grid" id="connect-grid" style="margin-top:14px;"></div>
+                </div>
             </section>
 
         </div>
@@ -2957,7 +3079,7 @@
                             <br>
                             It's an experiment.
                         </p>
-                        <p>Together we'll explore new ways of creating meaningful experiences that blend story, ritual, technology, and human connection.</p>
+                        <p>Together we'll explore how story, technology, creativity, and human connection can come together to create meaningful experiences.</p>
                         <p>
                             You don't need to understand everything before you begin.
                             <br>
@@ -2984,15 +3106,10 @@
                         <br>
                         Some won't.
                         <br>
-                        Both are valuable.
+                        Both will teach you something.
                     </p>
-                    <p>
-                        The purpose isn't to create a perfect experience.
-                        <br>
-                        The purpose is to discover something together that none of us could have created alone.
-                    </p>
-                    <p>There are no perfect outcomes here. Success means showing up, exploring together, and sharing what you discover.</p>
-                    <p>Welcome to the journey. We can't wait to see what emerges. 🌿</p>
+                    <p>You're not here to create a perfect experience or produce transformation for someone else. You're here to create the conditions for something meaningful to happen, discover what emerges, and share what you learn.</p>
+                    <p>Welcome to the journey! 🔥</p>
                 </div>
                 <div class="stuck-banner">
                     <div class="stuck-icon">🙋</div>
@@ -3217,7 +3334,7 @@
                     </div>
                     <div style="margin-top:14px;">
                         <div style="font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:4px;">Your Radiant IRIS Guides</div>
-                        <div style="font-size:12.5px;color:var(--t2);">Steph &amp; Asya</div>
+                        <div style="font-size:12.5px;color:var(--t2);">Steph &amp; Anastasia</div>
                     </div>
                 </div>
             </section>
@@ -3264,6 +3381,279 @@
                             <a href="https://drive.google.com/file/d/1NSiiBli9aFZthtnIUnS2ee3d4Ba544V3/view?usp=sharing" target="_blank">Get the full quest here</a>
                             .
                         </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="team-quest-locked" style="display:none">
+                <div class="section-head">
+                    <div class="section-eyebrow">Step 3 · Accept Your Quest</div>
+                    <div class="section-title">🔒 Your Quest</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Unlocks when Step 3 opens in Journey Progress</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">Coming soon</div>
+                    <div class="section-title">🔒 Unlocks later</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Additional team resources</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================= TEAM 2 PAGE ================= -->
+    <div id="page-team2" style="display:none">
+        <div class="wrap">
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Teams
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-title">Welcome, Team 2!</div>
+                    <div class="welcome-text">
+                        This is your team's home throughout the Collaboratorium.
+                        <br>
+                        <br>
+                        As the journey unfolds, new team resources will appear here when you need them.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">For now, you'll find</div>
+                    <div class="section-title">Your Team</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-members">
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">MK</div>
+                            <div class="member-label filled-label">Motoko Kimura</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">KS</div>
+                            <div class="member-label filled-label">Kaoru Sasaki</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">MN</div>
+                            <div class="member-label filled-label">Mina Nemoto</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">IK</div>
+                            <div class="member-label filled-label">Ilana Kirschbaum</div>
+                        </div>
+                    </div>
+                    <div class="conn-btn" style="margin-top:16px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
+                        <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
+                        Team WhatsApp link
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:4px;">Your Radiant IRIS Guides</div>
+                        <div style="font-size:12.5px;color:var(--t2);">Krishnan</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="team2-quest-locked">
+                <div class="section-head">
+                    <div class="section-eyebrow">Step 3 · Accept Your Quest</div>
+                    <div class="section-title">🔒 Your Quest</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Unlocks when Step 3 opens in Journey Progress</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">Coming soon</div>
+                    <div class="section-title">🔒 Unlocks later</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Additional team resources</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================= TEAM 3 PAGE ================= -->
+    <div id="page-team3" style="display:none">
+        <div class="wrap">
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Teams
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-title">Welcome, Team 3!</div>
+                    <div class="welcome-text">
+                        This is your team's home throughout the Collaboratorium.
+                        <br>
+                        <br>
+                        As the journey unfolds, new team resources will appear here when you need them.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">For now, you'll find</div>
+                    <div class="section-title">Your Team</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-members">
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">RG</div>
+                            <div class="member-label filled-label">Richard Grillotti</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">KF</div>
+                            <div class="member-label filled-label">Kensuke Fujishiro</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">TU</div>
+                            <div class="member-label filled-label">Takuhiro Uesugi</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">SD</div>
+                            <div class="member-label filled-label">Shital Dalwadi</div>
+                        </div>
+                    </div>
+                    <div class="conn-btn" style="margin-top:16px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
+                        <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
+                        Team WhatsApp link
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:4px;">Your Radiant IRIS Guides</div>
+                        <div style="font-size:12.5px;color:var(--t2);">Steph</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="team3-quest-locked">
+                <div class="section-head">
+                    <div class="section-eyebrow">Step 3 · Accept Your Quest</div>
+                    <div class="section-title">🔒 Your Quest</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Unlocks when Step 3 opens in Journey Progress</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">Coming soon</div>
+                    <div class="section-title">🔒 Unlocks later</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Additional team resources</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================= TEAM 4 PAGE ================= -->
+    <div id="page-team4" style="display:none">
+        <div class="wrap">
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Teams
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-title">Welcome, Team 4!</div>
+                    <div class="welcome-text">
+                        This is your team's home throughout the Collaboratorium.
+                        <br>
+                        <br>
+                        As the journey unfolds, new team resources will appear here when you need them.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">For now, you'll find</div>
+                    <div class="section-title">Your Team</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-members">
+                        <div class="team-member-slot">
+                            <div class="member-avatar">?</div>
+                            <div class="member-label">Roster coming soon</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar">?</div>
+                            <div class="member-label">Roster coming soon</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar">?</div>
+                            <div class="member-label">Roster coming soon</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar">?</div>
+                            <div class="member-label">Roster coming soon</div>
+                        </div>
+                    </div>
+                    <div class="conn-btn" style="margin-top:16px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
+                        <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
+                        Team WhatsApp link
+                    </div>
+                    <div style="margin-top:14px;">
+                        <div style="font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:4px;">Your Radiant IRIS Guides</div>
+                        <div style="font-size:12.5px;color:var(--t2);">Anastasia &amp; Nastia</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="team4-quest-locked">
+                <div class="section-head">
+                    <div class="section-eyebrow">Step 3 · Accept Your Quest</div>
+                    <div class="section-title">🔒 Your Quest</div>
+                </div>
+                <div class="team-card">
+                    <div class="locked-row">
+                        <div class="locked-icon">
+                            <i class="ti ti-lock"></i>
+                        </div>
+                        <div class="locked-label">Unlocks when Step 3 opens in Journey Progress</div>
                     </div>
                 </div>
             </section>
@@ -3453,7 +3843,7 @@
         n: 2,
         title: 'Enter Mirrorwood',
         resource: 'Mirrorwood Narrative',
-        unlocked: true,
+        unlocked: false,
         tasks: [
         {
             id: 'narrative',
@@ -3485,7 +3875,7 @@
         n: 3,
         title: 'Accept Your Quest',
         resource: 'Team Quest + Miro Board',
-        unlocked: true,
+        unlocked: false,
         tasks: [
         {
             id: 'readquest',
@@ -3529,7 +3919,7 @@
         n: 4,
         title: 'Dream',
         resource: 'Experiment Playbook',
-        unlocked: true,
+        unlocked: false,
         tasks: [
         {
             id: 'readplaybook',
@@ -3549,7 +3939,7 @@
         n: 5,
         title: 'Design',
         resource: 'Continue with the Playbook',
-        unlocked: true,
+        unlocked: false,
         tasks: [
         {
             id: 'designmoves',
@@ -3581,7 +3971,7 @@
         n: 6,
         title: 'Bring it to Life',
         resource: 'Complete your Experiment Template in Miro',
-        unlocked: true,
+        unlocked: false,
         tasks: [
         {
             id: 'experimenttemplate',
@@ -3601,7 +3991,21 @@
         n: 7,
         title: 'Make it Real',
         resource: 'Playtest + Harvest',
-        unlocked: false
+        unlocked: false,
+        tasks: [
+        {
+            id: 'playtest',
+            icon: 'ti-flask',
+            title: 'Playtest your experiment',
+            desc: 'Try it with real people, then capture what you discover on your Harvest Cards.',
+            time: '30 min',
+            done: false,
+            action: function() {
+                location.hash = '/playbook'
+            },
+            openLabel: 'Open the Playbook'
+        }
+        ]
     }
     ];
 
@@ -3626,7 +4030,8 @@
             kind: 'link',
             action: function() {
                 location.hash = '/playbook'
-            }
+            },
+            step: 4
         },
         {
             t: 'Design Moves',
@@ -3634,7 +4039,8 @@
             kind: 'link',
             action: function() {
                 location.hash = '/design-moves'
-            }
+            },
+            step: 5
         },
         {
             t: 'StoryHeart Inspiration',
@@ -3642,19 +4048,22 @@
             kind: 'link',
             action: function() {
                 location.hash = '/storyheart'
-            }
+            },
+            step: 5
         },
         {
             t: 'Miro Tutorial',
             by: 'How to use your team\'s shared workspace',
             kind: 'video',
-            videoId: 'MaxFF307efw'
+            videoId: 'MaxFF307efw',
+            step: 3
         },
         {
             t: 'The Mirrorwood Narrative',
             by: 'PDF — the story your Quest brings to life',
             kind: 'extlink',
-            url: 'https://drive.google.com/file/d/18LZenH-OUEnl_xKn7S7nd7Z6Kav-A8t9/view?usp=sharing'
+            url: 'https://drive.google.com/file/d/18LZenH-OUEnl_xKn7S7nd7Z6Kav-A8t9/view?usp=sharing',
+            step: 2
         },
         {
             t: 'Hippo Participant Journey Map',
@@ -3668,7 +4077,7 @@
         },
         {
             t: 'Who do I contact if I am stuck?',
-            by: 'See Connect below → Need Help.',
+            by: 'See Connect below → Talk to a Radiant IRIS Guide.',
             kind: 'faq'
         },
         {
@@ -3748,15 +4157,8 @@
 
     var connectData = [
     {
-        title: 'WhatsApp',
-        desc: 'Updates, conversation, and questions.',
-        icon: 'ti-brand-whatsapp',
-        color: 'purple',
-        url: 'https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY'
-    },
-    {
-        title: 'Shared Workspace',
-        desc: 'Your group\'s Miro board for brainstorming and prototypes.',
+        title: 'Miro Board',
+        desc: 'Your team\'s shared board for brainstorming and prototypes.',
         icon: 'ti-layout-board-split',
         color: 'green',
         url: 'https://miro.com/app/board/uXjVH8rkf48=/?share_link_id=658155812870'
@@ -3767,13 +4169,6 @@
         icon: 'ti-brand-google-drive',
         color: 'blue',
         url: 'https://drive.google.com/drive/folders/1fkYr29NKqn1DZQt4CjL7WyS2206XRZSu?usp=share_link'
-    },
-    {
-        title: 'Need Help?',
-        desc: 'Not sure what to do? Reach the team directly.',
-        icon: 'ti-lifebuoy',
-        color: 'pink',
-        url: 'https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY'
     }
     ];
 
@@ -3859,6 +4254,22 @@
             pct: Math.round(100 * done / items.length)
         };
     }
+    function isStepUnlocked(n) {
+        for (var i = 0; i < invitations.length; i++) {
+            if (invitations[i].n === n)
+                return !!invitations[i].unlocked;
+        }
+        return true;
+    }
+    function applyTeamQuestGating() {
+        var open = isStepUnlocked(3);
+        var unlockedEl = document.getElementById('team-quest-section');
+        var lockedEl = document.getElementById('team-quest-locked');
+        if (unlockedEl)
+            unlockedEl.style.display = open ? '' : 'none';
+        if (lockedEl)
+            lockedEl.style.display = open ? 'none' : '';
+    }
 
     /* ---------- render: Journey Progress (invitations) ---------- */
     function renderAll() {
@@ -3932,6 +4343,15 @@
                 var read = !!kbRead[key];
                 var row = document.createElement('div');
                 row.className = 'kb-item';
+
+                if (it.step && !isStepUnlocked(it.step)) {
+                    row.style.cursor = 'default';
+                    row.innerHTML =
+                    '<div class="kb-dot" style="background:var(--bg2);color:var(--t3);"><i class="ti ti-lock"></i></div>' +
+                    '<div style="flex:1;"><div class="kb-item-title" style="color:var(--t3);">' + it.t + '</div><div class="kb-item-by">Unlocks at Step ' + it.step + '</div></div>';
+                    body.appendChild(row);
+                    return;
+                }
 
                 if (it.kind === 'faq') {
                     row.style.cursor = 'default';
@@ -4052,7 +4472,7 @@
             box.classList.add('wide');
             document.getElementById('modal-content').innerHTML =
             '<div class="map-wrap" style="padding:18px;">' +
-            '<div class="tz-notice"><i class="ti ti-clock"></i><span><b>Heads up:</b> times shown below are in Moscow time (GMT+3) for everyone, regardless of where you\'re viewing from. For your own local time, use the "Add to Calendar" buttons on individual events instead.</span></div>' +
+            '<div class="heads-up-notice"><i class="ti ti-calendar-time"></i><span><b>Heads Up! 📅</b><br>Please add events to your own calendar so they appear in your local timezone.<br><span class="heads-up-sub">Times shown below are in Moscow time (GMT+3) — use the "Add to Calendar" buttons on individual events for your own local time.</span></span></div>' +
             '<iframe src="' + GCAL_EMBED_URL + '" style="width:100%;height:600px;border:0;border-radius:8px;" frameborder="0" scrolling="no"></iframe>' +
             '</div>';
             document.getElementById('modal-bg').classList.add('open');
@@ -4255,7 +4675,7 @@
     "Reminder: every checklist item you finish makes the next step clearer. That's the whole design.",
     "Lost? Click the logo, top left. It always brings you back to the top.",
     "There's a whole illustrated journey map hiding in Resources → The Journey. Worth a look.",
-    "Stuck on something? Connect → Need Help is not just decoration — actually use it.",
+    "Stuck on something? Connect → Talk to a Radiant IRIS Guide is not just decoration — actually use it.",
     "You don't need to read everything today. Resources will still be there next week.",
     "Fun fact: hippos can't actually swim — they walk along riverbeds. Kind of like this program: one step at a time.",
     "Take the ritual prep seriously. Or don't. The hippo isn't judging. Much."
@@ -4288,26 +4708,10 @@
         body: `
       <p>Throughout the Collaboratorium, your Participant Portal is your home base.</p>
       <p>Whenever you're wondering what to do next, start there.</p>
-      <p>Inside the Portal you'll find:</p>
-      <ul>
-        <li>this Participant Guide</li>
-        <li>the Collaboratorium calendar</li>
-        <li>new resources as they're released</li>
-        <li>recordings and reference materials</li>
-        <li>important announcements</li>
-        <li>links to the WhatsApp space where you'll collaborate, ask questions, and stay connected throughout the Collaboratorium</li>
-      </ul>
-      <p>During your first week, we'll send a new invitation each day to gently guide you through the journey. Think of these emails as companions rather than assignments.</p>
+      <p>Inside the Portal you'll find the latest information, resources, calendar and links needed for your journey.</p>
+      <p>During your first week, we'll send a new invitation each day to gently guide you through the journey. These are invitations, not daily assignments. You can move through the work at your team's own pace.</p>
       <p>If you ever lose track of something, simply return to the Participant Portal. It will always have the latest version of everything you need.</p>
     `
-
-
-
-
-
-
-
-
 
 
 
@@ -4322,40 +4726,52 @@
         color: 'green',
         defaultOpen: false,
         body: `
-      <p>A few different things will show up over the next few days. Here's what each one is for, so you always know which one to reach for.</p>
+      <p>Throughout the Collaboratorium you'll use a handful of simple tools. Each one has a different purpose.</p>
       <div class="glossary-grid">
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🏡</div>
           <div class="glossary-term">Portal</div>
-          <div class="glossary-def">Your home base. Whenever you're not sure what to do, start here.</div>
+          <div class="glossary-def">Your home base.</div>
         </div>
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🧭</div>
           <div class="glossary-term">Explorer's Guide</div>
-          <div class="glossary-def">This document. Helps you understand the shape of the whole journey.</div>
+          <div class="glossary-def">Understand the journey.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">📜</div>
+          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">🪞</div>
+          <div class="glossary-term">Mirrorwood Narrative</div>
+          <div class="glossary-def">Step into the storyworld.</div>
+        </div>
+        <div class="glossary-card">
+          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">📜</div>
           <div class="glossary-term">Quest</div>
-          <div class="glossary-def">Your team's creative challenge — what you're actually setting out to create.</div>
+          <div class="glossary-def">Discover what your team is invited to create.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">📖</div>
+          <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">📖</div>
           <div class="glossary-term">Experiment Playbook</div>
-          <div class="glossary-def">Practical guidance for how to design and build your experience.</div>
+          <div class="glossary-def">Explore how to create it.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🗺️</div>
-          <div class="glossary-term">Miro</div>
-          <div class="glossary-def">Your team's shared workspace to capture ideas, prototypes, and progress.</div>
+          <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🗺️</div>
+          <div class="glossary-term">Miro Board</div>
+          <div class="glossary-def">Capture your team's ideas.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">✉️</div>
+          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">✉️</div>
           <div class="glossary-term">Daily Emails</div>
-          <div class="glossary-def">Short notes that guide you one step at a time during your first week.</div>
+          <div class="glossary-def">Guide you to the next step.</div>
         </div>
       </div>
+      <p style="margin-top:14px;">You don't need to use everything at once. We'll introduce each resource when you're ready.</p>
     `
+
+
+
+
+
+
 
 
 
@@ -4399,118 +4815,74 @@
         defaultOpen: true,
         body: `
       <p>The Collaboratorium unfolds one step at a time.</p>
-      <p>Rather than giving you everything at once, we'll gradually release new pieces of the journey over the first seven days.</p>
-      <p>That means you don't need to memorize anything today.<br>Just stay curious and keep following the next invitation.</p>
+      <p>During the first seven days, we'll gradually reveal the resources and invitations you need. You don't need to understand the whole process before you begin.</p>
+      <p>Here's the big picture:</p>
       <div style="margin-top:8px;">
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--purple);">1</div>
           <div class="guide-step-body">
             <div class="guide-step-title">Arrive</div>
-            <p>Meet your team.<br>Explore the Portal.<br>Introduce yourself.</p>
-            <p>Get to know the people you'll be creating with.</p>
+            <p>Meet your team and get oriented.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--purple);">2</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Discover</div>
-            <p>Over the next several days, we'll gradually introduce you to the world of Mirrorwood.</p>
-            <p>You'll receive:</p>
-            <ul style="margin:0 0 8px 18px;">
-              <li style="font-size:13px;color:var(--t2);margin-bottom:3px;">the Mirrorwood Narrative, introducing the story world you'll be exploring</li>
-              <li style="font-size:13px;color:var(--t2);margin-bottom:3px;">your chapter of the story</li>
-              <li style="font-size:13px;color:var(--t2);margin-bottom:3px;">your Creative Quest</li>
-              <li style="font-size:13px;color:var(--t2);margin-bottom:3px;">inspiration and examples</li>
-              <li style="font-size:13px;color:var(--t2);margin-bottom:3px;">prompts to help your team imagine together</li>
-            </ul>
-            <p>You don't need to think about how the story becomes an experience yet. Simply enter the world, enjoy the journey, and notice what each chapter invites people to feel, discover, or become.</p>
-            <p>Your Quest will guide you through the next step when it's time.</p>
-            <p>Trust the process. Each day's invitation builds on the last, so there's no need to jump ahead. We'll introduce each piece when you're ready for it.</p>
+            <div class="guide-step-title">Enter Mirrorwood</div>
+            <p>Step into the storyworld and discover your team's chapter.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--green);">3</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Create</div>
-            <p>Together your team will imagine, design, and prototype a small interactive experience inspired by your Quest.</p>
-            <p>You don't need to create something perfect.<br>The goal is to explore, experiment, and discover what becomes possible.</p>
+            <div class="guide-step-title">Explore Your Quest</div>
+            <p>Discover what your team is being invited to explore.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--green);">4</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Playtest</div>
-            <p>Before Demo Day, your team will run one playtest with the support of one of your Radiant IRIS guides. You're also welcome to invite friends and other well-wishers to gather more feedback.</p>
-            <p>This will be your chance to experience what you've created with real people and discover what works.</p>
+            <div class="guide-step-title">Design Your Experiment</div>
+            <p>Use the Experiment Playbook to imagine and shape your idea.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--green);">5</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Reflect</div>
-            <p>After your playtest, your team will capture what you learned.</p>
-            <p>What surprised you? What worked? What would you change?</p>
-            <p>These reflections are just as valuable as the experience itself.</p>
-            <p>We'll guide you through this process when the time comes.</p>
+            <div class="guide-step-title">Bring It to Life</div>
+            <p>Try your experiment, learn from it, and refine it.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--blue);">6</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Demo Day <span class="guide-step-badge"><i class="ti ti-broadcast"></i> Live Gathering · Aug 23</span></div>
-            <p>Each team will share what they've created and receive feedback from the rest of the Collaboratorium.</p>
-            <p>At least one member of your team should attend to present your experiment and represent your team's work.</p>
-            <p>This is an opportunity to learn from one another before preparing for the Showcase.</p>
+            <div class="guide-step-title">Playtest</div>
+            <p>Invite people into your experiment and discover what happens.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--blue);">7</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Refine</div>
-            <p>Using what you learned during your playtest and Demo Day, your team will make any changes you feel are important before the Showcase.</p>
+            <div class="guide-step-title">Demo Day</div>
+            <p>Share your experiment with the Collaboratorium.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--pink);">8</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Showcase <span class="guide-step-badge"><i class="ti ti-broadcast"></i> Live Gathering · Aug 31</span></div>
-            <p>Together we'll celebrate everything we've created.</p>
-            <p>Each team will present their experience, share what they discovered, and contribute to the larger learning of the Collaboratorium.</p>
-            <p>At least one member of your team should attend to present your team's final experience.</p>
+            <div class="guide-step-title">Showcase</div>
+            <p>Bring the experiments together as part of the larger story.</p>
           </div>
         </div>
         <div class="guide-step">
           <div class="guide-step-num" style="background:var(--pink);">9</div>
           <div class="guide-step-body">
-            <div class="guide-step-title">Celebration <span class="guide-step-badge"><i class="ti ti-broadcast"></i> Live Gathering · Optional · Sep 2</span></div>
-            <p>We'll gather one final time to reflect on the journey together, celebrate what emerged, and imagine what comes next.</p>
-            <p>Attendance is optional, but we warmly encourage you to join if you're able.</p>
+            <div class="guide-step-title">Celebration</div>
+            <p>Gather together and celebrate what emerged.</p>
           </div>
         </div>
       </div>
     `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4589,15 +4961,13 @@
         defaultOpen: false,
         body: `
       <ul style="margin-left:18px;">
-        <li>Most of the Collaboratorium happens <b>asynchronously</b>. Your team can decide when and how often to meet, so there isn't a single "correct" schedule. Choose a rhythm that works for everyone.</li>
-        <li>Before the Collaboratorium begins, we'll create a <b>dedicated WhatsApp group</b> for your team. This will be your primary space for getting to know one another, sharing ideas, asking questions, and coordinating your work together.</li>
-        <li>Each team will also have <b>Radiant IRIS guides</b> available to answer questions, offer encouragement, and support your creative process.</li>
-        <li>We expect most participants will spend <b>a few hours each week</b> engaging with the Collaboratorium. Because the experience is largely asynchronous, your team can choose a rhythm that works for everyone's schedule.</li>
-        <li>Some teams may meet more often than others, and that's perfectly okay. Discovering your rhythm is part of the experiment.</li>
-        <li>We understand that life happens. If you miss a day, don't worry. Simply return to the Participant Portal, catch up at your own pace, and ask your teammates or your Radiant IRIS guide if you need help. We're designing this journey to be flexible.</li>
+        <li>Most of the Collaboratorium happens <b>asynchronously</b>.</li>
+        <li>Your team will decide when and how you want to meet and collaborate. There is no single "correct" rhythm.</li>
+        <li>You may use WhatsApp, your Miro Board, live calls, or whatever combination helps your team work well together.</li>
+        <li>You don't need to complete the journey day by day. If life gets busy, simply return to the Portal and continue when you're ready.</li>
+        <li>Your Radiant IRIS Guide is there if you get stuck or need another perspective.</li>
       </ul>
     `
-
 
 
 
@@ -4614,38 +4984,10 @@
         color: 'pink',
         defaultOpen: false,
         body: `
-      <p style="font-size:13.5px;line-height:1.7;color:var(--t1);margin-bottom:14px;">You'll be creating with a small team of 3 to 5 fellow Explorers. Every team brings together different backgrounds, perspectives, and strengths, and every team will discover its own way of working together.</p>
-      <p style="font-size:13.5px;line-height:1.7;color:var(--t1);margin-bottom:14px;">To help your collaboration flow smoothly, each team has three simple roles:</p>
-      <div class="roles-grid">
-        <div class="role-card">
-          <div class="role-title">Lead</div>
-          <div class="role-desc">Keeps the group moving forward and helps coordinate conversations.</div>
-        </div>
-        <div class="role-card">
-          <div class="role-title">Scribe</div>
-          <div class="role-desc">Captures ideas, discoveries, and decisions so the team's learning isn't lost.</div>
-        </div>
-        <div class="role-card">
-          <div class="role-title">Radiant IRIS Guide</div>
-          <div class="role-desc">Supports your team throughout the journey by answering questions, offering encouragement, and helping remove obstacles. They're here to support your process, not direct it.</div>
-        </div>
-      </div>
-      <p style="font-size:12.5px;line-height:1.6;color:var(--t2);margin-top:14px;">These roles are lightweight and flexible. Many teams naturally share responsibilities or rotate roles as they go. The goal isn't hierarchy. It's helping everyone contribute.</p>
+      <p>You'll create with a small team of fellow Explorers.</p>
+      <p>You'll discover your own way of working together. You might naturally find someone who helps coordinate, someone who captures ideas, or someone who keeps the conversation moving. These roles can be shared or change as you go.</p>
+      <p>Your Radiant IRIS Guide is there to support your process. Please contact them with any questions you may have.</p>
     `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4667,31 +5009,16 @@
         </div>
         <div class="glossary-card">
           <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🗺️</div>
-          <div class="glossary-term">Creative Quest</div>
+          <div class="glossary-term">Quest</div>
           <div class="glossary-def">A creative design challenge that guides your team's work and invites you to imagine, prototype, and experiment together.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">🧪</div>
-          <div class="glossary-term">Experiment Playground</div>
-          <div class="glossary-def">The creative ingredient(s) your team explores while designing your experience. Each represents an experiment we're testing together as part of our live interactive storytelling ecosystem.</div>
-        </div>
-        <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">💗</div>
-          <div class="glossary-term">StoryHeart</div>
-          <div class="glossary-def">The storytelling engine we're exploring throughout the Collaboratorium. StoryHeart helps transform participant offerings into shared narratives, making it possible for stories to respond and evolve through the group's participation.</div>
-        </div>
-        <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--purple-bg);color:var(--purple);">🎭</div>
-          <div class="glossary-term">Playscape</div>
-          <div class="glossary-def">The shared interactive space where participants experience the story together. Rather than watching from the outside, the Playscape invites people to step into the experience as active participants.</div>
-        </div>
-        <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--blue-bg);color:var(--blue);">🔧</div>
+          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">🔧</div>
           <div class="glossary-term">Playtest</div>
           <div class="glossary-def">A chance to try your experience with real participants before Demo Day. The goal isn't perfection, but learning.</div>
         </div>
         <div class="glossary-card">
-          <div class="glossary-icon" style="background:var(--green-bg);color:var(--green);">✨</div>
+          <div class="glossary-icon" style="background:var(--pink-bg);color:var(--pink);">✨</div>
           <div class="glossary-term">Emergence</div>
           <div class="glossary-def">One of our favorite words! Emergence describes what happens when something unexpected and meaningful arises through collaboration. Rather than planning every detail in advance, we create the conditions for new ideas, insights, and experiences to unfold together.</div>
         </div>
@@ -4721,25 +5048,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     },
     {
         id: 'help',
-        title: 'Need Help?',
+        title: 'If You Get Stuck',
         icon: 'ti-help-circle',
         color: 'blue',
         defaultOpen: false,
@@ -4748,7 +5060,7 @@
       <ul>
         <li>Ask your Radiant IRIS guide.</li>
         <li>Reach out in the participant WhatsApp group.</li>
-        <li>Return to the Participant Portal for the latest information and resources.</li>
+        <li>Return to the Participant Portal for the latest information and resources, and to check Open Hours.</li>
       </ul>
       <p>You're never expected to figure everything out on your own. We'll figure things out together!</p>
     `
@@ -6023,6 +6335,9 @@
         '#/design-moves': 'page-design-moves',
         '#/storyheart': 'page-storyheart',
         '#/team': 'page-team',
+        '#/team2': 'page-team2',
+        '#/team3': 'page-team3',
+        '#/team4': 'page-team4',
         '#/library': 'page-library'
     };
     function syncFromHash() {
@@ -6064,6 +6379,7 @@
     renderDesignMoves();
     renderStoryheart();
     renderAll();
+    applyTeamQuestGating();
     syncFromHash();
     </script>
 </body>
