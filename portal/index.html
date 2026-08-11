@@ -702,6 +702,27 @@
         align-items: center
     }
 
+    .kb-item.kb-flash {
+        animation: kbFlashPulse 2.2s ease
+    }
+
+    @keyframes kbFlashPulse {
+        0% {
+            background: var(--purple-bg);
+            box-shadow: 0 0 0 2px var(--purple) inset;
+        }
+
+        70% {
+            background: var(--purple-bg);
+            box-shadow: 0 0 0 2px var(--purple) inset;
+        }
+
+        100% {
+            background: transparent;
+            box-shadow: 0 0 0 0 transparent inset;
+        }
+    }
+
     .kb-item:hover {
         background: var(--bg2)
     }
@@ -3813,7 +3834,7 @@
             time: '2 min',
             done: false,
             action: function() {
-                location.hash = '/team'
+                scrollToSection('teams')
             },
             openLabel: 'Open Team Page'
         },
@@ -3847,7 +3868,7 @@
         n: 2,
         title: 'Enter Mirrorwood',
         resource: 'Mirrorwood Narrative',
-        unlocked: false,
+        unlocked: true,
         tasks: [
         {
             id: 'narrative',
@@ -3857,7 +3878,7 @@
             time: '10 min',
             done: false,
             action: function() {
-                scrollToSection('resources')
+                openResourceItem('Participate', 'The Mirrorwood Narrative')
             },
             openLabel: 'Open in Resources'
         },
@@ -4063,16 +4084,16 @@
             step: 3
         },
         {
-            t: 'The Mirrorwood Narrative',
-            by: 'PDF — the story your Quest brings to life',
-            kind: 'extlink',
-            url: 'https://drive.google.com/file/d/18LZenH-OUEnl_xKn7S7nd7Z6Kav-A8t9/view?usp=sharing',
-            step: 2
-        },
-        {
             t: 'Hippo Participant Journey Map',
             by: 'The whole path, illustrated',
             kind: 'map'
+        },
+        {
+            t: 'The Mirrorwood Narrative',
+            by: 'PDF — the story your Quest brings to life',
+            kind: 'extlink',
+            url: 'https://drive.google.com/file/d/14I1Lz0pf6HTQpkPqejsc7rnFARsf0yEX/view?usp=sharing',
+            step: 2
         },
         {
             t: 'What if I miss a live session?',
@@ -4349,11 +4370,21 @@
             '</div>' +
             '<div class="kb-body"></div>';
             var body = el.querySelector('.kb-body');
-            sec.items.forEach(function(it) {
+            var sortedItems = sec.items.slice().sort(function(a, b) {
+                var aLocked = a.step && !isStepUnlocked(a.step);
+                var bLocked = b.step && !isStepUnlocked(b.step);
+                if (aLocked !== bLocked)
+                    return aLocked ? 1 : -1;
+                if (aLocked && bLocked)
+                    return a.step - b.step;
+                return 0;
+            });
+            sortedItems.forEach(function(it) {
                 var key = slugify(sec.title + '::' + it.t);
                 var read = !!kbRead[key];
                 var row = document.createElement('div');
                 row.className = 'kb-item';
+                row.id = 'kbrow-' + key;
 
                 if (it.step && !isStepUnlocked(it.step)) {
                     row.style.cursor = 'default';
@@ -4563,6 +4594,54 @@
                 behavior: 'smooth',
                 block: 'start'
             });
+    }
+
+    function openResourceItem(sectionTitle, itemTitle) {
+        if (location.hash && location.hash !== '#/' && location.hash !== '') {
+            location.hash = '/';
+        }
+        setTimeout(function() {
+            var idx = -1;
+            kbData.forEach(function(s, i) {
+                if (s.title === sectionTitle)
+                    idx = i;
+            });
+            if (idx === -1) {
+                scrollToSection('resources');
+                return;
+            }
+            var el = document.getElementById('kbsec-' + idx);
+            if (!el) {
+                scrollToSection('resources');
+                return;
+            }
+            var body = el.querySelector('.kb-body');
+            var chevron = el.querySelector('.kb-chevron');
+            var disc = el.querySelector('.kb-disclosure');
+            if (body && !body.classList.contains('open')) {
+                body.classList.add('open');
+                if (chevron)
+                    chevron.classList.add('open');
+                if (disc)
+                    disc.textContent = '▼';
+            }
+            setTimeout(function() {
+                var key = slugify(sectionTitle + '::' + itemTitle);
+                var row = document.getElementById('kbrow-' + key);
+                if (row) {
+                    row.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    row.classList.add('kb-flash');
+                    setTimeout(function() {
+                        row.classList.remove('kb-flash');
+                    }, 2200);
+                } else {
+                    scrollToSection('resources');
+                }
+            }, 100);
+        }, 60);
     }
 
     /* ---------- language box ---------- */
