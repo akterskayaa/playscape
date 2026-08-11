@@ -3874,11 +3874,11 @@
             id: 'narrative',
             icon: 'ti-book-2',
             title: 'Read the Mirrorwood Narrative',
-            desc: 'Find it in Resources → Participate.',
+            desc: 'Find it in Resources → Participate. Available in English and Japanese.',
             time: '10 min',
             done: false,
             action: function() {
-                openResourceItem('Participate', 'The Mirrorwood Narrative')
+                openResourceItem('Participate', ['The Mirrorwood Narrative (English)', 'The Mirrorwood Narrative (日本語)'])
             },
             openLabel: 'Open in Resources'
         },
@@ -4089,10 +4089,17 @@
             kind: 'map'
         },
         {
-            t: 'The Mirrorwood Narrative',
+            t: 'The Mirrorwood Narrative (English)',
             by: 'PDF — the story your Quest brings to life',
             kind: 'extlink',
             url: 'https://drive.google.com/file/d/14I1Lz0pf6HTQpkPqejsc7rnFARsf0yEX/view?usp=sharing',
+            step: 2
+        },
+        {
+            t: 'The Mirrorwood Narrative (日本語)',
+            by: 'PDF — Japanese version of the narrative',
+            kind: 'extlink',
+            url: 'https://drive.google.com/file/d/1FMUkPASxfP6UmoyJFiKtND6oX0v3YBiM/view',
             step: 2
         },
         {
@@ -4596,7 +4603,8 @@
             });
     }
 
-    function openResourceItem(sectionTitle, itemTitle) {
+    function openResourceItem(sectionTitle, itemTitles) {
+        var titles = Array.isArray(itemTitles) ? itemTitles : [itemTitles];
         if (location.hash && location.hash !== '#/' && location.hash !== '') {
             location.hash = '/';
         }
@@ -4626,20 +4634,26 @@
                     disc.textContent = '▼';
             }
             setTimeout(function() {
-                var key = slugify(sectionTitle + '::' + itemTitle);
-                var row = document.getElementById('kbrow-' + key);
-                if (row) {
-                    row.scrollIntoView({
+                var firstRow = null;
+                titles.forEach(function(itemTitle) {
+                    var key = slugify(sectionTitle + '::' + itemTitle);
+                    var row = document.getElementById('kbrow-' + key);
+                    if (row) {
+                        if (!firstRow)
+                            firstRow = row;
+                        row.classList.add('kb-flash');
+                        setTimeout(function() {
+                            row.classList.remove('kb-flash');
+                        }, 2200);
+                    }
+                });
+                if (firstRow)
+                    firstRow.scrollIntoView({
                         behavior: 'smooth',
                         block: 'center'
                     });
-                    row.classList.add('kb-flash');
-                    setTimeout(function() {
-                        row.classList.remove('kb-flash');
-                    }, 2200);
-                } else {
+                else
                     scrollToSection('resources');
-                }
             }, 100);
         }, 60);
     }
