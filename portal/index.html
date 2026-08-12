@@ -2972,7 +2972,7 @@
                         </div>
                         <div>
                             <div class="team-index-name">Team 2</div>
-                            <div class="team-index-sub">4 participants</div>
+                            <div class="team-index-sub">5 participants</div>
                         </div>
                     </div>
                     <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
@@ -2985,7 +2985,7 @@
                         </div>
                         <div>
                             <div class="team-index-name">Team 3</div>
-                            <div class="team-index-sub">4 participants</div>
+                            <div class="team-index-sub">5 participants</div>
                         </div>
                     </div>
                     <i class="ti ti-chevron-right" style="color:var(--t3);font-size:18px;"></i>
@@ -3484,6 +3484,10 @@
                             <div class="member-avatar filled">IK</div>
                             <div class="member-label filled-label">Ilana Kirschbaum</div>
                         </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">PL</div>
+                            <div class="member-label filled-label">Polina Limye</div>
+                        </div>
                     </div>
                     <div class="conn-btn" style="margin-top:16px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
                         <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
@@ -3569,6 +3573,10 @@
                         <div class="team-member-slot">
                             <div class="member-avatar filled">SD</div>
                             <div class="member-label filled-label">Shital Dalwadi</div>
+                        </div>
+                        <div class="team-member-slot">
+                            <div class="member-avatar filled">TO</div>
+                            <div class="member-label filled-label">Tara Ocon</div>
                         </div>
                     </div>
                     <div class="conn-btn" style="margin-top:16px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
@@ -3874,11 +3882,11 @@
             id: 'narrative',
             icon: 'ti-book-2',
             title: 'Read the Mirrorwood Narrative',
-            desc: 'Find it in Resources → Participate. Available in English and Japanese.',
+            desc: 'Find it in Resources → Participate. Available in English, Japanese, and as a video.',
             time: '10 min',
             done: false,
             action: function() {
-                openResourceItem('Participate', ['The Mirrorwood Narrative (English)', 'The Mirrorwood Narrative (日本語)'])
+                openResourceItem('Participate', ['The Mirrorwood Narrative (English)', 'The Mirrorwood Narrative (日本語)', 'The Mirrorwood Narrative (video, 日本語字幕)'])
             },
             openLabel: 'Open in Resources'
         },
@@ -4050,6 +4058,12 @@
             }
         },
         {
+            t: 'Kickoff Call Recording',
+            by: 'Video with Japanese subtitles (breakout rooms not included)',
+            kind: 'video',
+            videoId: 'CykGthDntCk'
+        },
+        {
             t: 'Experiment Playbook',
             by: 'Your guide to designing your experiment',
             kind: 'link',
@@ -4100,6 +4114,13 @@
             by: 'PDF — Japanese version of the narrative',
             kind: 'extlink',
             url: 'https://drive.google.com/file/d/1FMUkPASxfP6UmoyJFiKtND6oX0v3YBiM/view',
+            step: 2
+        },
+        {
+            t: 'The Mirrorwood Narrative (video, 日本語字幕)',
+            by: '9 min video with Japanese subtitles — if you\'d rather watch than read',
+            kind: 'video',
+            videoId: 'fNt-Tju3LGc',
             step: 2
         },
         {
