@@ -3979,13 +3979,13 @@
             id: 'name',
             icon: 'ti-pencil',
             title: 'Choose a name for your team',
-            desc: 'Decide together in your Team WhatsApp.',
+            desc: 'Find your team below, then decide together in your Team WhatsApp.',
             time: '5 min',
             done: false,
             action: function() {
-                location.hash = '/team'
+                scrollToSection('teams')
             },
-            openLabel: 'Go to Team Page'
+            openLabel: 'Find Your Team'
         }
         ]
     },
@@ -4031,13 +4031,13 @@
             id: 'readquest',
             icon: 'ti-scroll',
             title: 'Read your Team Quest',
-            desc: 'Find it on your Team Page.',
+            desc: 'Find your team below, then scroll to Your Quest on your team\'s page.',
             time: '5 min',
             done: false,
             action: function() {
                 openTeamQuest()
             },
-            openLabel: 'View Your Quest'
+            openLabel: 'Find Your Team'
         },
         {
             id: 'miroboard',
@@ -4868,14 +4868,11 @@
     }
 
     function openTeamQuest() {
-        location.hash = '/team';
+        if (location.hash && location.hash !== '#/' && location.hash !== '') {
+            location.hash = '/';
+        }
         setTimeout(function() {
-            var el = document.getElementById('team-quest-section');
-            if (el)
-                el.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            scrollToSection('teams');
         }, 60);
     }
 
