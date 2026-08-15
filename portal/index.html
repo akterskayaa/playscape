@@ -3002,7 +3002,7 @@
                     <div class="gathering-title">Demo Day</div>
                     <div class="gathering-meta">Sunday, August 23 · 3:00 PM PDT</div>
                     <div class="gathering-actions">
-                        <button class="gbtn primary" onclick="window.open('https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1','_blank')">
+                        <button class="gbtn primary" onclick="window.open('https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1','_blank')">
                             <i class="ti ti-video" style="margin-right:5px;"></i>
                             Join on Zoom
                         </button>
@@ -3171,68 +3171,6 @@
                     <div class="conn-btn" style="margin-top:14px;display:inline-block;cursor:pointer;" onclick="window.open('https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY','_blank')">
                         <i class="ti ti-brand-whatsapp" style="margin-right:6px;"></i>
                         Message on WhatsApp
-                    </div>
-                </div>
-
-                <div class="team-card" style="margin-bottom:14px;">
-                    <div class="connect-block-title">🌏 Co-Lab Zoom Room</div>
-                    <div class="connect-block-desc">Use this Zoom room whenever your team wants to meet and work together. You don't need a Zoom account to join.</div>
-                    <div class="conn-btn" style="margin-top:14px;display:inline-block;cursor:pointer;" onclick="window.open('https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1','_blank')">
-                        <i class="ti ti-video" style="margin-right:6px;"></i>
-                        Join the Co-Lab Zoom Room
-                    </div>
-                    <div class="open-hours-list" style="margin-top:14px;">
-                        <div class="open-hours-row">
-                            <span class="open-hours-name">Meeting ID</span>
-                            <span class="open-hours-time">819 7265 2746</span>
-                        </div>
-                        <div class="open-hours-row">
-                            <span class="open-hours-name">Passcode</span>
-                            <span class="open-hours-time">523168</span>
-                        </div>
-                    </div>
-                    <div class="open-hours-title" style="margin-top:18px;">🇯🇵 Japanese Translated Captions</div>
-                    <div class="connect-block-desc" style="margin-bottom:6px;">To see English speech translated into Japanese:</div>
-                    <ol class="zoom-caption-steps">
-                        <li>Join the Zoom room.</li>
-                        <li>
-                            Click 
-                            <b>Show Captions</b>
-                             in the Zoom toolbar. If you don't see it, look under 
-                            <b>More (...)</b>
-                             → 
-                            <b>Captions</b>
-                            .
-                        </li>
-                        <li>
-                            Click the ▲ next to 
-                            <b>Show Captions</b>
-                            .
-                        </li>
-                        <li>
-                            Choose 
-                            <b>Captions and translation</b>
-                            .
-                        </li>
-                        <li>
-                            Turn 
-                            <b>Translation</b>
-                             on and select 
-                            <b>Japanese</b>
-                            .
-                        </li>
-                        <li>
-                            Click 
-                            <b>Save</b>
-                            .
-                        </li>
-                    </ol>
-                    <div class="connect-block-desc" style="margin-top:10px;">Each person can choose their own caption language, so you can view Japanese while someone else views English.</div>
-                    <div class="pb-callout" style="background:var(--gold-bg);margin-top:12px;">
-                        <p style="margin-bottom:0;font-size:12px;">
-                            <b>Important:</b>
-                             if the conversation is primarily in English, make sure Speaking Language is set to English in the same Captions and translation menu. Zoom translation is automatic, so it won't always be perfect — speak clearly and avoid talking over one another.
-                        </p>
                     </div>
                 </div>
 
@@ -4442,7 +4380,7 @@
         n: 6,
         title: 'Bring it to Life',
         resource: 'Complete your Experiment Template in Miro',
-        unlocked: false,
+        unlocked: true,
         tasks: [
         {
             id: 'experimenttemplate',
@@ -4452,9 +4390,9 @@
             time: '20 min',
             done: false,
             action: function() {
-                scrollToSection('connect')
+                window.open('https://miro.com/app/board/uXjVH8rkf48=/?share_link_id=658155812870', '_blank')
             },
-            openLabel: 'Go to Connect'
+            openLabel: 'Open Miro Board'
         }
         ]
     },
@@ -4649,10 +4587,10 @@
     var connectData = [
     {
         title: 'Zoom',
-        desc: 'Same link for every live gathering — save it!',
+        desc: 'Co-Lab room — same link for every live gathering.',
         icon: 'ti-video',
         color: 'purple',
-        url: 'https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1'
+        popup: 'zoom'
     },
     {
         title: 'Miro Board',
@@ -4883,7 +4821,7 @@
                     '</div>';
                     row.querySelector('[data-act="zoom"]').addEventListener('click', function(e) {
                         e.stopPropagation();
-                        window.open('https://us02web.zoom.us/s/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1', '_blank');
+                        window.open('https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1', '_blank');
                     });
                     row.querySelector('[data-act="cal"]').addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -5045,7 +4983,9 @@
             '<div class="conn-desc">' + c.desc + '</div>' +
             '<button class="conn-btn">Open ' + c.title + '</button>';
             el.querySelector('.conn-btn').addEventListener('click', function() {
-                if (c.url)
+                if (c.popup === 'zoom')
+                    openZoomRoomModal();
+                else if (c.url)
                     window.open(c.url, '_blank');
                 else
                     toast('Opening ' + c.title + '…');
@@ -5192,6 +5132,36 @@
         var img = imgId ? document.getElementById(imgId) : document.querySelector('.quest-thumb img');
         document.getElementById('modal-content').innerHTML =
         '<div class="map-wrap"><img src="' + img.src + '" alt="' + (altText || 'Quest image') + '" style="width:100%;height:auto;display:block;border-radius:8px;"></div>';
+        document.getElementById('modal-bg').classList.add('open');
+    }
+
+    function openZoomRoomModal() {
+        var box = document.getElementById('modal-box');
+        box.classList.add('light', 'wide');
+        document.getElementById('modal-content').innerHTML =
+        '<div style="padding:26px 24px 28px;">' +
+        '<div style="font-size:19px;font-weight:700;margin-bottom:10px;">🌏 Co-Lab Zoom Room</div>' +
+        '<div style="font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:16px;">Use this Zoom room whenever your team wants to meet and work together. You don\'t need a Zoom account to join.</div>' +
+        '<div class="conn-btn" style="display:inline-block;cursor:pointer;" onclick="window.open(\'https://us02web.zoom.us/j/81972652746?pwd=pq0zimW1UJGxShAMhs97vev41b05qC.1\',\'_blank\')"><i class="ti ti-video" style="margin-right:6px;"></i>Join the Co-Lab Zoom Room</div>' +
+        '<div class="open-hours-list" style="margin-top:16px;">' +
+        '<div class="open-hours-row"><span class="open-hours-name">Meeting ID</span><span class="open-hours-time">819 7265 2746</span></div>' +
+        '<div class="open-hours-row"><span class="open-hours-name">Passcode</span><span class="open-hours-time">523168</span></div>' +
+        '</div>' +
+        '<div class="open-hours-title" style="margin-top:20px;">🇯🇵 Japanese Translated Captions</div>' +
+        '<div style="font-size:12.5px;color:var(--t2);margin-bottom:6px;">To see English speech translated into Japanese:</div>' +
+        '<ol class="zoom-caption-steps">' +
+        '<li>Join the Zoom room.</li>' +
+        '<li>Click <b>Show Captions</b> in the Zoom toolbar. If you don\'t see it, look under <b>More (...)</b> → <b>Captions</b>.</li>' +
+        '<li>Click the ▲ next to <b>Show Captions</b>.</li>' +
+        '<li>Choose <b>Captions and translation</b>.</li>' +
+        '<li>Turn <b>Translation</b> on and select <b>Japanese</b>.</li>' +
+        '<li>Click <b>Save</b>.</li>' +
+        '</ol>' +
+        '<div style="font-size:12px;color:var(--t2);margin-top:10px;">Each person can choose their own caption language, so you can view Japanese while someone else views English.</div>' +
+        '<div class="pb-callout" style="background:var(--gold-bg);margin-top:14px;">' +
+        '<p style="margin-bottom:0;font-size:12px;"><b>Important:</b> if the conversation is primarily in English, make sure Speaking Language is set to English in the same Captions and translation menu. Zoom translation is automatic, so it won\'t always be perfect — speak clearly and avoid talking over one another.</p>' +
+        '</div>' +
+        '</div>';
         document.getElementById('modal-bg').classList.add('open');
     }
 
