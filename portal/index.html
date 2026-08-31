@@ -1448,6 +1448,156 @@
         font-size: 14px;
         margin-top: 3px;
         flex-shrink: 0
+    }/* ---- harvest: experiment documentation form + card gallery ---- */
+    .harvest-field {
+        margin-bottom: 16px
+    }
+
+    .harvest-label {
+        display: block;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--t1);
+        margin-bottom: 6px
+    }
+
+    .harvest-label span {
+        display: block;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--t2);
+        margin-top: 2px
+    }
+
+    .harvest-textarea, .harvest-select {
+        width: 100%;
+        border: 1px solid var(--bl);
+        border-radius: var(--rmd);
+        padding: 10px 12px;
+        font-family: var(--font);
+        font-size: 13px;
+        color: var(--t1);
+        background: #fff;
+        resize: vertical;
+        box-sizing: border-box
+    }
+
+    .harvest-textarea:focus, .harvest-select:focus {
+        outline: none;
+        border-color: var(--purple)
+    }
+
+    .harvest-select {
+        cursor: pointer;
+        font-weight: 600
+    }
+
+    .harvest-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px
+    }
+
+    @media (max-width: 720px) {
+        .harvest-cards-grid {
+            grid-template-columns: 1fr
+        }
+    }
+
+    .harvest-card {
+        background: #fff;
+        border: .5px solid var(--bl);
+        border-radius: var(--rlg);
+        overflow: hidden
+    }
+
+    .harvest-card-head {
+        padding: 14px 16px;
+        font-weight: 700;
+        font-size: 14.5px;
+        color: #fff
+    }
+
+    .harvest-card-body {
+        padding: 14px 16px
+    }
+
+    .harvest-card-empty {
+        font-size: 12.5px;
+        color: var(--t3);
+        font-style: italic;
+        padding: 4px 0
+    }
+
+    .harvest-card-sec {
+        font-size: 10.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: var(--t2);
+        margin: 10px 0 3px
+    }
+
+    .harvest-card-sec:first-child {
+        margin-top: 0
+    }
+
+    .harvest-card-text {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--t1);
+        white-space: pre-wrap
+    }
+
+    .harvest-card-link {
+        font-size: 12px;
+        color: var(--purple);
+        font-weight: 600
+    }
+
+    .harvest-section {
+        border-radius: var(--rlg);
+        padding: 18px 18px 4px;
+        margin-bottom: 18px;
+        border: 1px solid
+    }
+
+    .harvest-section-blue {
+        background: var(--blue-bg);
+        border-color: rgba(24, 95, 165, .18)
+    }
+
+    .harvest-section-green {
+        background: var(--green-bg);
+        border-color: rgba(15, 110, 86, .18)
+    }
+
+    .harvest-section-head {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 16px
+    }
+
+    .harvest-section-emoji {
+        font-size: 26px;
+        flex-shrink: 0
+    }
+
+    .harvest-section-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--t1)
+    }
+
+    .harvest-section-sub {
+        font-size: 11.5px;
+        color: var(--t2);
+        margin-top: 1px
+    }
+
+    .harvest-section .harvest-textarea, .harvest-section .harvest-select {
+        background: #fff
     }
 
     .dm-detail-list {
@@ -3461,6 +3611,176 @@
         </div>
     </div>
 
+    <!-- ================= HARVEST / DOCUMENT YOUR EXPERIMENT PAGE ================= -->
+    <div id="page-harvest" style="display:none">
+        <div class="wrap">
+
+            <section class="section-block">
+                <div class="team-back" onclick="location.hash='/'">
+                    <i class="ti ti-arrow-left"></i>
+                     Back to Portal
+                </div>
+                <div class="welcome-card guide-welcome">
+                    <div class="welcome-title" style="margin-bottom:14px;">🌾 Document Your Experiment</div>
+                    <div class="welcome-text">
+                        <p>Capture your team's experiment and what you learned from it — this becomes part of the shared record for the whole Collaboratorium.</p>
+                        <p>Choose your team below. If your team already saved something, it'll load here so you can pick up where you left off.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="team-card">
+                    <div class="harvest-field">
+                        <label class="harvest-label">Your Team</label>
+                        <select class="harvest-select" id="harvest-team-select">
+                            <option value="">Choose your team…</option>
+                        </select>
+                    </div>
+
+                    <div id="harvest-form-body" style="display:none;">
+                        <div class="harvest-section harvest-section-blue">
+                            <div class="harvest-section-head">
+                                <span class="harvest-section-emoji">🧪</span>
+                                <div>
+                                    <div class="harvest-section-title">Your Experiment</div>
+                                    <div class="harvest-section-sub">What you built and how it worked</div>
+                                </div>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    Our Chapter 
+                                    <span>What are we exploring? What's meaningful and inspiring to us about this chapter?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-OurChapter" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    The Transformation 
+                                    <span>What transformation are we inviting people to encounter?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-Transformation" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    Our Experiment 
+                                    <span>What are we creating? What conditions are we creating? What are we curious might happen?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-OurExperiment" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    The Experience 
+                                    <span>Map the flow: Enter → Experience → Shift → Continue</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-TheExperience" rows="4"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    Ingredients 
+                                    <span>What tools, technology, people, space and materials are involved?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-Ingredients" rows="2"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    Passing It Forward 
+                                    <span>What might participants carry into the next chapter?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-PassingItForward" rows="2"></textarea>
+                            </div>
+                            <div class="harvest-field" style="margin-bottom:0;">
+                                <label class="harvest-label">
+                                    Our Playtest Question 
+                                    <span>What are we most curious to discover?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-PlaytestQuestion" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="harvest-section harvest-section-green">
+                            <div class="harvest-section-head">
+                                <span class="harvest-section-emoji">🌾</span>
+                                <div>
+                                    <div class="harvest-section-title">What We Learned</div>
+                                    <div class="harvest-section-sub">Your reflection, after trying it</div>
+                                </div>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    What Surprised or Delighted Us 
+                                    <span>What worked better than expected?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-Surprised" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">
+                                    What Challenged Us 
+                                    <span>What confused participants?</span>
+                                </label>
+                                <textarea class="harvest-textarea" id="h-Challenged" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">What to Simplify / What to Keep</label>
+                                <textarea class="harvest-textarea" id="h-SimplifyKeep" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">What Changed in Our Understanding</label>
+                                <textarea class="harvest-textarea" id="h-UnderstandingChanged" rows="2"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">What Another Team Might Learn From This</label>
+                                <textarea class="harvest-textarea" id="h-OtherTeamsLearn" rows="2"></textarea>
+                            </div>
+                            <div class="harvest-field" style="margin-bottom:0;">
+                                <label class="harvest-label">What We'll Try Next</label>
+                                <textarea class="harvest-textarea" id="h-NextStep" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="harvest-field">
+                            <label class="harvest-label">
+                                Link 
+                                <span>Optional — Miro board, photo, or video of your experiment</span>
+                            </label>
+                            <input class="harvest-textarea" id="h-LinkUrl" type="text" placeholder="https://…">
+                        </div>
+
+                        <div style="text-align:center;margin-top:20px;">
+                            <button class="gbtn primary" id="harvest-save-btn" style="padding:11px 26px;font-size:13.5px;">
+                                <i class="ti ti-device-floppy" style="margin-right:6px;"></i>
+                                Save Our Experiment
+                            </button>
+                        </div>
+                        <div id="harvest-status" style="text-align:center;font-size:12.5px;margin-top:10px;color:var(--t2);"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-head">
+                    <div class="section-eyebrow">All teams</div>
+                    <div class="section-title">🗂 Experiment Harvest</div>
+                    <div class="section-sub">What every team has discovered so far.</div>
+                </div>
+                <div id="harvest-cards-grid" class="harvest-cards-grid"></div>
+            </section>
+
+            <section class="section-block">
+                <div class="stuck-banner">
+                    <div class="stuck-icon">🙋</div>
+                    <div>
+                        <b>Feeling stuck?</b>
+                         Reach out to your Radiant IRIS Guide, or 
+                        <a href="https://chat.whatsapp.com/BwsFairKxbqKnkSCF1QQmY" target="_blank">ask in WhatsApp</a>
+                        . A short conversation can unlock the next step.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
     <!-- ================= DEDICATED TEAM PAGE ================= -->
     <div id="page-team" style="display:none">
         <div class="wrap">
@@ -4413,6 +4733,18 @@
                 location.hash = '/playbook'
             },
             openLabel: 'Open the Playbook'
+        },
+        {
+            id: 'harvest',
+            icon: 'ti-notebook',
+            title: 'Document Your Experiment',
+            desc: 'Save what you built and what you learned — this becomes part of the shared Collaboratorium record.',
+            time: '15 min',
+            done: false,
+            action: function() {
+                location.hash = '/harvest'
+            },
+            openLabel: 'Open Harvest'
         }
         ]
     }
@@ -4477,6 +4809,15 @@
             t: 'Hippo Participant Journey Map',
             by: 'The whole path, illustrated',
             kind: 'map'
+        },
+        {
+            t: 'Document Your Experiment',
+            by: 'Save what you built and what you learned',
+            kind: 'link',
+            action: function() {
+                location.hash = '/harvest'
+            },
+            step: 7
         },
         {
             t: 'The Mirrorwood Narrative (English)',
@@ -6283,6 +6624,233 @@
         document.getElementById('modal-bg').classList.add('open');
     }
 
+    /* ---------- Harvest: document your experiment (Google Sheets backend) ---------- */
+    var HARVEST_API_URL = 'https://script.google.com/macros/s/AKfycbwH3PgFO13o9frEU1KGQ4vEH91R4EF0AqIizvk8NH2teDXNBZxXyZ_e6l8LCYYVQ8GnGQ/exec';
+
+    var HARVEST_TEAMS = [
+    {
+        name: 'Purple Dragon Den Team',
+        color: 'purple'
+    },
+    {
+        name: 'Team 2',
+        color: 'blue'
+    },
+    {
+        name: 'Hidden Fields | 隠れ場',
+        color: 'green'
+    },
+    {
+        name: 'Alien Hippos',
+        color: 'gold'
+    }
+    ];
+
+    var HARVEST_FIELDS = [
+    {
+        id: 'OurChapter',
+        label: 'Our Chapter'
+    },
+    {
+        id: 'Transformation',
+        label: 'The Transformation'
+    },
+    {
+        id: 'OurExperiment',
+        label: 'Our Experiment'
+    },
+    {
+        id: 'TheExperience',
+        label: 'The Experience'
+    },
+    {
+        id: 'Ingredients',
+        label: 'Ingredients'
+    },
+    {
+        id: 'PassingItForward',
+        label: 'Passing It Forward'
+    },
+    {
+        id: 'PlaytestQuestion',
+        label: 'Our Playtest Question'
+    },
+    {
+        id: 'Surprised',
+        label: 'What Surprised or Delighted Us'
+    },
+    {
+        id: 'Challenged',
+        label: 'What Challenged Us'
+    },
+    {
+        id: 'SimplifyKeep',
+        label: 'What to Simplify / What to Keep'
+    },
+    {
+        id: 'UnderstandingChanged',
+        label: 'What Changed in Our Understanding'
+    },
+    {
+        id: 'OtherTeamsLearn',
+        label: 'What Another Team Might Learn'
+    },
+    {
+        id: 'NextStep',
+        label: "What We'll Try Next"
+    }
+    ];
+
+    function harvestApiReady() {
+        return HARVEST_API_URL && HARVEST_API_URL.indexOf('PASTE_YOUR') === -1;
+    }
+
+    function initHarvestPage() {
+        var sel = document.getElementById('harvest-team-select');
+        if (!sel || sel.dataset.built) {
+            renderHarvestCards();
+            return;
+        }
+        sel.dataset.built = '1';
+        HARVEST_TEAMS.forEach(function(t) {
+            var opt = document.createElement('option');
+            opt.value = t.name;
+            opt.textContent = t.name;
+            sel.appendChild(opt);
+        });
+        sel.addEventListener('change', onHarvestTeamChange);
+        document.getElementById('harvest-save-btn').addEventListener('click', saveHarvestEntry);
+        renderHarvestCards();
+    }
+
+    function onHarvestTeamChange() {
+        var team = document.getElementById('harvest-team-select').value;
+        var body = document.getElementById('harvest-form-body');
+        var status = document.getElementById('harvest-status');
+        HARVEST_FIELDS.forEach(function(f) {
+            document.getElementById('h-' + f.id).value = '';
+        });
+        document.getElementById('h-LinkUrl').value = '';
+        status.textContent = '';
+        if (!team) {
+            body.style.display = 'none';
+            return;
+        }
+        body.style.display = 'block';
+        if (!harvestApiReady()) {
+            status.textContent = 'Backend not connected yet — ask your Radiant IRIS Guide.';
+            return;
+        }
+        status.textContent = 'Loading your team\'s saved answers…';
+        fetch(HARVEST_API_URL + '?action=get&team=' + encodeURIComponent(team))
+        .then(function(r) {
+            return r.json();
+        })
+        .then(function(data) {
+            status.textContent = '';
+            if (data && data.entry) {
+                HARVEST_FIELDS.forEach(function(f) {
+                    document.getElementById('h-' + f.id).value = data.entry[f.id] || '';
+                });
+                document.getElementById('h-LinkUrl').value = data.entry.LinkUrl || '';
+                status.textContent = 'Loaded your previous answers — edit and save anytime.';
+            }
+        })
+        .catch(function() {
+            status.textContent = "Couldn't load previous answers, but you can still fill this in fresh.";
+        });
+    }
+
+    function saveHarvestEntry() {
+        var team = document.getElementById('harvest-team-select').value;
+        var status = document.getElementById('harvest-status');
+        if (!team) {
+            status.textContent = 'Choose your team first.';
+            return;
+        }
+        if (!harvestApiReady()) {
+            status.textContent = 'Backend not connected yet — ask your Radiant IRIS Guide.';
+            return;
+        }
+
+        var payload = {
+            Team: team
+        };
+        HARVEST_FIELDS.forEach(function(f) {
+            payload[f.id] = document.getElementById('h-' + f.id).value;
+        });
+        payload.LinkUrl = document.getElementById('h-LinkUrl').value;
+
+        status.textContent = 'Saving…';
+        fetch(HARVEST_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(function(r) {
+            return r.json();
+        })
+        .then(function(data) {
+            status.textContent = data && data.ok ? '✓ Saved! You can come back and edit this anytime.' : "Something went wrong — please try again.";
+            renderHarvestCards();
+        })
+        .catch(function() {
+            status.textContent = "Couldn't save — check your connection and try again.";
+        });
+    }
+
+    function renderHarvestCards() {
+        var grid = document.getElementById('harvest-cards-grid');
+        if (!grid)
+            return;
+        if (!harvestApiReady()) {
+            grid.innerHTML = '<div class="harvest-card-empty" style="padding:20px;">Harvest gallery will appear here once the backend is connected.</div>';
+            return;
+        }
+        grid.innerHTML = '<div class="harvest-card-empty" style="padding:20px;">Loading…</div>';
+        fetch(HARVEST_API_URL + '?action=list')
+        .then(function(r) {
+            return r.json();
+        })
+        .then(function(data) {
+            var entries = (data && data.entries) || [];
+            grid.innerHTML = '';
+            HARVEST_TEAMS.forEach(function(t) {
+                var c = colorMapGuide[t.color];
+                var entry = entries.filter(function(e) {
+                    return e.Team === t.name;
+                })[0];
+                var el = document.createElement('div');
+                el.className = 'harvest-card';
+                var bodyHtml = '';
+                if (!entry) {
+                    bodyHtml = '<div class="harvest-card-empty">Nothing saved yet.</div>';
+                } else {
+                    HARVEST_FIELDS.forEach(function(f) {
+                        if (entry[f.id]) {
+                            bodyHtml += '<div class="harvest-card-sec">' + f.label + '</div><div class="harvest-card-text">' + entry[f.id] + '</div>';
+                        }
+                    });
+                    if (entry.LinkUrl) {
+                        bodyHtml += '<div class="harvest-card-sec">Link</div><a class="harvest-card-link" href="' + entry.LinkUrl + '" target="_blank">' + entry.LinkUrl + '</a>';
+                    }
+                    if (!bodyHtml) {
+                        bodyHtml = '<div class="harvest-card-empty">Nothing saved yet.</div>';
+                    }
+                }
+                el.innerHTML =
+                '<div class="harvest-card-head" style="background:' + c[1] + ';">' + t.name + '</div>' +
+                '<div class="harvest-card-body">' + bodyHtml + '</div>';
+                grid.appendChild(el);
+            });
+        })
+        .catch(function() {
+            grid.innerHTML = '<div class="harvest-card-empty" style="padding:20px;">Could not load the harvest gallery right now.</div>';
+        });
+    }
+
     var ATL_DIRECTIONS = [
     {
         id: 'projection',
@@ -6944,6 +7512,7 @@
         '#/playbook': 'page-playbook',
         '#/design-moves': 'page-design-moves',
         '#/storyheart': 'page-storyheart',
+        '#/harvest': 'page-harvest',
         '#/team': 'page-team',
         '#/team2': 'page-team2',
         '#/team3': 'page-team3',
@@ -6957,6 +7526,8 @@
             Object.keys(ALL_PAGES).forEach(function(h) {
                 document.getElementById(ALL_PAGES[h]).style.display = (h === hash) ? '' : 'none';
             });
+            if (hash === '#/harvest')
+                initHarvestPage();
             window.scrollTo(0, 0);
         } else {
             Object.keys(ALL_PAGES).forEach(function(h) {
