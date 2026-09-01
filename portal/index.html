@@ -1555,6 +1555,52 @@
         font-weight: 600
     }
 
+    .harvest-card-progress {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--t2);
+        text-transform: uppercase;
+        letter-spacing: .03em;
+        margin-bottom: 10px
+    }
+
+    .harvest-card-progress i {
+        font-size: 14px;
+        color: var(--purple)
+    }
+
+    .harvest-card-preview {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--t1);
+        margin-bottom: 14px
+    }
+
+    .harvest-card-view-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        background: var(--bg2);
+        border: none;
+        border-radius: var(--rmd);
+        padding: 9px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--purple);
+        cursor: pointer;
+        font-family: var(--font);
+        transition: background .15s
+    }
+
+    .harvest-card-view-btn:hover {
+        background: var(--purple-bg)
+    }
+
     .harvest-section {
         border-radius: var(--rlg);
         padding: 18px 18px 4px;
@@ -3633,9 +3679,19 @@
                 <div class="team-card">
                     <div class="harvest-field">
                         <label class="harvest-label">Your Team</label>
-                        <select class="harvest-select" id="harvest-team-select">
-                            <option value="">Choose your team…</option>
-                        </select>
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <select class="harvest-select" id="harvest-team-select" style="flex:1;">
+                                <option value="">Choose your team…</option>
+                            </select>
+                            <button class="gbtn secondary" id="harvest-refresh-btn" type="button" style="flex-shrink:0;padding:9px 12px;" title="Pull the latest saved version">
+                                <i class="ti ti-refresh"></i>
+                            </button>
+                        </div>
+                        <div style="font-size:11px;color:var(--t2);margin-top:6px;">
+                            This is one shared document per team — saving replaces the previous version with yours. If a teammate might have updated it since you opened this page, tap 
+                            <i class="ti ti-refresh"></i>
+                             first to load their latest before you edit.
+                        </div>
                     </div>
 
                     <div id="harvest-form-body" style="display:none;">
@@ -6649,57 +6705,71 @@
     var HARVEST_FIELDS = [
     {
         id: 'OurChapter',
-        label: 'Our Chapter'
+        label: 'Our Chapter',
+        group: 'experiment'
     },
     {
         id: 'Transformation',
-        label: 'The Transformation'
+        label: 'The Transformation',
+        group: 'experiment'
     },
     {
         id: 'OurExperiment',
-        label: 'Our Experiment'
+        label: 'Our Experiment',
+        group: 'experiment'
     },
     {
         id: 'TheExperience',
-        label: 'The Experience'
+        label: 'The Experience',
+        group: 'experiment'
     },
     {
         id: 'Ingredients',
-        label: 'Ingredients'
+        label: 'Ingredients',
+        group: 'experiment'
     },
     {
         id: 'PassingItForward',
-        label: 'Passing It Forward'
+        label: 'Passing It Forward',
+        group: 'experiment'
     },
     {
         id: 'PlaytestQuestion',
-        label: 'Our Playtest Question'
+        label: 'Our Playtest Question',
+        group: 'experiment'
     },
     {
         id: 'Surprised',
-        label: 'What Surprised or Delighted Us'
+        label: 'What Surprised or Delighted Us',
+        group: 'learned'
     },
     {
         id: 'Challenged',
-        label: 'What Challenged Us'
+        label: 'What Challenged Us',
+        group: 'learned'
     },
     {
         id: 'SimplifyKeep',
-        label: 'What to Simplify / What to Keep'
+        label: 'What to Simplify / What to Keep',
+        group: 'learned'
     },
     {
         id: 'UnderstandingChanged',
-        label: 'What Changed in Our Understanding'
+        label: 'What Changed in Our Understanding',
+        group: 'learned'
     },
     {
         id: 'OtherTeamsLearn',
-        label: 'What Another Team Might Learn'
+        label: 'What Another Team Might Learn',
+        group: 'learned'
     },
     {
         id: 'NextStep',
-        label: "What We'll Try Next"
+        label: "What We'll Try Next",
+        group: 'learned'
     }
     ];
+    var HARVEST_ENTRIES_CACHE = [];
 
     function harvestApiReady() {
         return HARVEST_API_URL && HARVEST_API_URL.indexOf('PASTE_YOUR') === -1;
@@ -6719,6 +6789,10 @@
             sel.appendChild(opt);
         });
         sel.addEventListener('change', onHarvestTeamChange);
+        document.getElementById('harvest-refresh-btn').addEventListener('click', function() {
+            if (document.getElementById('harvest-team-select').value)
+                onHarvestTeamChange();
+        });
         document.getElementById('harvest-save-btn').addEventListener('click', saveHarvestEntry);
         renderHarvestCards();
     }
@@ -6742,7 +6816,9 @@
             return;
         }
         status.textContent = 'Loading your team\'s saved answers…';
-        fetch(HARVEST_API_URL + '?action=get&team=' + encodeURIComponent(team))
+        fetch(HARVEST_API_URL + '?action=get&team=' + encodeURIComponent(team) + '&_=' + Date.now(), {
+            cache: 'no-store'
+        })
         .then(function(r) {
             return r.json();
         })
@@ -6810,45 +6886,95 @@
             return;
         }
         grid.innerHTML = '<div class="harvest-card-empty" style="padding:20px;">Loading…</div>';
-        fetch(HARVEST_API_URL + '?action=list')
+        fetch(HARVEST_API_URL + '?action=list&_=' + Date.now(), {
+            cache: 'no-store'
+        })
         .then(function(r) {
             return r.json();
         })
         .then(function(data) {
-            var entries = (data && data.entries) || [];
+            HARVEST_ENTRIES_CACHE = (data && data.entries) || [];
             grid.innerHTML = '';
             HARVEST_TEAMS.forEach(function(t) {
                 var c = colorMapGuide[t.color];
-                var entry = entries.filter(function(e) {
+                var entry = HARVEST_ENTRIES_CACHE.filter(function(e) {
                     return e.Team === t.name;
                 })[0];
                 var el = document.createElement('div');
                 el.className = 'harvest-card';
-                var bodyHtml = '';
+
                 if (!entry) {
-                    bodyHtml = '<div class="harvest-card-empty">Nothing saved yet.</div>';
-                } else {
-                    HARVEST_FIELDS.forEach(function(f) {
-                        if (entry[f.id]) {
-                            bodyHtml += '<div class="harvest-card-sec">' + f.label + '</div><div class="harvest-card-text">' + entry[f.id] + '</div>';
-                        }
-                    });
-                    if (entry.LinkUrl) {
-                        bodyHtml += '<div class="harvest-card-sec">Link</div><a class="harvest-card-link" href="' + entry.LinkUrl + '" target="_blank">' + entry.LinkUrl + '</a>';
-                    }
-                    if (!bodyHtml) {
-                        bodyHtml = '<div class="harvest-card-empty">Nothing saved yet.</div>';
-                    }
+                    el.innerHTML =
+                    '<div class="harvest-card-head" style="background:' + c[1] + ';">' + t.name + '</div>' +
+                    '<div class="harvest-card-body"><div class="harvest-card-empty">Nothing saved yet.</div></div>';
+                    grid.appendChild(el);
+                    return;
                 }
+
+                var filledCount = HARVEST_FIELDS.filter(function(f) {
+                    return entry[f.id];
+                }).length;
+                var preview = entry.OurExperiment || entry.OurChapter || '';
+                if (preview.length > 110)
+                    preview = preview.slice(0, 110).trim() + '…';
+
                 el.innerHTML =
                 '<div class="harvest-card-head" style="background:' + c[1] + ';">' + t.name + '</div>' +
-                '<div class="harvest-card-body">' + bodyHtml + '</div>';
+                '<div class="harvest-card-body">' +
+                '<div class="harvest-card-progress"><i class="ti ti-clipboard-check"></i> ' + filledCount + ' of ' + HARVEST_FIELDS.length + ' fields filled in</div>' +
+                (preview ? '<div class="harvest-card-preview">' + preview + '</div>' : '') +
+                '<button class="harvest-card-view-btn" onclick="openHarvestDetail(\'' + t.name.replace(/'/g, "\\'") + '\')">View Full Harvest <i class="ti ti-arrow-right"></i></button>' +
+                '</div>';
                 grid.appendChild(el);
             });
         })
         .catch(function() {
             grid.innerHTML = '<div class="harvest-card-empty" style="padding:20px;">Could not load the harvest gallery right now.</div>';
         });
+    }
+
+    function openHarvestDetail(teamName) {
+        var t = HARVEST_TEAMS.filter(function(x) {
+            return x.name === teamName;
+        })[0];
+        var entry = HARVEST_ENTRIES_CACHE.filter(function(e) {
+            return e.Team === teamName;
+        })[0];
+        if (!t || !entry)
+            return;
+        var c = colorMapGuide[t.color];
+
+        function fieldsHtml(group) {
+            var html = '';
+            HARVEST_FIELDS.filter(function(f) {
+                return f.group === group;
+            }).forEach(function(f) {
+                if (entry[f.id]) {
+                    html += '<div class="dm-detail-sub">' + f.label + '</div><div class="harvest-card-text" style="margin-bottom:14px;">' + entry[f.id] + '</div>';
+                }
+            });
+            return html || '<div class="harvest-card-empty">Nothing here yet.</div>';
+        }
+
+        var box = document.getElementById('modal-box');
+        box.classList.add('light', 'wide');
+        var html =
+        '<div style="padding:0;">' +
+        '<div class="harvest-card-head" style="background:' + c[1] + ';font-size:17px;padding:18px 22px;">' + teamName + '</div>' +
+        '<div style="padding:22px 22px 26px;">' +
+        '<div class="harvest-section harvest-section-blue" style="margin-bottom:16px;">' +
+        '<div class="harvest-section-head"><span class="harvest-section-emoji">🧪</span><div><div class="harvest-section-title">Your Experiment</div></div></div>' +
+        fieldsHtml('experiment') +
+        '</div>' +
+        '<div class="harvest-section harvest-section-green" style="margin-bottom:0;">' +
+        '<div class="harvest-section-head"><span class="harvest-section-emoji">🌾</span><div><div class="harvest-section-title">What We Learned</div></div></div>' +
+        fieldsHtml('learned') +
+        '</div>' +
+        (entry.LinkUrl ? '<div style="margin-top:16px;"><div class="dm-detail-sub">Link</div><a class="harvest-card-link" href="' + entry.LinkUrl + '" target="_blank">' + entry.LinkUrl + '</a></div>' : '') +
+        '</div>' +
+        '</div>';
+        document.getElementById('modal-content').innerHTML = html;
+        document.getElementById('modal-bg').classList.add('open');
     }
 
     var ATL_DIRECTIONS = [
