@@ -1646,6 +1646,23 @@
         background: #fff
     }
 
+    .harvest-team-banner-inner {
+        background: var(--purple-bg);
+        border-radius: var(--rmd);
+        padding: 12px 14px;
+        margin-top: 14px;
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--t1)
+    }
+
+    .harvest-team-banner-inner b {
+        font-size: 14px;
+        color: var(--purple);
+        display: block;
+        margin-bottom: 3px
+    }
+
     .dm-detail-list {
         margin: 0 0 16px 18px
     }
@@ -3667,10 +3684,16 @@
                      Back to Portal
                 </div>
                 <div class="welcome-card guide-welcome">
-                    <div class="welcome-title" style="margin-bottom:14px;">🌾 Document Your Experiment</div>
+                    <div class="welcome-title" style="margin-bottom:14px;">🌾 Experiment Harvest</div>
                     <div class="welcome-text">
-                        <p>Capture your team's experiment and what you learned from it — this becomes part of the shared record for the whole Collaboratorium.</p>
-                        <p>Choose your team below. If your team already saved something, it'll load here so you can pick up where you left off.</p>
+                        <p>
+                            <i>One Harvest for each team.</i>
+                        </p>
+                        <p>This is where we capture what your team created, what you tried, and what you discovered.</p>
+                        <p>There is one Harvest for each team, not one per person.</p>
+                        <p>You can contribute to your team's Harvest on your own, whenever you have time. You do not need to meet with your team.</p>
+                        <p>One person can start the Harvest. Another person can add to it later. You can also complete it together as a team if you prefer.</p>
+                        <p>Don't worry about making it perfect. We want to capture what actually happened while it is still fresh.</p>
                     </div>
                 </div>
             </section>
@@ -3678,7 +3701,8 @@
             <section class="section-block">
                 <div class="team-card">
                     <div class="harvest-field">
-                        <label class="harvest-label">Your Team</label>
+                        <label class="harvest-label" style="text-transform:uppercase;letter-spacing:.03em;font-size:11.5px;">Your Team</label>
+                        <div style="font-size:12px;color:var(--t2);margin-bottom:8px;">Choose the team you are contributing to.</div>
                         <div style="display:flex;gap:8px;align-items:center;">
                             <select class="harvest-select" id="harvest-team-select" style="flex:1;">
                                 <option value="">Choose your team…</option>
@@ -3687,11 +3711,18 @@
                                 <i class="ti ti-refresh"></i>
                             </button>
                         </div>
-                        <div style="font-size:11px;color:var(--t2);margin-top:6px;">
-                            This is one shared document per team — saving replaces the previous version with yours. If a teammate might have updated it since you opened this page, tap 
-                            <i class="ti ti-refresh"></i>
-                             first to load their latest before you edit.
+                        <div class="pb-callout" style="background:var(--gold-bg);margin-top:12px;margin-bottom:0;">
+                            <p style="margin-bottom:0;font-size:12px;">
+                                🤝 Your team can build this Harvest together, without meeting together. Add your thoughts whenever you have time — other team members can add theirs later. 
+                                <b>
+                                    Before you edit, tap 
+                                    <i class="ti ti-refresh"></i>
+                                     to load the latest version
+                                </b>
+                                , so you're always adding to your team's most recent Harvest.
+                            </p>
                         </div>
+                        <div id="harvest-team-banner" style="display:none;"></div>
                     </div>
 
                     <div id="harvest-form-body" style="display:none;">
@@ -3763,45 +3794,31 @@
                                 </div>
                             </div>
                             <div class="harvest-field">
-                                <label class="harvest-label">
-                                    What Surprised or Delighted Us 
-                                    <span>What worked better than expected?</span>
-                                </label>
+                                <label class="harvest-label">What surprised or delighted us?</label>
                                 <textarea class="harvest-textarea" id="h-Surprised" rows="3"></textarea>
                             </div>
                             <div class="harvest-field">
-                                <label class="harvest-label">
-                                    What Challenged Us 
-                                    <span>What confused participants?</span>
-                                </label>
+                                <label class="harvest-label">What challenged us or didn't work?</label>
                                 <textarea class="harvest-textarea" id="h-Challenged" rows="3"></textarea>
                             </div>
                             <div class="harvest-field">
-                                <label class="harvest-label">What to Simplify / What to Keep</label>
+                                <label class="harvest-label">What did we learn?</label>
+                                <textarea class="harvest-textarea" id="h-UnderstandingChanged" rows="3"></textarea>
+                            </div>
+                            <div class="harvest-field">
+                                <label class="harvest-label">What would we keep, change, or try next?</label>
                                 <textarea class="harvest-textarea" id="h-SimplifyKeep" rows="3"></textarea>
                             </div>
-                            <div class="harvest-field">
-                                <label class="harvest-label">What Changed in Our Understanding</label>
-                                <textarea class="harvest-textarea" id="h-UnderstandingChanged" rows="2"></textarea>
-                            </div>
-                            <div class="harvest-field">
-                                <label class="harvest-label">What Another Team Might Learn From This</label>
-                                <textarea class="harvest-textarea" id="h-OtherTeamsLearn" rows="2"></textarea>
-                            </div>
-                            <div class="harvest-field">
-                                <label class="harvest-label">What We'll Try Next</label>
-                                <textarea class="harvest-textarea" id="h-NextStep" rows="2"></textarea>
-                            </div>
                             <div class="harvest-field" style="margin-bottom:0;">
-                                <label class="harvest-label">What Art, Technology, or Facilitation Inspired You From the Other Chapters?</label>
-                                <textarea class="harvest-textarea" id="h-OtherChaptersInspiration" rows="3"></textarea>
+                                <label class="harvest-label">What might another team learn from our experience?</label>
+                                <textarea class="harvest-textarea" id="h-OtherTeamsLearn" rows="2"></textarea>
                             </div>
                         </div>
 
                         <div class="harvest-field">
                             <label class="harvest-label">
-                                Link 
-                                <span>Optional — Miro board, photo, or video of your experiment</span>
+                                🔗 Link to your experiment 
+                                <span>Optional — Miro board, prototype, video, image, etc.</span>
                             </label>
                             <input class="harvest-textarea" id="h-LinkUrl" type="text" placeholder="https://…">
                         </div>
@@ -3809,7 +3826,7 @@
                         <div style="text-align:center;margin-top:20px;">
                             <button class="gbtn primary" id="harvest-save-btn" style="padding:11px 26px;font-size:13.5px;">
                                 <i class="ti ti-device-floppy" style="margin-right:6px;"></i>
-                                Save Our Experiment
+                                Save Our Team's Harvest
                             </button>
                         </div>
                         <div id="harvest-status" style="text-align:center;font-size:12.5px;margin-top:10px;color:var(--t2);"></div>
@@ -3819,9 +3836,9 @@
 
             <section class="section-block">
                 <div class="section-head">
-                    <div class="section-eyebrow">All teams</div>
-                    <div class="section-title">🗂 Experiment Harvest</div>
-                    <div class="section-sub">What every team has discovered so far.</div>
+                    <div class="section-eyebrow">Explore what other teams have discovered</div>
+                    <div class="section-title">🗂 All Teams' Harvests</div>
+                    <div class="section-sub">Same page, two purposes: add to your team's Harvest above, and browse everyone else's discoveries here.</div>
                 </div>
                 <div id="harvest-cards-grid" class="harvest-cards-grid"></div>
             </section>
@@ -4797,8 +4814,8 @@
         {
             id: 'harvest',
             icon: 'ti-notebook',
-            title: 'Document Your Experiment',
-            desc: 'Save what you built and what you learned — this becomes part of the shared Collaboratorium record.',
+            title: 'Contribute to Your Team\'s Harvest',
+            desc: 'One shared Harvest per team — add what you remember, whenever you have time. No need to meet as a team.',
             time: '15 min',
             done: false,
             action: function() {
@@ -4871,8 +4888,8 @@
             kind: 'map'
         },
         {
-            t: 'Document Your Experiment',
-            by: 'Save what you built and what you learned',
+            t: 'Your Team\'s Harvest',
+            by: 'One shared record — contribute anytime, no need to meet',
             kind: 'link',
             action: function() {
                 location.hash = '/harvest'
@@ -6744,37 +6761,27 @@
     },
     {
         id: 'Surprised',
-        label: 'What Surprised or Delighted Us',
+        label: 'What surprised or delighted us?',
         group: 'learned'
     },
     {
         id: 'Challenged',
-        label: 'What Challenged Us',
-        group: 'learned'
-    },
-    {
-        id: 'SimplifyKeep',
-        label: 'What to Simplify / What to Keep',
+        label: "What challenged us or didn't work?",
         group: 'learned'
     },
     {
         id: 'UnderstandingChanged',
-        label: 'What Changed in Our Understanding',
+        label: 'What did we learn?',
+        group: 'learned'
+    },
+    {
+        id: 'SimplifyKeep',
+        label: 'What would we keep, change, or try next?',
         group: 'learned'
     },
     {
         id: 'OtherTeamsLearn',
-        label: 'What Another Team Might Learn',
-        group: 'learned'
-    },
-    {
-        id: 'NextStep',
-        label: "What We'll Try Next",
-        group: 'learned'
-    },
-    {
-        id: 'OtherChaptersInspiration',
-        label: 'What Art, Technology, or Facilitation Inspired You From the Other Chapters',
+        label: 'What might another team learn from our experience?',
         group: 'learned'
     }
     ];
@@ -6809,6 +6816,7 @@
     function onHarvestTeamChange() {
         var team = document.getElementById('harvest-team-select').value;
         var body = document.getElementById('harvest-form-body');
+        var banner = document.getElementById('harvest-team-banner');
         var status = document.getElementById('harvest-status');
         HARVEST_FIELDS.forEach(function(f) {
             document.getElementById('h-' + f.id).value = '';
@@ -6817,14 +6825,17 @@
         status.textContent = '';
         if (!team) {
             body.style.display = 'none';
+            banner.style.display = 'none';
             return;
         }
         body.style.display = 'block';
+        banner.style.display = 'block';
+        banner.innerHTML = '<div class="harvest-team-banner-inner"><b>' + team + '</b><br>This is your team\'s shared Harvest. Add what you remember, noticed, or learned. You do not need to complete every section yourself.</div>';
         if (!harvestApiReady()) {
             status.textContent = 'Backend not connected yet — ask your Radiant IRIS Guide.';
             return;
         }
-        status.textContent = 'Loading your team\'s saved answers…';
+        status.textContent = "Loading your team's saved answers…";
         fetch(HARVEST_API_URL + '?action=get&team=' + encodeURIComponent(team) + '&_=' + Date.now(), {
             cache: 'no-store'
         })
@@ -6838,7 +6849,7 @@
                     document.getElementById('h-' + f.id).value = data.entry[f.id] || '';
                 });
                 document.getElementById('h-LinkUrl').value = data.entry.LinkUrl || '';
-                status.textContent = 'Loaded your previous answers — edit and save anytime.';
+                status.textContent = 'Loaded the latest version — add your contribution and save anytime.';
             }
         })
         .catch(function() {
